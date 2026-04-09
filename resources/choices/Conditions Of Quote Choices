@@ -1,0 +1,94 @@
+Conditions Of Quote Choices
+
+//***************** Basis Of Qote Clauses Wet Fire ***************************
+ const QString Basis_1 = "AS 2118.1:2017 – Automatic Fire Sprinkler Systems – General Systems";
+ const QString Basis_2 = "AS 2118.4 – Sprinkler Systems for Residential Occupancies";
+ const QString Basis_3 = "AS 2118.6 – Combined Sprinkler and Hydrant Systems in High-Rise Buildings";
+ const QString Basis_4 = "Relevant Standards: NCC2022 V1, AS3000, AS2444, AS1851, AS1670.1 and AS 2118.6-2102";
+ const QString Basis_5 = "Architectural Drawings: Add Numbers here";
+ const QString Basis_6 = "We have not had sight of any fire engineering in this early tender process and quotation is subject to review.";
+
+//***************** Basis Of Qote Clauses Dry Fire ***************************
+ const QString Basis_7  = "AS 1670.1:2018 – System Design, Installation & Commissioning";
+ const QString Basis_8  = "AS 1670.4 – Emergency Warning and Intercommunication Systems (EWIS)";
+ const QString Basis_9  = "AS/NZS 3000 (Wiring Rules) – Ensures electrical safety and compliance for all cabling and power supply";
+ const QString Basis_10 = "AS 1851:2012 – Routine Service of Fire Protection Systems";
+ const QString Basis_11 = "National Construction Code (NCC) Integratio";
+ const QString Basis_12 = "Drawings: add numbers here";
+
+
+//****************************Scope of works clauses Wet Fire***********************
+const QString wscope_1 = "Diesal fire pump.";
+const QString wscope_2 = "Boosters assembly including cabinet.";
+const QString wscope_3 = "Sprinkler control valve to supply basement levels.";
+const QString wscope_4 = "Sprinkler control valve to supply residential areas";
+const QString wscope_5 = "Hydrants to all levels.";
+const QString wscope_6 = "Exposed sprinklers and hose reels to basements.";
+const QString wscope_7 = "Semi recessed sprinkler throughout.";
+const QString wscope_8 = "Concealed space sprinklers protecting mechanical ductwork within the rooms.";
+const QString wscope_9 = "Plastic penetrations for balcony heads.";
+const QString wscope_10 = "Fire rating off all required penetrations including certification.";
+const QString wscope_11 = "Preparation and submission of detailed workshop drawings and as-builds.";
+const QString wscope_12 = "Block plans for the pump room and booster assembly.";
+const QString wscope_13 = "Operations &amp; maintenance manuals.";
+const QString wscope_14 = "Commissioning and testing.";
+const QString wscope_15 = "12 months maintenance.";
+const QString wscope_16 = "12 months maintenance.";
+
+
+//****************************Scope of works clauses Dry Fire ***********************
+const QString dscope_1 = "New Main addressable fire detection control and indicator panel with combined emergency warning system.(FDCIE/EWCIE). Ground floor entry area.";
+const QString dscope_2 = "Allowance for carpark ventilation fan controls within FDCIE enclosure. Including module interface with MSSB in the basement.";
+const QString dscope_3 = "Allowance for interface with sprinkler system, isolation valves and pressure switches. Including connection to each level’s sprinkler control valves and flow switches";
+const QString dscope_4 = "Allowance for Addressable smoke detectors in accordance with AS1670.1.";
+const QString dscope_5 = "Allowance for evacuation speakers in all corridors, SOU bedrooms and horn speakers in accordance with AS 1670.1";
+const QString dscope_6 = "External Red strobe located at designated building entry point for QFES.";
+const QString dscope_7 = "Portable Fire Appliances in accordance with AS2444";
+const QString dscope_8 = "Fire cables, conduit works in slabs, fixings and sundries.";
+const QString dscope_9 = "Allowance to fire rate all required fire system penetrations, register and form 12 certification.";
+const QString dscope_10 = "Commissioning of fire system and interface performance testing with other associated trades.";
+const QString dscope_11 = "Shop and as-Installed drawings.";
+const QString dscope_12 = "Commissioning documentation (Form 15 &amp; 12) baseline data and installers statements.";
+const QString dscope_13 = "QFES inspection";
+const QString dscope_14 = "FDCIE block diagram";
+const QString dscope_15 = " Operations &amp; Maintenance Manuals";
+const QString dscope_16 = "12 months warranty";
+const QString dscope_17 = "Client training (1hr on site allowance)";
+const QString dscope_18 = "12 Months maintenance in accordance with AS1851 for the DLP";
+
+//**************************** Exclusion Clauses Wet Fire ***********************************************
+const QString excl_1  = "No allowance have been made for the fire pump room.";
+const QString excl_2  = "No allowance have been made for a water storage tank if required.";
+const QString excl_3  = "No allowance have been made for the concrete slab for the booster cabinet.";
+const QString excl_4  = "No allowance have been made for any underground works including the water meter.";
+const QString excl_5  = "No allowance have been made for the water supply to a location in the fire pump room.";
+const QString excl_6  = "No allowance have been made for drainage points for the hydrant test drain";
+const QString excl_7  = "A Diesal fire pump is not included as part of this quotation";
+const QString excl_8  = "Boosters assembly including cabinet are not included in this quotation";
+const QString excl_9  = "Now allowance has been made for ";
+const QString excl_10 = "No allowances have been made in this quote for Fire Brigade fees & rentals";
+
+//**************************** Exclusion Clauses Dry Fire ***********************************************
+const QString dexcl_1  = "No allowances have been made in this quote for installing electronic security systems doorholding";
+const QString dexcl_2  = "No allowances have been made in this quote for tactical evacuation plans, portable appliances, sliding fire doors interface.";
+const QString dexcl_3  = "No allowances have been made in this quote for Fire Brigade fees & rentals";
+const QString dexcl_4  = "Now allowance has been made for ";
+
+
+//**************************** General Clauses Wet Fire ***********************************************
+const QString Gen_1 ="All work will be carried out during normal working hours 6:30am to 3:30pm Monday to Saturday excluding public and award prescribed holidays.";
+const QString Gen_2 ="The quotation was made on the assumption that unrestricted access to sight was available as per the project program";
+const QString Gen_3 ="We will provide supervision of all work.";
+const QString Gen_4 ="We will provide in-house certification (Form15 & 12) for the installed fire services as reqired by Australian standard & appropriate building codes";
+const QString Gen_5 ="We operate using up to date SWMS and Safety plans";
+const QString Gen_6 ="We will ";
+
+
+//**************************** General Clauses Dry Fire ***********************************************
+const QString DGen_1  ="All work will be carried out during normal working hours 6:30am to 3:30pm Monday to Saturday excluding public and award prescribed holidays.";
+const QString DGen_2  ="Work outside of these periods will be subject to negotiation and will involve variation to contract being raised.";
+const QString DGen_3  ="The quotation was made on the assumption that unrestricted access to sight was available as per the project program";
+const QString DGen_4  ="We will provide supervision of all work.";
+const QString DGen_5  ="We will provide in-house certification (Form15 & 12) for the installed fire services as reqired by Australian standard & appropriate building codes";
+const QString DGen_6  ="We operate using up to date SWMS and Safety plans";
+const QString DGen_7  ="We will ";
