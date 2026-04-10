@@ -42,6 +42,10 @@ qt_add_executable(QuoteGeneration
     ${PROJECT_SOURCES}
     database.h
     database.cpp
+    configdialog.h
+    configdialog.cpp
+    configdialog.h
+    configdialog.cpp
 )
 
 # ── Link Qt into the executable ───────────────────────────────────────────────

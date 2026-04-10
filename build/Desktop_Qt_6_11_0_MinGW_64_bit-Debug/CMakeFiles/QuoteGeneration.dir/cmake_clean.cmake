@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/database.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/database.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/main.cpp.obj"

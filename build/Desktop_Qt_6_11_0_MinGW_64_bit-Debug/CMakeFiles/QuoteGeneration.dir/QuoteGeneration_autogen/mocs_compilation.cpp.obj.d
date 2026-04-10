@@ -1,9 +1,9 @@
 CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj: \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\mocs_compilation.cpp \
- D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_mainwindow.cpp \
- D:/Qt_Projects/QuoteGeneration/mainwindow.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmainwindow.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_configdialog.cpp \
+ D:/Qt_Projects/QuoteGeneration/configdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgetsglobal.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qtguiglobal.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qglobal.h \
@@ -386,7 +386,14 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qsizepolicy.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qbitmap.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabwidget.h \
+ D:/Qt_Projects/QuoteGeneration/database.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qtmochelpers.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qtmocconstants.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/q20algorithm.h
+ C:/Qt/6.11.0/mingw_64/include/QtCore/q20algorithm.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_mainwindow.cpp \
+ D:/Qt_Projects/QuoteGeneration/mainwindow.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmainwindow.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabwidget.h

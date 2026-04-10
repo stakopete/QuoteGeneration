@@ -389,6 +389,9 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: \
  D:\Qt_Projects\QuoteGeneration\database.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ D:\Qt_Projects\QuoteGeneration\configdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
@@ -405,5 +408,4 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h

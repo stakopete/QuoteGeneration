@@ -178,6 +178,30 @@ QuoteGeneration_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.s
 .PHONY : QuoteGeneration_autogen/mocs_compilation.cpp.s
 
+configdialog.obj: configdialog.cpp.obj
+.PHONY : configdialog.obj
+
+# target to build an object file
+configdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj
+.PHONY : configdialog.cpp.obj
+
+configdialog.i: configdialog.cpp.i
+.PHONY : configdialog.i
+
+# target to preprocess a source file
+configdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/configdialog.cpp.i
+.PHONY : configdialog.cpp.i
+
+configdialog.s: configdialog.cpp.s
+.PHONY : configdialog.s
+
+# target to generate assembly for a file
+configdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/configdialog.cpp.s
+.PHONY : configdialog.cpp.s
+
 database.obj: database.cpp.obj
 .PHONY : database.obj
 
@@ -264,6 +288,9 @@ help:
 	@echo ... QuoteGeneration_autogen/mocs_compilation.obj
 	@echo ... QuoteGeneration_autogen/mocs_compilation.i
 	@echo ... QuoteGeneration_autogen/mocs_compilation.s
+	@echo ... configdialog.obj
+	@echo ... configdialog.i
+	@echo ... configdialog.s
 	@echo ... database.obj
 	@echo ... database.i
 	@echo ... database.s

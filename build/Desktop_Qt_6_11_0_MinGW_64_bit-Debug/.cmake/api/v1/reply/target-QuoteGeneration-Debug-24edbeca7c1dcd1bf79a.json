@@ -80,7 +80,7 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 48,
+				"line" : 52,
 				"parent" : 0
 			},
 			{
@@ -461,7 +461,8 @@
 				0,
 				1,
 				2,
-				6
+				6,
+				8
 			]
 		}
 	],
@@ -601,7 +602,8 @@
 				0,
 				1,
 				2,
-				6
+				6,
+				8
 			]
 		},
 		{
@@ -610,7 +612,8 @@
 			[
 				3,
 				5,
-				7
+				7,
+				9
 			]
 		},
 		{
@@ -624,14 +627,14 @@
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				8
+				10
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				9
+				11
 			]
 		}
 	],
@@ -675,6 +678,17 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "database.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "configdialog.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "configdialog.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

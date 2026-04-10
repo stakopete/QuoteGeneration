@@ -1,33 +1,26 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // main.cpp  —  Application entry point
 //
-// This is the first code that runs when the application starts.
-// It sets up the application identity, initialises the database,
-// then creates and shows the main window.
+// Initialises the database, checks if first-run setup is needed,
+// shows the config dialog if so, then opens the main window.
 // ─────────────────────────────────────────────────────────────────────────────
 
 #include "mainwindow.h"
 #include "database.h"
+#include "configdialog.h"
 
 #include <QApplication>
 #include <QMessageBox>
 
 int main(int argc, char *argv[])
 {
-    // QApplication manages the application's event loop and resources.
-    // It must be the very first Qt object created.
     QApplication app(argc, argv);
 
-    // These strings appear in the About dialog and are used by QSettings
-    // if we ever need to store user preferences in the Windows registry.
     app.setOrganizationName("PB Software Solutions");
     app.setApplicationName("Quote Generation");
     app.setApplicationVersion("1.0.0");
 
-    // Initialise the database before showing any UI.
-    // If this fails we show an error and exit cleanly.
-    // The app cannot function without the database so there is no
-    // point showing the main window if it fails.
+    // ── Initialise database ───────────────────────────────────────────────────
     if (!Database::initialise()) {
         QMessageBox::critical(
             nullptr,
@@ -36,14 +29,37 @@ int main(int argc, char *argv[])
             "Path: " + Database::databasePath() + "\n\n"
                                              "Please check that the application folder is not read-only."
             );
-        return 1;   // Non-zero return signals failure to the operating system
+        return 1;
     }
 
-    // Create and show the main window.
+    // ── First run check ───────────────────────────────────────────────────────
+    // Load the config and check if setup has been completed.
+    // If configured is false this is the first time the app has been run.
+    AppConfig cfg = Database::loadConfig();
+
+    if (!cfg.configured) {
+        // Show the configuration dialog.
+        // exec() blocks until the user clicks Save or Cancel.
+        ConfigDialog dlg;
+        int result = dlg.exec();
+
+        // If the user clicked Cancel on first run we cannot continue —
+        // the app needs the config data to function.
+        // We warn them and exit cleanly.
+        if (result != QDialog::Accepted) {
+            QMessageBox::information(
+                nullptr,
+                "Setup Required",
+                "The application cannot run without completing the initial "
+                "setup.\n\nPlease restart and complete the configuration."
+                );
+            return 0;
+        }
+    }
+
+    // ── Show main window ──────────────────────────────────────────────────────
     MainWindow w;
     w.show();
 
-    // Hand control to Qt's event loop. This call does not return until
-    // the user closes the application.
     return app.exec();
 }
