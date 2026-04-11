@@ -389,23 +389,40 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: \
  D:\Qt_Projects\QuoteGeneration\database.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
- D:\Qt_Projects\QuoteGeneration\configdialog.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qbasictimer.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qurl.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvector2d.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvectornd.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qpointingdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qinputdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qnativeinterface.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen_platform.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+ D:\Qt_Projects\QuoteGeneration\configdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h

@@ -386,26 +386,68 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qcursor.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qbitmap.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabwidget.h \
- D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteGeneration_autogen/include/ui_mainwindow.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QVariant \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
+ D:\Qt_Projects\QuoteGeneration\database.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qbasictimer.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qurl.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvector2d.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvectornd.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qpointingdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qinputdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qnativeinterface.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen_platform.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \
+ D:\Qt_Projects\QuoteGeneration\configdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabWidget \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qframe.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qpicture.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qtextdocument.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QToolBar \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtoolbar.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QAction \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QStatusBar \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstatusbar.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenuBar \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenubar.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmenu.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QStatusBar \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstatusbar.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenu \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QVBoxLayout \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qboxlayout.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayout.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayoutitem.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qgridlayout.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QPalette \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabBar \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabbar.h

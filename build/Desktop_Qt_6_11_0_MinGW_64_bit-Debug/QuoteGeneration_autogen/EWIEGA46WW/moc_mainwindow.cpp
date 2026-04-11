@@ -38,10 +38,35 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
 {
     namespace QMC = QtMocConstants;
     QtMocHelpers::StringRefStorage qt_stringData {
-        "MainWindow"
+        "MainWindow",
+        "onNewQuote",
+        "",
+        "onOpenQuote",
+        "onPreviewQuote",
+        "onGeneratePdf",
+        "onSettings",
+        "onAbout",
+        "onTabChanged",
+        "index"
     };
 
     QtMocHelpers::UintData qt_methods {
+        // Slot 'onNewQuote'
+        QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onOpenQuote'
+        QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onPreviewQuote'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onGeneratePdf'
+        QtMocHelpers::SlotData<void()>(5, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onSettings'
+        QtMocHelpers::SlotData<void()>(6, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onAbout'
+        QtMocHelpers::SlotData<void()>(7, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onTabChanged'
+        QtMocHelpers::SlotData<void(int)>(8, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 9 },
+        }}),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -63,10 +88,18 @@ Q_CONSTINIT const QMetaObject MainWindow::staticMetaObject = { {
 void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
 {
     auto *_t = static_cast<MainWindow *>(_o);
-    (void)_t;
-    (void)_c;
-    (void)_id;
-    (void)_a;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        switch (_id) {
+        case 0: _t->onNewQuote(); break;
+        case 1: _t->onOpenQuote(); break;
+        case 2: _t->onPreviewQuote(); break;
+        case 3: _t->onGeneratePdf(); break;
+        case 4: _t->onSettings(); break;
+        case 5: _t->onAbout(); break;
+        case 6: _t->onTabChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        default: ;
+        }
+    }
 }
 
 const QMetaObject *MainWindow::metaObject() const
@@ -85,6 +118,18 @@ void *MainWindow::qt_metacast(const char *_clname)
 int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
 {
     _id = QMainWindow::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    }
+    if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 7)
+            *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
+        _id -= 7;
+    }
     return _id;
 }
 QT_WARNING_POP

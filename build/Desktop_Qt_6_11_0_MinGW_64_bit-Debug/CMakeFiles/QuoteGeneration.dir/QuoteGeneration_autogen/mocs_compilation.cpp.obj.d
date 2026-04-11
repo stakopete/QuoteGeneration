@@ -396,4 +396,33 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:/Qt_Projects/QuoteGeneration/mainwindow.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmainwindow.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabwidget.h
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabwidget.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qbasictimer.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qabstracteventdispatcher.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qurl.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvector2d.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvectornd.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qpointingdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qinputdevice.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qnativeinterface.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qscreen_platform.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreapplication_platform.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h
