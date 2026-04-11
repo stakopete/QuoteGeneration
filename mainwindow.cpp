@@ -6,6 +6,7 @@
 
 #include "mainwindow.h"
 #include "configdialog.h"
+#include "titlesection.h"
 
 #include <QTabWidget>
 #include <QLabel>
@@ -21,6 +22,7 @@
 #include <QApplication>
 #include <QPalette>
 #include <QTabBar>
+
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -219,8 +221,8 @@ void MainWindow::setupTabs()
         return w;
     };
 
-    m_tabs->addTab(makePlaceholder("Quote Title & Date"),
-                   "Title");
+    m_titleSection = new TitleSection();
+    m_tabs->addTab(m_titleSection, "Title");
     m_tabs->addTab(makePlaceholder("System Offered"),
                    "System");
     m_tabs->addTab(makePlaceholder("Basis of Proposal"),

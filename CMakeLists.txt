@@ -34,18 +34,18 @@ set(PROJECT_SOURCES
     mainwindow.ui
     database.h
     database.cpp
+    configdialog.h
+    configdialog.cpp
+    titlesection.h
+    titlesection.cpp
+    animatedbutton.h
+    animatedbutton.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
 qt_add_executable(QuoteGeneration
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
-    database.h
-    database.cpp
-    configdialog.h
-    configdialog.cpp
-    configdialog.h
-    configdialog.cpp
 )
 
 # ── Link Qt into the executable ───────────────────────────────────────────────

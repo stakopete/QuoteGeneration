@@ -178,6 +178,30 @@ QuoteGeneration_autogen/mocs_compilation.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.s
 .PHONY : QuoteGeneration_autogen/mocs_compilation.cpp.s
 
+animatedbutton.obj: animatedbutton.cpp.obj
+.PHONY : animatedbutton.obj
+
+# target to build an object file
+animatedbutton.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj
+.PHONY : animatedbutton.cpp.obj
+
+animatedbutton.i: animatedbutton.cpp.i
+.PHONY : animatedbutton.i
+
+# target to preprocess a source file
+animatedbutton.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.i
+.PHONY : animatedbutton.cpp.i
+
+animatedbutton.s: animatedbutton.cpp.s
+.PHONY : animatedbutton.s
+
+# target to generate assembly for a file
+animatedbutton.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.s
+.PHONY : animatedbutton.cpp.s
+
 configdialog.obj: configdialog.cpp.obj
 .PHONY : configdialog.obj
 
@@ -274,6 +298,30 @@ mainwindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
 
+titlesection.obj: titlesection.cpp.obj
+.PHONY : titlesection.obj
+
+# target to build an object file
+titlesection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj
+.PHONY : titlesection.cpp.obj
+
+titlesection.i: titlesection.cpp.i
+.PHONY : titlesection.i
+
+# target to preprocess a source file
+titlesection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/titlesection.cpp.i
+.PHONY : titlesection.cpp.i
+
+titlesection.s: titlesection.cpp.s
+.PHONY : titlesection.s
+
+# target to generate assembly for a file
+titlesection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/titlesection.cpp.s
+.PHONY : titlesection.cpp.s
+
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -288,6 +336,9 @@ help:
 	@echo ... QuoteGeneration_autogen/mocs_compilation.obj
 	@echo ... QuoteGeneration_autogen/mocs_compilation.i
 	@echo ... QuoteGeneration_autogen/mocs_compilation.s
+	@echo ... animatedbutton.obj
+	@echo ... animatedbutton.i
+	@echo ... animatedbutton.s
 	@echo ... configdialog.obj
 	@echo ... configdialog.i
 	@echo ... configdialog.s
@@ -300,6 +351,9 @@ help:
 	@echo ... mainwindow.obj
 	@echo ... mainwindow.i
 	@echo ... mainwindow.s
+	@echo ... titlesection.obj
+	@echo ... titlesection.i
+	@echo ... titlesection.s
 .PHONY : help
 
 

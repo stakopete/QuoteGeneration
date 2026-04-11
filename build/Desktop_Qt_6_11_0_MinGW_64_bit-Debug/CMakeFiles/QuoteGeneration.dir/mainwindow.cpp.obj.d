@@ -421,6 +421,12 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  D:\Qt_Projects\QuoteGeneration\configdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
+ D:\Qt_Projects\QuoteGeneration\titlesection.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
+ D:\Qt_Projects\QuoteGeneration\animatedbutton.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabWidget \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \
@@ -441,7 +447,6 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayout.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayoutitem.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qgridlayout.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \

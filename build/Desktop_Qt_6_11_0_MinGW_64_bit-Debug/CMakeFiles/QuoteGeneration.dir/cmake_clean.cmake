@@ -1,6 +1,8 @@
 file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/database.cpp.obj"
@@ -9,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration_autogen.dir/AutogenUsed.txt"
   "CMakeFiles/QuoteGeneration_autogen.dir/ParseCache.txt"
   "QuoteGeneration_autogen"

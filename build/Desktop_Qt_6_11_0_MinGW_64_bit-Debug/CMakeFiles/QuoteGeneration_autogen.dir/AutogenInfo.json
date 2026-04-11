@@ -465,6 +465,12 @@
 	"HEADERS" : 
 	[
 		[
+			"D:/Qt_Projects/QuoteGeneration/animatedbutton.h",
+			"MU",
+			"EWIEGA46WW/moc_animatedbutton.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/configdialog.h",
 			"MU",
 			"EWIEGA46WW/moc_configdialog.cpp",
@@ -480,6 +486,12 @@
 			"D:/Qt_Projects/QuoteGeneration/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
+			null
+		],
+		[
+			"D:/Qt_Projects/QuoteGeneration/titlesection.h",
+			"MU",
+			"EWIEGA46WW/moc_titlesection.cpp",
 			null
 		]
 	],
@@ -561,10 +573,12 @@
 	"SETTINGS_FILE" : "D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/QuoteGeneration_autogen.dir/AutogenUsed.txt",
 	"SOURCES" : 
 	[
+		[ "D:/Qt_Projects/QuoteGeneration/animatedbutton.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/configdialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/database.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
-		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ]
+		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/titlesection.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],
 	"UIC_SEARCH_PATHS" : [],

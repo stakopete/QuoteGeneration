@@ -17,6 +17,7 @@ class QTabWidget;
 class QLabel;
 class QToolBar;
 class QAction;
+class TitleSection;
 
 class MainWindow : public QMainWindow
 {
@@ -44,16 +45,17 @@ private:
     void applyStyleSheet();
     void resizeEvent(QResizeEvent *event) override;
 
-    QTabWidget  *m_tabs;
-    QLabel      *m_logoBanner;
-    QLabel      *m_statusLabel;
-    QAction     *m_actNewQuote;
-    QAction     *m_actOpenQuote;
-    QAction     *m_actPreview;
-    QAction     *m_actGeneratePdf;
-    QAction     *m_actSettings;
-    QAction     *m_actAbout;
-    AppConfig    m_config;
+    QTabWidget   *m_tabs;
+    QLabel       *m_logoBanner;
+    QLabel       *m_statusLabel;
+    QAction      *m_actNewQuote;
+    QAction      *m_actOpenQuote;
+    QAction      *m_actPreview;
+    QAction      *m_actGeneratePdf;
+    QAction      *m_actSettings;
+    QAction      *m_actAbout;
+    AppConfig     m_config;
+    TitleSection *m_titleSection;
 };
 
 #endif // MAINWINDOW_H
