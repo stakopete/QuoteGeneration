@@ -18,6 +18,7 @@ class QLabel;
 class QToolBar;
 class QAction;
 class TitleSection;
+class SystemSection;
 
 class MainWindow : public QMainWindow
 {
@@ -56,6 +57,7 @@ private:
     QAction      *m_actAbout;
     AppConfig     m_config;
     TitleSection *m_titleSection;
+    SystemSection *m_systemSection;
 };
 
 #endif // MAINWINDOW_H

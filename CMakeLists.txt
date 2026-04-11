@@ -40,12 +40,16 @@ set(PROJECT_SOURCES
     titlesection.cpp
     animatedbutton.h
     animatedbutton.cpp
+    systemsection.h
+    systemsection.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
 qt_add_executable(QuoteGeneration
     MANUAL_FINALIZATION
     ${PROJECT_SOURCES}
+    systemsection.h
+    systemsection.cpp
 )
 
 # ── Link Qt into the executable ───────────────────────────────────────────────

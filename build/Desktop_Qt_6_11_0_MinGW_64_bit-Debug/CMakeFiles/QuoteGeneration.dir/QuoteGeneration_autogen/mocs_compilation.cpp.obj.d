@@ -431,7 +431,9 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_systemsection.cpp \
+ D:/Qt_Projects/QuoteGeneration/systemsection.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_titlesection.cpp \
  D:/Qt_Projects/QuoteGeneration/titlesection.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  D:/Qt_Projects/QuoteGeneration/animatedbutton.h

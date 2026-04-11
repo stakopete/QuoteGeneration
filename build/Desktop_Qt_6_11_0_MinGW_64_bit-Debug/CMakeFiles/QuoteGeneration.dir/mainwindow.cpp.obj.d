@@ -427,6 +427,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+ D:\Qt_Projects\QuoteGeneration\systemsection.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabWidget \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \

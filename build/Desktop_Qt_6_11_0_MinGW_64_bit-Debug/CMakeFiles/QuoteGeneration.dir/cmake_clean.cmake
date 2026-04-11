@@ -11,6 +11,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration_autogen.dir/AutogenUsed.txt"

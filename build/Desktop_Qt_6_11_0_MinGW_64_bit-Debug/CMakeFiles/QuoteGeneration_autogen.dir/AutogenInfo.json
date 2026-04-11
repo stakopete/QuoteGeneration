@@ -489,6 +489,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/systemsection.h",
+			"MU",
+			"EWIEGA46WW/moc_systemsection.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/titlesection.h",
 			"MU",
 			"EWIEGA46WW/moc_titlesection.cpp",
@@ -578,6 +584,7 @@
 		[ "D:/Qt_Projects/QuoteGeneration/database.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/systemsection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/titlesection.cpp", "MU", null ]
 	],
 	"UIC_OPTIONS" : [],

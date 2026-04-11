@@ -298,6 +298,30 @@ mainwindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
 
+systemsection.obj: systemsection.cpp.obj
+.PHONY : systemsection.obj
+
+# target to build an object file
+systemsection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj
+.PHONY : systemsection.cpp.obj
+
+systemsection.i: systemsection.cpp.i
+.PHONY : systemsection.i
+
+# target to preprocess a source file
+systemsection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/systemsection.cpp.i
+.PHONY : systemsection.cpp.i
+
+systemsection.s: systemsection.cpp.s
+.PHONY : systemsection.s
+
+# target to generate assembly for a file
+systemsection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/systemsection.cpp.s
+.PHONY : systemsection.cpp.s
+
 titlesection.obj: titlesection.cpp.obj
 .PHONY : titlesection.obj
 
@@ -351,6 +375,9 @@ help:
 	@echo ... mainwindow.obj
 	@echo ... mainwindow.i
 	@echo ... mainwindow.s
+	@echo ... systemsection.obj
+	@echo ... systemsection.i
+	@echo ... systemsection.s
 	@echo ... titlesection.obj
 	@echo ... titlesection.i
 	@echo ... titlesection.s

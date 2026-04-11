@@ -7,6 +7,7 @@
 #include "mainwindow.h"
 #include "configdialog.h"
 #include "titlesection.h"
+#include "systemsection.h"
 
 #include <QTabWidget>
 #include <QLabel>
@@ -223,8 +224,8 @@ void MainWindow::setupTabs()
 
     m_titleSection = new TitleSection();
     m_tabs->addTab(m_titleSection, "Title");
-    m_tabs->addTab(makePlaceholder("System Offered"),
-                   "System");
+    m_systemSection = new SystemSection();
+    m_tabs->addTab(m_systemSection, "System");
     m_tabs->addTab(makePlaceholder("Basis of Proposal"),
                    "Basis");
     m_tabs->addTab(makePlaceholder("Proposed Price"),

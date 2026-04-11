@@ -14,6 +14,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Qt_Projects/QuoteGeneration/database.cpp" "CMakeFiles/QuoteGeneration.dir/database.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/database.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/main.cpp" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
+  "D:/Qt_Projects/QuoteGeneration/systemsection.cpp" "CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/titlesection.cpp" "CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj.d"
   )
 
