@@ -695,6 +695,8 @@ QuoteGeneration_autogen/timestamp: \
 	D:/Qt_Projects/QuoteGeneration/CMakeLists.txt \
 	D:/Qt_Projects/QuoteGeneration/animatedbutton.cpp \
 	D:/Qt_Projects/QuoteGeneration/animatedbutton.h \
+	D:/Qt_Projects/QuoteGeneration/basissection.cpp \
+	D:/Qt_Projects/QuoteGeneration/basissection.h \
 	D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/.qtcreator/cmake-helper/maintenance_tool_provider.cmake \
 	D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/.qtcreator/cmake-helper/package-manager.cmake \
 	D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/.qtcreator/cmake-helper/qtcreator-project.cmake \

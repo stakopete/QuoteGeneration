@@ -24,6 +24,7 @@
 #include <QApplication>
 #include <QPalette>
 #include <QTabBar>
+#include "basissection.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -39,7 +40,7 @@ MainWindow::MainWindow(QWidget *parent)
     setWindowTitle("Quote Generation — " + m_config.companyName);
 
     // Set initial size but allow the user to resize freely.
-    setMinimumSize(800, 600);
+    setMinimumSize(1024, 700);
     resize(1024, 768);
 
     // Set background colour directly rather than via stylesheet
@@ -233,8 +234,8 @@ void MainWindow::setupTabs()
     m_tabs->addTab(m_titleSection, "Title");
     m_systemSection = new SystemSection();
     m_tabs->addTab(m_systemSection, "System");
-    m_tabs->addTab(makePlaceholder("Basis of Proposal"),
-                   "Basis");
+    m_basisSection = new BasisSection();
+    m_tabs->addTab(m_basisSection, "Basis");
     m_tabs->addTab(makePlaceholder("Proposed Price"),
                    "Price");
     m_tabs->addTab(makePlaceholder("Scope of Works"),

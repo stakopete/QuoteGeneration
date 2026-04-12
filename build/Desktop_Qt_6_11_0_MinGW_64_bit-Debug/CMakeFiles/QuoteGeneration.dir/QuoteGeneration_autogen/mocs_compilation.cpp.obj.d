@@ -390,13 +390,16 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtCore/qtmochelpers.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qtmocconstants.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/q20algorithm.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_basissection.cpp \
+ D:/Qt_Projects/QuoteGeneration/basissection.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
+ D:/Qt_Projects/QuoteGeneration/database.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_configdialog.cpp \
  D:/Qt_Projects/QuoteGeneration/configdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
- D:/Qt_Projects/QuoteGeneration/database.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
  D:/Qt_Projects/QuoteGeneration/animatedbutton.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_mainwindow.cpp \
  D:/Qt_Projects/QuoteGeneration/mainwindow.h \
@@ -436,6 +439,5 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_systemsection.cpp \
  D:/Qt_Projects/QuoteGeneration/systemsection.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_titlesection.cpp \
  D:/Qt_Projects/QuoteGeneration/titlesection.h

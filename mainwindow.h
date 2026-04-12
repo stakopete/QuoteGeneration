@@ -20,6 +20,7 @@ class QToolBar;
 class QAction;
 class TitleSection;
 class SystemSection;
+class BasisSection;
 
 class MainWindow : public QMainWindow
 {
@@ -61,6 +62,7 @@ private:
     TitleSection  *m_titleSection;
     SystemSection *m_systemSection;
     QAction       *m_actToggleDarkMode;
+    BasisSection  *m_basisSection;
 };
 
 #endif // MAINWINDOW_H

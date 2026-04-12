@@ -202,6 +202,30 @@ animatedbutton.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.s
 .PHONY : animatedbutton.cpp.s
 
+basissection.obj: basissection.cpp.obj
+.PHONY : basissection.obj
+
+# target to build an object file
+basissection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj
+.PHONY : basissection.cpp.obj
+
+basissection.i: basissection.cpp.i
+.PHONY : basissection.i
+
+# target to preprocess a source file
+basissection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/basissection.cpp.i
+.PHONY : basissection.cpp.i
+
+basissection.s: basissection.cpp.s
+.PHONY : basissection.s
+
+# target to generate assembly for a file
+basissection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/basissection.cpp.s
+.PHONY : basissection.cpp.s
+
 configdialog.obj: configdialog.cpp.obj
 .PHONY : configdialog.obj
 
@@ -387,6 +411,9 @@ help:
 	@echo ... animatedbutton.obj
 	@echo ... animatedbutton.i
 	@echo ... animatedbutton.s
+	@echo ... basissection.obj
+	@echo ... basissection.i
+	@echo ... basissection.s
 	@echo ... configdialog.obj
 	@echo ... configdialog.i
 	@echo ... configdialog.s
