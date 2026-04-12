@@ -94,9 +94,10 @@ void PriceSection::setupUi()
             border: 1px solid %3;
             border-radius: 3px;
         }
-        QTableWidget::item {
+QTableWidget::item {
             padding: 4px;
             color: %1;
+            font-weight: bold;
         }
         QTableWidget::item:selected {
             background-color: %4;

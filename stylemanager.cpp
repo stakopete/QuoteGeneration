@@ -48,17 +48,17 @@ QString StyleManager::inputBackground() const
 {
     // Light mode: warm parchment #c2bca0 as requested.
     // Dark mode: dark input field.
-    return m_darkMode ? "#3c3c3c" : "#c2bca0";
+    return m_darkMode ? "#3c3c3c" : "#ece9dc";
 }
 
 QString StyleManager::textColour() const
 {
-    return m_darkMode ? "#e0e0e0" : "#2c3e50";
+    return m_darkMode ? "#e0e0e0" : "#1a1a1a";
 }
 
 QString StyleManager::labelColour() const
 {
-    return m_darkMode ? "#e0e0e0" : "#2c3e50";
+     return m_darkMode ? "#e0e0e0" : "#1a1a1a";
 }
 
 QString StyleManager::borderColour() const
@@ -151,19 +151,21 @@ QString StyleManager::groupBoxStyle() const
         QListWidget::item:hover {
             background-color: %3;
         }
+QLineEdit {
+            color: %1;
+            background-color: %4;
+            border: 1px solid %2;
+            border-radius: 3px;
+            padding: 4px;
+            font-weight: bold;
+        }
         QTextEdit {
             color: %1;
             background-color: %4;
             border: 1px solid %2;
             border-radius: 3px;
             padding: 4px;
-        }
-        QLineEdit {
-            color: %1;
-            background-color: %4;
-            border: 1px solid %2;
-            border-radius: 3px;
-            padding: 4px;
+            font-weight: bold;
         }
         QComboBox {
             color: %1;
@@ -257,6 +259,7 @@ QString StyleManager::textEditStyle() const
                "    border: 1px solid %3;"
                "    border-radius: 3px;"
                "    padding: 4px;"
+               "    font-weight: bold;"
                "}"
                ).arg(textColour(), inputBackground(), borderColour());
 }
@@ -270,6 +273,7 @@ QString StyleManager::lineEditStyle() const
                "    border: 1px solid %3;"
                "    border-radius: 3px;"
                "    padding: 4px;"
+               "    font-weight: bold;"
                "}"
                ).arg(textColour(), inputBackground(), borderColour());
 }
@@ -323,7 +327,7 @@ QString StyleManager::dateEditStyle() const
 void StyleManager::applyToApplication(QApplication *app)
 {
     QPalette pal;
-
+// Trying this colour ece9dc in place of c2bca0
     if (m_darkMode) {
         pal.setColor(QPalette::Window,          QColor("#1e1e1e"));
         pal.setColor(QPalette::WindowText,      QColor("#e0e0e0"));

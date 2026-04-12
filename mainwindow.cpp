@@ -257,11 +257,17 @@ void MainWindow::setupTabs()
     QVBoxLayout *layout = new QVBoxLayout(central);
     layout->setContentsMargins(0, 0, 0, 0);
     layout->setSpacing(0);
-
-    layout->addWidget(m_logoBanner);
     layout->addWidget(m_tabs);
-
     setCentralWidget(central);
+    // QWidget *central = new QWidget();
+    // QVBoxLayout *layout = new QVBoxLayout(central);
+    // layout->setContentsMargins(0, 0, 0, 0);
+    // layout->setSpacing(0);
+
+    // layout->addWidget(m_logoBanner);
+    // layout->addWidget(m_tabs);
+
+    // setCentralWidget(central);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
