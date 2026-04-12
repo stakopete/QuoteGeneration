@@ -53,6 +53,11 @@ bool Database::initialise()
     if (!createTables())
         return false;
 
+    // Run any schema migrations needed for existing databases.
+    // This adds columns that were added after the initial release.
+    if (!migrateSchema())
+        return false;
+
     if (!seedDropdownData())
         return false;
 
@@ -90,6 +95,7 @@ bool Database::createTables()
             logo_on_all_pages   INTEGER DEFAULT 0,
             suppress_warnings   INTEGER DEFAULT 0,
             last_saved          TEXT DEFAULT ''
+
         )
     )")) {
         qCritical() << "createTables - Quotes:" << q.lastError().text();
@@ -138,11 +144,51 @@ bool Database::createTables()
             logo_path       TEXT DEFAULT '',
             tax_label       TEXT DEFAULT 'GST',
             tax_rate        REAL DEFAULT 10.0,
-            configured      INTEGER DEFAULT 0
+            configured      INTEGER DEFAULT 0,
+            dark_mode       INTEGER DEFAULT 0
         )
     )")) {
         qCritical() << "createTables - AppConfig:" << q.lastError().text();
         return false;
+    }
+
+    return true;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// migrateSchema()
+//
+// Adds any columns that were introduced after the initial database
+// was created. This allows existing databases to be upgraded
+// automatically without losing data.
+//
+// SQLite does not support IF NOT EXISTS for ALTER TABLE so we check
+// whether the column exists first before trying to add it.
+// ─────────────────────────────────────────────────────────────────────────────
+bool Database::migrateSchema()
+{
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+
+    // ── Check for dark_mode column in AppConfig ───────────────────────────────
+    // We query the table info and look for the column name.
+    q.exec("PRAGMA table_info(AppConfig)");
+    bool hasDarkMode = false;
+    while (q.next()) {
+        if (q.value("name").toString() == "dark_mode") {
+            hasDarkMode = true;
+            break;
+        }
+    }
+
+    // Add the column if it doesn't exist.
+    if (!hasDarkMode) {
+        if (!q.exec("ALTER TABLE AppConfig ADD COLUMN dark_mode INTEGER DEFAULT 0")) {
+            qWarning() << "migrateSchema - failed to add dark_mode column:"
+                       << q.lastError().text();
+            return false;
+        }
+        qDebug() << "migrateSchema - added dark_mode column to AppConfig";
     }
 
     return true;
@@ -283,7 +329,7 @@ AppConfig Database::loadConfig()
     QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
     QSqlQuery q(db);
     q.exec("SELECT id, company_name, contact_name, phone, email, logo_path, "
-           "tax_label, tax_rate, configured FROM AppConfig WHERE id = 1");
+           "tax_label, tax_rate, configured, dark_mode FROM AppConfig WHERE id = 1");
 
     if (q.next()) {
         config.companyName  = q.value("company_name").toString();
@@ -294,6 +340,7 @@ AppConfig Database::loadConfig()
         config.taxLabel     = q.value("tax_label").toString();
         config.taxRate      = q.value("tax_rate").toDouble();
         config.configured   = q.value("configured").toInt() == 1;
+        config.darkMode     = q.value("dark_mode").toInt() == 1;
     }
     return config;
 }
@@ -311,8 +358,8 @@ bool Database::saveConfig(const AppConfig &config)
     q.prepare(R"(
         INSERT OR REPLACE INTO AppConfig
             (id, company_name, contact_name, phone, email, logo_path,
-             tax_label, tax_rate, configured)
-        VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?)
+             tax_label, tax_rate, configured, dark_mode)
+        VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     )");
     q.addBindValue(config.companyName);
     q.addBindValue(config.contactName);
@@ -322,6 +369,7 @@ bool Database::saveConfig(const AppConfig &config)
     q.addBindValue(config.taxLabel);
     q.addBindValue(config.taxRate);
     q.addBindValue(config.configured ? 1 : 0);
+    q.addBindValue(config.darkMode ? 1 : 0);
 
     if (!q.exec()) {
         qWarning() << "saveConfig failed:" << q.lastError().text();
@@ -331,7 +379,7 @@ bool Database::saveConfig(const AppConfig &config)
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
-// loadOptions()
+// loadOptions
 // ─────────────────────────────────────────────────────────────────────────────
 QList<DropdownOption> Database::loadOptions(const QString &section)
 {

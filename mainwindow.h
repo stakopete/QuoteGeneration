@@ -10,6 +10,7 @@
 #include <QMainWindow>
 #include "database.h"
 #include <QResizeEvent>
+#include "stylemanager.h"
 
 // Forward declarations — we only need the full type definitions
 // in the .cpp file, not here in the header.
@@ -36,6 +37,7 @@ private slots:
     void onSettings();
     void onAbout();
     void onTabChanged(int index);
+    void onToggleDarkMode();
 
 private:
     void setupMenuBar();
@@ -46,18 +48,19 @@ private:
     void applyStyleSheet();
     void resizeEvent(QResizeEvent *event) override;
 
-    QTabWidget   *m_tabs;
-    QLabel       *m_logoBanner;
-    QLabel       *m_statusLabel;
-    QAction      *m_actNewQuote;
-    QAction      *m_actOpenQuote;
-    QAction      *m_actPreview;
-    QAction      *m_actGeneratePdf;
-    QAction      *m_actSettings;
-    QAction      *m_actAbout;
-    AppConfig     m_config;
-    TitleSection *m_titleSection;
+    QTabWidget    *m_tabs;
+    QLabel        *m_logoBanner;
+    QLabel        *m_statusLabel;
+    QAction       *m_actNewQuote;
+    QAction       *m_actOpenQuote;
+    QAction       *m_actPreview;
+    QAction       *m_actGeneratePdf;
+    QAction       *m_actSettings;
+    QAction       *m_actAbout;
+    AppConfig      m_config;
+    TitleSection  *m_titleSection;
     SystemSection *m_systemSection;
+    QAction       *m_actToggleDarkMode;
 };
 
 #endif // MAINWINDOW_H

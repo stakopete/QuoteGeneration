@@ -539,7 +539,10 @@ D:/Qt_Projects/QuoteGeneration/configdialog.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtGui/qwindowdefs.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtGui/qwindowdefs_win.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog
+ mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton
+ mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h
+ mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/qsizepolicy.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgets-config.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtwidgetsexports.h
@@ -758,6 +761,7 @@ D:/Qt_Projects/QuoteGeneration/configdialog.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
+ mdp:D:/Qt_Projects/QuoteGeneration/animatedbutton.h
  mdp:D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteGeneration_autogen/moc_predefs.h
  mdp:D:/Qt_Projects/QuoteGeneration/configdialog.h
  mdp:D:/Qt_Projects/QuoteGeneration/database.h
@@ -1292,6 +1296,7 @@ D:/Qt_Projects/QuoteGeneration/mainwindow.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qversiontagging.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qxptype_traits.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qyieldcpu.h
+ mdp:C:/Qt/6.11.0/mingw_64/include/QtGui/QColor
  mdp:C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent
  mdp:C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform
  mdp:C:/Qt/6.11.0/mingw_64/include/QtGui/qaction.h
@@ -1555,6 +1560,7 @@ D:/Qt_Projects/QuoteGeneration/mainwindow.h
  mdp:D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteGeneration_autogen/moc_predefs.h
  mdp:D:/Qt_Projects/QuoteGeneration/database.h
  mdp:D:/Qt_Projects/QuoteGeneration/mainwindow.h
+ mdp:D:/Qt_Projects/QuoteGeneration/stylemanager.h
 D:/Qt_Projects/QuoteGeneration/systemsection.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QList
@@ -1941,3 +1947,5 @@ D:/Qt_Projects/QuoteGeneration/configdialog.cpp
 D:/Qt_Projects/QuoteGeneration/main.cpp
 D:/Qt_Projects/QuoteGeneration/mainwindow.cpp
 D:/Qt_Projects/QuoteGeneration/titlesection.cpp
+D:/Qt_Projects/QuoteGeneration/stylemanager.h
+D:/Qt_Projects/QuoteGeneration/stylemanager.cpp

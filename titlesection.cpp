@@ -12,6 +12,7 @@
 #include <QComboBox>
 #include <QDateEdit>
 #include <QLabel>
+#include "stylemanager.h"
 
 #include <QDate>
 #include <QMessageBox>
@@ -38,96 +39,13 @@ void TitleSection::setupUi()
 
     // ── Section heading ───────────────────────────────────────────────────────
     QLabel *heading = new QLabel("<h3>Quote Title &amp; Date</h3>");
-    heading->setStyleSheet(R"(
-    QLabel {
-        background-color: #2c3e50;
-        color: white;
-        padding: 8px 12px;
-        border-radius: 4px;
-    }
-)");
+    heading->setStyleSheet(StyleManager::instance().headingLabelStyle());
     mainLayout->addWidget(heading);
 
     // ── Group box ─────────────────────────────────────────────────────────────
     // QGroupBox draws a labelled border around a group of related controls.
     QGroupBox *group = new QGroupBox("Quote Details");
-    group->setStyleSheet(R"(
-    QGroupBox {
-        font-weight: bold;
-        color: #2c3e50;
-        border: 1px solid #999999;
-        border-radius: 4px;
-        margin-top: 16px;
-        padding-top: 12px;
-        background-color: #d4d4d4;
-    }
-    QGroupBox::title {
-        subcontrol-origin: margin;
-        subcontrol-position: top left;
-        padding: 0 4px;
-        color: #2c3e50;
-        background-color: transparent;
-    }
-    QLabel {
-        color: #2c3e50;
-        background-color: transparent;
-    }
-    QLineEdit {
-        color: #2c3e50;
-        background-color: white;
-        border: 1px solid #999999;
-        border-radius: 3px;
-        padding: 3px;
-    }
-    QDateEdit {
-        color: #2c3e50;
-        background-color: white;
-        border: 1px solid #999999;
-        border-radius: 3px;
-        padding: 3px;
-    }
-    QComboBox {
-        color: #2c3e50;
-        background-color: white;
-        border: 1px solid #999999;
-        border-radius: 3px;
-        padding: 3px;
-    }
-    QComboBox QAbstractItemView {
-        color: #2c3e50;
-        background-color: white;
-        selection-background-color: #3d5166;
-        selection-color: white;
-        border: 1px solid #999999;
-    }
-// QComboBox::drop-down {
-//         subcontrol-origin: padding;
-//         subcontrol-position: top right;
-//         width: 20px;
-//         border-left: 1px solid #999999;
-//         background-color: #e0e0e0;
-//     }
-//     QComboBox::down-arrow {
-//         image: none;
-//         width: 0;
-//         height: 0;
-//         border-left: 5px solid transparent;
-//         border-right: 5px solid transparent;
-//         border-top: 6px solid #2c3e50;
-//     }
-    QComboBox::drop-down {
-        width: 20px;
-    }
-    QComboBox::item {
-        color: #2c3e50;
-        background-color: white;
-        padding: 4px;
-    }
-    QComboBox::item:selected {
-        background-color: #3d5166;
-        color: white;
-    }
-)");
+    group->setStyleSheet(StyleManager::instance().groupBoxStyle());
 
     QFormLayout *form = new QFormLayout(group);
     form->setSpacing(12);

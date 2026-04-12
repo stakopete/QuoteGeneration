@@ -489,6 +489,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/stylemanager.h",
+			"MU",
+			"EWIEGA46WW/moc_stylemanager.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/systemsection.h",
 			"MU",
 			"EWIEGA46WW/moc_systemsection.cpp",
@@ -584,6 +590,7 @@
 		[ "D:/Qt_Projects/QuoteGeneration/database.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/stylemanager.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/systemsection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/titlesection.cpp", "MU", null ]
 	],

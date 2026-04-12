@@ -435,6 +435,8 @@ CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qpicture.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevice.h \
+ D:\Qt_Projects\QuoteGeneration\stylemanager.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QDate \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \

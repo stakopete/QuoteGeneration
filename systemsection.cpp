@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
+#include "stylemanager.h"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -31,55 +32,7 @@ SystemSection::SystemSection(QWidget *parent)
 // ─────────────────────────────────────────────────────────────────────────────
 void SystemSection::applyGroupBoxStyle(QGroupBox *group)
 {
-    group->setStyleSheet(R"(
-        QGroupBox {
-            font-weight: bold;
-            color: #2c3e50;
-            border: 1px solid #999999;
-            border-radius: 4px;
-            margin-top: 16px;
-            padding-top: 12px;
-            background-color: #d4d4d4;
-        }
-        QGroupBox::title {
-            subcontrol-origin: margin;
-            subcontrol-position: top left;
-            padding: 0 4px;
-            color: #2c3e50;
-            background-color: transparent;
-        }
-        QLabel {
-            color: #2c3e50;
-            background-color: transparent;
-        }
-        QListWidget {
-            color: #2c3e50;
-            background-color: white;
-            border: 1px solid #999999;
-            border-radius: 3px;
-        }
-        QListWidget::item:selected {
-            background-color: #3d5166;
-            color: white;
-        }
-        QListWidget::item:hover {
-            background-color: #dde1e7;
-        }
-        QTextEdit {
-            color: #2c3e50;
-            background-color: white;
-            border: 1px solid #999999;
-            border-radius: 3px;
-            padding: 4px;
-        }
-        QLineEdit {
-            color: #2c3e50;
-            background-color: white;
-            border: 1px solid #999999;
-            border-radius: 3px;
-            padding: 4px;
-        }
-    )");
+    group->setStyleSheet(StyleManager::instance().groupBoxStyle());
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -93,14 +46,8 @@ void SystemSection::setupUi()
 
     // ── Section heading ───────────────────────────────────────────────────────
     QLabel *heading = new QLabel("<h3>System Offered</h3>");
-    heading->setStyleSheet(R"(
-        QLabel {
-            background-color: #2c3e50;
-            color: white;
-            padding: 8px 12px;
-            border-radius: 4px;
-        }
-    )");
+    heading->setStyleSheet(StyleManager::instance().headingLabelStyle());
+    mainLayout->addWidget(heading);
     mainLayout->addWidget(heading);
 
     // ── Available clauses group ───────────────────────────────────────────────
@@ -173,8 +120,8 @@ void SystemSection::setupUi()
 
     m_systemText = new QTextEdit();
     m_systemText->setPlaceholderText("System description will appear here...");
-    //m_systemText->setMinimumHeight(120);
-    m_systemText->setMinimumHeight(120);
+    m_systemText->setMinimumHeight(100);
+
     m_systemText->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     connect(m_systemText, &QTextEdit::textChanged,
             this, &SystemSection::dataChanged);

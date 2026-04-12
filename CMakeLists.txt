@@ -42,6 +42,8 @@ set(PROJECT_SOURCES
     animatedbutton.cpp
     systemsection.h
     systemsection.cpp
+    stylemanager.h
+     stylemanager.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -50,6 +52,8 @@ qt_add_executable(QuoteGeneration
     ${PROJECT_SOURCES}
     systemsection.h
     systemsection.cpp
+    stylemanager.h
+    stylemanager.cpp
 )
 
 # ── Link Qt into the executable ───────────────────────────────────────────────

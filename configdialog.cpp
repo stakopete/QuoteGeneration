@@ -17,6 +17,9 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QDialogButtonBox>
+#include "stylemanager.h"
+#include "animatedbutton.h"
+#include <QPushButton>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -32,6 +35,7 @@ ConfigDialog::ConfigDialog(QWidget *parent)
 
     // Fixed size — we don't want this dialog to be resizable.
     setFixedWidth(650);
+    setStyleSheet(StyleManager::instance().groupBoxStyle());
 
     setupUi();
     loadExistingConfig();
@@ -61,6 +65,7 @@ void ConfigDialog::setupUi()
         "<h2>Application Setup</h2>"
         "<p>Please enter your details. These will appear on every quotation.</p>"
         );
+    titleLabel->setStyleSheet(StyleManager::instance().headingLabelStyle());
     titleLabel->setWordWrap(true);
     mainLayout->addWidget(titleLabel);
 
@@ -146,15 +151,17 @@ void ConfigDialog::setupUi()
     // QHBoxLayout with a spacer pushes the buttons to the right.
     QHBoxLayout *buttonRow = new QHBoxLayout();
 
-    m_cancelButton = new QPushButton("Cancel");
+    m_cancelButton = new AnimatedButton("Cancel");
     m_cancelButton->setFixedWidth(90);
-    connect(m_cancelButton, &QPushButton::clicked,
+    m_cancelButton->setFixedHeight(32);
+    connect(m_cancelButton, &AnimatedButton::clicked,
             this, &QDialog::reject);
 
-    m_saveButton = new QPushButton("Save");
+    m_saveButton = new AnimatedButton("Save");
     m_saveButton->setFixedWidth(90);
-    m_saveButton->setDefault(true);  // Save is triggered by pressing Enter
-    connect(m_saveButton, &QPushButton::clicked,
+    m_saveButton->setFixedHeight(32);
+    m_saveButton->setDefault(true);
+    connect(m_saveButton, &AnimatedButton::clicked,
             this, &ConfigDialog::onSave);
 
     // addStretch() pushes everything after it to the right.

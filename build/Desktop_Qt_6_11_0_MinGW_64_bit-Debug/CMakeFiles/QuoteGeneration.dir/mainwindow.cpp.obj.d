@@ -418,15 +418,17 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+ D:\Qt_Projects\QuoteGeneration\stylemanager.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
  D:\Qt_Projects\QuoteGeneration\configdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
- D:\Qt_Projects\QuoteGeneration\titlesection.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  D:\Qt_Projects\QuoteGeneration\animatedbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h \
+ D:\Qt_Projects\QuoteGeneration\titlesection.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QWidget \
  D:\Qt_Projects\QuoteGeneration\systemsection.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QTabWidget \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \

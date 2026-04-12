@@ -13,6 +13,7 @@
 
 #include <QDialog>
 #include "database.h"
+#include "animatedbutton.h"
 
 // Forward declarations — avoids pulling in heavy headers here.
 // Qt will find the full definitions when it needs them in the .cpp file.
@@ -20,7 +21,7 @@ class QLineEdit;
 class QComboBox;
 class QDoubleSpinBox;
 class QLabel;
-class QPushButton;
+//class QPushButton;
 
 class ConfigDialog : public QDialog
 {
@@ -75,8 +76,8 @@ private:
 
     // Buttons
     QPushButton    *m_browseButton;
-    QPushButton    *m_saveButton;
-    QPushButton    *m_cancelButton;
+    AnimatedButton *m_saveButton;
+    AnimatedButton *m_cancelButton;
 
     // ── Data ─────────────────────────────────────────────────────────────────
     // Stores the tax options loaded from the database class.

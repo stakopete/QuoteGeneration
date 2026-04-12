@@ -8,6 +8,7 @@
 #include "mainwindow.h"
 #include "database.h"
 #include "configdialog.h"
+#include "stylemanager.h"
 
 #include <QApplication>
 #include <QMessageBox>
@@ -36,6 +37,9 @@ int main(int argc, char *argv[])
     // Load the config and check if setup has been completed.
     // If configured is false this is the first time the app has been run.
     AppConfig cfg = Database::loadConfig();
+    // Apply the saved light/dark mode preference before any UI is shown.
+    StyleManager::instance().setDarkMode(cfg.darkMode);
+    StyleManager::instance().applyToApplication(&app);
 
     if (!cfg.configured) {
         // Show the configuration dialog.

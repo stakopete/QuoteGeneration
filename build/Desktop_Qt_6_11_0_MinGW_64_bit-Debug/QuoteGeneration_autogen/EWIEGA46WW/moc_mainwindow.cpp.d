@@ -145,6 +145,7 @@ D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteG
   C:/Qt/6.11.0/mingw_64/include/QtCore/qversiontagging.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qyieldcpu.h \
+  C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qaction.h \
@@ -405,4 +406,5 @@ D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteG
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/time.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/vadefs.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
-  D:/Qt_Projects/QuoteGeneration/database.h
+  D:/Qt_Projects/QuoteGeneration/database.h \
+  D:/Qt_Projects/QuoteGeneration/stylemanager.h

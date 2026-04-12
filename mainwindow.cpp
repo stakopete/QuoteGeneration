@@ -8,6 +8,7 @@
 #include "configdialog.h"
 #include "titlesection.h"
 #include "systemsection.h"
+#include "stylemanager.h"
 
 #include <QTabWidget>
 #include <QLabel>
@@ -103,9 +104,14 @@ void MainWindow::setupMenuBar()
 
     // ── Tools menu ────────────────────────────────────────────────────────────
     QMenu *toolsMenu = menuBar()->addMenu("&Tools");
-
     m_actSettings = toolsMenu->addAction("&Settings");
     connect(m_actSettings, &QAction::triggered, this, &MainWindow::onSettings);
+
+    m_actToggleDarkMode = toolsMenu->addAction("Toggle &Dark Mode");
+    m_actToggleDarkMode->setCheckable(true);
+    m_actToggleDarkMode->setChecked(StyleManager::instance().isDarkMode());
+    connect(m_actToggleDarkMode, &QAction::triggered,
+            this, &MainWindow::onToggleDarkMode);
 
     // ── Help menu ─────────────────────────────────────────────────────────────
     QMenu *helpMenu = menuBar()->addMenu("&Help");
@@ -144,6 +150,7 @@ void MainWindow::setupToolBar()
     toolbar->addSeparator();
     toolbar->addAction(m_actSettings);
     toolbar->addAction(m_actAbout);
+    toolbar->addAction(m_actToggleDarkMode);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -277,13 +284,12 @@ void MainWindow::setupStatusBar()
 // ─────────────────────────────────────────────────────────────────────────────
 void MainWindow::applyStyleSheet()
 {
-    // We apply styles only to specific widgets rather than the whole
-    // QMainWindow to avoid conflicts with the Windows native window frame.
+    StyleManager &sm = StyleManager::instance();
 
     // ── Menu bar ──────────────────────────────────────────────────────────────
-    menuBar()->setStyleSheet(R"(
+    menuBar()->setStyleSheet(QString(R"(
         QMenuBar {
-            background-color: #2c3e50;
+            background-color: %1;
             color: white;
             padding: 2px;
         }
@@ -293,29 +299,33 @@ void MainWindow::applyStyleSheet()
             padding: 4px 8px;
         }
         QMenuBar::item:selected {
-            background-color: #3d5166;
+            background-color: %2;
         }
         QMenu {
-            background-color: #2c3e50;
+            background-color: %1;
             color: white;
-            border: 1px solid #1a252f;
+            border: 1px solid %3;
         }
         QMenu::item {
             color: white;
             padding: 4px 20px;
         }
         QMenu::item:selected {
-            background-color: #3d5166;
+            background-color: %2;
         }
-    )");
+        QMenu::item:checked {
+            color: #7fc8f8;
+        }
+    )").arg(sm.menuBackground(),
+                                      sm.selectionBackground(),
+                                      sm.borderColour()));
 
     // ── Toolbar ───────────────────────────────────────────────────────────────
-    // Find the toolbar and style it directly.
     QToolBar *tb = findChild<QToolBar*>();
     if (tb) {
-        tb->setStyleSheet(R"(
+        tb->setStyleSheet(QString(R"(
             QToolBar {
-                background-color: #34495e;
+                background-color: %1;
                 border: none;
                 padding: 4px;
                 spacing: 4px;
@@ -329,67 +339,67 @@ void MainWindow::applyStyleSheet()
                 min-width: 60px;
             }
             QToolButton:hover {
-                background-color: #3d5166;
-                border: 1px solid #4a6278;
+                background-color: %2;
+                border: 1px solid %3;
             }
             QToolButton:pressed {
-                background-color: #2c3e50;
+                background-color: %4;
             }
-        )");
+            QToolButton:checked {
+                background-color: %2;
+                border: 1px solid %3;
+            }
+        )").arg(sm.toolbarBackground(),
+                                   sm.selectionBackground(),
+                                   sm.borderColour(),
+                                   sm.menuBackground()));
     }
 
     // ── Tab widget ────────────────────────────────────────────────────────────
-    m_tabs->setStyleSheet(R"(
+    m_tabs->setStyleSheet(QString(R"(
         QTabWidget::pane {
-            border: 1px solid #999999;
-            background-color: #d4d4d4;
+            border: 1px solid %1;
+            background-color: %2;
             top: -1px;
         }
-
         QTabWidget::tab-bar {
             alignment: left;
         }
-
         QTabBar {
-            background-color: #c0c0c0;
+            background-color: %3;
         }
-
         QTabBar::tab {
-            background-color: #a8a8a8;
-            color: #1a1a1a;
+            background-color: %4;
+            color: %5;
             padding: 6px 0px;
             width: 100px;
-            border: 1px solid #888888;
+            border: 1px solid %1;
             border-bottom: none;
             border-top-left-radius: 4px;
             border-top-right-radius: 4px;
             margin-right: 2px;
             text-align: center;
         }
-
         QTabBar::tab:selected {
-            background-color: #d4d4d4;
-            color: #000000;
+            background-color: %2;
+            color: %5;
             font-weight: bold;
-            border-color: #999999;
+            border-color: %1;
         }
-
         QTabBar::tab:hover {
-            background-color: #b8b8b8;
+            background-color: %6;
         }
-
-        QTabBar::scroller {
-            width: 0px;
-        }
-    )");
+    )").arg(sm.borderColour(),
+                                   sm.tabSelected(),
+                                   sm.windowBackground(),
+                                   sm.tabUnselected(),
+                                   sm.textColour(),
+                                   sm.panelBackground()));
 
     // ── Status bar ────────────────────────────────────────────────────────────
-    statusBar()->setStyleSheet(R"(
-        QStatusBar {
-            background-color: #2c3e50;
-            color: white;
-        }
-    )");
+    statusBar()->setStyleSheet(QString(
+                                   "QStatusBar { background-color: %1; color: white; }"
+                                   ).arg(sm.statusBackground()));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -489,4 +499,41 @@ void MainWindow::resizeEvent(QResizeEvent *event)
                 );
         }
     }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// onToggleDarkMode()
+//
+// Toggles between light and dark mode, saves the preference to the
+// database, and refreshes the entire application appearance.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::onToggleDarkMode()
+{
+    // Toggle the mode in StyleManager.
+    StyleManager::instance().toggle();
+    bool isDark = StyleManager::instance().isDarkMode();
+
+    // Save the preference to the database.
+    AppConfig cfg = Database::loadConfig();
+    cfg.darkMode = isDark;
+    Database::saveConfig(cfg);
+
+    // Update the menu item check state.
+    m_actToggleDarkMode->setChecked(isDark);
+
+    // Reapply styles to the entire application.
+    StyleManager::instance().applyToApplication(qApp);
+
+    // Reapply the toolbar and menu styles.
+    applyStyleSheet();
+
+    // Update the window palette directly.
+    QPalette pal = palette();
+    pal.setColor(QPalette::Window,
+                 QColor(StyleManager::instance().windowBackground()));
+    setPalette(pal);
+
+    statusBar()->showMessage(
+        isDark ? "Dark mode enabled" : "Light mode enabled", 3000
+        );
 }

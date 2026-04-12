@@ -436,4 +436,6 @@ CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
+ D:\Qt_Projects\QuoteGeneration\stylemanager.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QColor

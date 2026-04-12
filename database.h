@@ -28,6 +28,7 @@ struct AppConfig {
     QString taxLabel        = "GST";
     double  taxRate         = 10.0;
     bool    configured      = false;
+    bool    darkMode        = false;
 };
 
 struct TaxOption {
@@ -87,6 +88,7 @@ private:
     // ── Private helpers called only from initialise() ─────────────────────────
     static bool createTables();
     static bool seedDropdownData();
+    static bool migrateSchema();
 
     // The Qt connection name — identifies our single database connection.
     static constexpr const char* CONNECTION_NAME = "QuoteGenDB";

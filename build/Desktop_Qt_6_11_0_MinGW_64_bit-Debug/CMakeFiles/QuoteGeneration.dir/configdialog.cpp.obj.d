@@ -388,6 +388,10 @@ CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj: \
  D:\Qt_Projects\QuoteGeneration\database.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ D:\Qt_Projects\QuoteGeneration\animatedbutton.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QVBoxLayout \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qboxlayout.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlayout.h \
@@ -423,9 +427,6 @@ CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qabstractitemmodel.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDoubleSpinBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qspinbox.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QLabel \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlabel.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qpicture.h \
@@ -473,4 +474,6 @@ CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialogButtonBox
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialogButtonBox \
+ D:\Qt_Projects\QuoteGeneration\stylemanager.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QColor

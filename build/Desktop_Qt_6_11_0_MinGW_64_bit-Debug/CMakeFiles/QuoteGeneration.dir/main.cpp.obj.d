@@ -418,9 +418,15 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qinputmethod.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
+ D:\Qt_Projects\QuoteGeneration\stylemanager.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
  D:\Qt_Projects\QuoteGeneration\configdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
+ D:\Qt_Projects\QuoteGeneration\animatedbutton.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QPushButton \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qpushbutton.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractbutton.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QApplication \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qapplication.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMessageBox \
