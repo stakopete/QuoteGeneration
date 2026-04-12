@@ -21,6 +21,7 @@ class QAction;
 class TitleSection;
 class SystemSection;
 class BasisSection;
+class PriceSection;
 
 class MainWindow : public QMainWindow
 {
@@ -63,6 +64,7 @@ private:
     SystemSection *m_systemSection;
     QAction       *m_actToggleDarkMode;
     BasisSection  *m_basisSection;
+    PriceSection  *m_priceSection;
 };
 
 #endif // MAINWINDOW_H

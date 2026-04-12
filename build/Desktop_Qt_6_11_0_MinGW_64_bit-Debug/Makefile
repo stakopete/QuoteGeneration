@@ -322,6 +322,30 @@ mainwindow.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.s
 .PHONY : mainwindow.cpp.s
 
+pricesection.obj: pricesection.cpp.obj
+.PHONY : pricesection.obj
+
+# target to build an object file
+pricesection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj
+.PHONY : pricesection.cpp.obj
+
+pricesection.i: pricesection.cpp.i
+.PHONY : pricesection.i
+
+# target to preprocess a source file
+pricesection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/pricesection.cpp.i
+.PHONY : pricesection.cpp.i
+
+pricesection.s: pricesection.cpp.s
+.PHONY : pricesection.s
+
+# target to generate assembly for a file
+pricesection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/pricesection.cpp.s
+.PHONY : pricesection.cpp.s
+
 stylemanager.obj: stylemanager.cpp.obj
 .PHONY : stylemanager.obj
 
@@ -426,6 +450,9 @@ help:
 	@echo ... mainwindow.obj
 	@echo ... mainwindow.i
 	@echo ... mainwindow.s
+	@echo ... pricesection.obj
+	@echo ... pricesection.i
+	@echo ... pricesection.s
 	@echo ... stylemanager.obj
 	@echo ... stylemanager.i
 	@echo ... stylemanager.s

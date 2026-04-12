@@ -1,4 +1,5 @@
 QuoteGeneration_autogen/timestamp: \
+	C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
 	C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
 	C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
 	C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
@@ -711,6 +712,8 @@ QuoteGeneration_autogen/timestamp: \
 	D:/Qt_Projects/QuoteGeneration/main.cpp \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.cpp \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.h \
+	D:/Qt_Projects/QuoteGeneration/pricesection.cpp \
+	D:/Qt_Projects/QuoteGeneration/pricesection.h \
 	D:/Qt_Projects/QuoteGeneration/stylemanager.cpp \
 	D:/Qt_Projects/QuoteGeneration/stylemanager.h \
 	D:/Qt_Projects/QuoteGeneration/systemsection.cpp \

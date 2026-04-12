@@ -25,6 +25,7 @@
 #include <QPalette>
 #include <QTabBar>
 #include "basissection.h"
+#include "pricesection.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -236,8 +237,8 @@ void MainWindow::setupTabs()
     m_tabs->addTab(m_systemSection, "System");
     m_basisSection = new BasisSection();
     m_tabs->addTab(m_basisSection, "Basis");
-    m_tabs->addTab(makePlaceholder("Proposed Price"),
-                   "Price");
+    m_priceSection = new PriceSection();
+    m_tabs->addTab(m_priceSection, "Price");
     m_tabs->addTab(makePlaceholder("Scope of Works"),
                    "Scope");
     m_tabs->addTab(makePlaceholder("Exclusions"),
