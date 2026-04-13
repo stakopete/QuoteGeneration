@@ -27,6 +27,7 @@
 #include "basissection.h"
 #include "pricesection.h"
 #include "scopesection.h"
+#include "exclusionssection.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -242,8 +243,8 @@ void MainWindow::setupTabs()
     m_tabs->addTab(m_priceSection, "Price");
     m_scopeSection = new ScopeSection();
     m_tabs->addTab(m_scopeSection, "Scope");
-    m_tabs->addTab(makePlaceholder("Exclusions"),
-                   "Exclusions");
+    m_exclusionsSection = new ExclusionsSection();
+    m_tabs->addTab(m_exclusionsSection, "Exclusions");
     m_tabs->addTab(makePlaceholder("General Conditions"),
                    "General");
     m_tabs->addTab(makePlaceholder("Clarifications"),

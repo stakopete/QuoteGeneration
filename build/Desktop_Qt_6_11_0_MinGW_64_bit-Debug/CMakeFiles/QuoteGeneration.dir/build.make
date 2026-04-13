@@ -143,20 +143,20 @@ CMakeFiles/QuoteGeneration.dir/configdialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/configdialog.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\configdialog.cpp -o CMakeFiles\QuoteGeneration.dir\configdialog.cpp.s
 
-CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
-CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
-CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: D:/Qt_Projects/QuoteGeneration/titlesection.cpp
-CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\titlesection.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\titlesection.cpp.obj -c D:\Qt_Projects\QuoteGeneration\titlesection.cpp
+CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: D:/Qt_Projects/QuoteGeneration/stylemanager.cpp
+CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.obj -c D:\Qt_Projects\QuoteGeneration\stylemanager.cpp
 
-CMakeFiles/QuoteGeneration.dir/titlesection.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/titlesection.cpp.i"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\titlesection.cpp > CMakeFiles\QuoteGeneration.dir\titlesection.cpp.i
+CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\stylemanager.cpp > CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.i
 
-CMakeFiles/QuoteGeneration.dir/titlesection.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/titlesection.cpp.s"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\titlesection.cpp -o CMakeFiles\QuoteGeneration.dir\titlesection.cpp.s
+CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\stylemanager.cpp -o CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.s
 
 CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
 CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
@@ -173,11 +173,26 @@ CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\animatedbutton.cpp -o CMakeFiles\QuoteGeneration.dir\animatedbutton.cpp.s
 
+CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: D:/Qt_Projects/QuoteGeneration/titlesection.cpp
+CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\titlesection.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\titlesection.cpp.obj -c D:\Qt_Projects\QuoteGeneration\titlesection.cpp
+
+CMakeFiles/QuoteGeneration.dir/titlesection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/titlesection.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\titlesection.cpp > CMakeFiles\QuoteGeneration.dir\titlesection.cpp.i
+
+CMakeFiles/QuoteGeneration.dir/titlesection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/titlesection.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\titlesection.cpp -o CMakeFiles\QuoteGeneration.dir\titlesection.cpp.s
+
 CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
 CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
 CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj: D:/Qt_Projects/QuoteGeneration/systemsection.cpp
 CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_8) "Building CXX object CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\systemsection.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\systemsection.cpp.obj -c D:\Qt_Projects\QuoteGeneration\systemsection.cpp
 
 CMakeFiles/QuoteGeneration.dir/systemsection.cpp.i: cmake_force
@@ -187,21 +202,6 @@ CMakeFiles/QuoteGeneration.dir/systemsection.cpp.i: cmake_force
 CMakeFiles/QuoteGeneration.dir/systemsection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/systemsection.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\systemsection.cpp -o CMakeFiles\QuoteGeneration.dir\systemsection.cpp.s
-
-CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
-CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
-CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: D:/Qt_Projects/QuoteGeneration/stylemanager.cpp
-CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_9) "Building CXX object CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.obj -c D:\Qt_Projects\QuoteGeneration\stylemanager.cpp
-
-CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.i"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\stylemanager.cpp > CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.i
-
-CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.s"
-	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\stylemanager.cpp -o CMakeFiles\QuoteGeneration.dir\stylemanager.cpp.s
 
 CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
 CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
@@ -248,6 +248,21 @@ CMakeFiles/QuoteGeneration.dir/scopesection.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/scopesection.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\scopesection.cpp -o CMakeFiles\QuoteGeneration.dir\scopesection.cpp.s
 
+CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj: D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp
+CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Building CXX object CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\exclusionssection.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\exclusionssection.cpp.obj -c D:\Qt_Projects\QuoteGeneration\exclusionssection.cpp
+
+CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\exclusionssection.cpp > CMakeFiles\QuoteGeneration.dir\exclusionssection.cpp.i
+
+CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\exclusionssection.cpp -o CMakeFiles\QuoteGeneration.dir\exclusionssection.cpp.s
+
 # Object files for target QuoteGeneration
 QuoteGeneration_OBJECTS = \
 "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj" \
@@ -255,13 +270,14 @@ QuoteGeneration_OBJECTS = \
 "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/database.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj" \
-"CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj" \
-"CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj" \
-"CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj" \
-"CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj"
+"CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj"
 
 # External object files for target QuoteGeneration
 QuoteGeneration_EXTERNAL_OBJECTS =
@@ -271,13 +287,14 @@ QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/main.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/database.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj
-QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj
-QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj
-QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/titlesection.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/build.make
 QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6Sql.a
 QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6PrintSupport.a
@@ -289,7 +306,7 @@ QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6EntryPoint.a
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/linkLibs.rsp
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/objects1.rsp
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_13) "Linking CXX executable QuoteGeneration.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_14) "Linking CXX executable QuoteGeneration.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\QuoteGeneration.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

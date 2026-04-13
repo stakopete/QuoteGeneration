@@ -489,6 +489,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/exclusionssection.h",
+			"MU",
+			"EWIEGA46WW/moc_exclusionssection.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -607,6 +613,7 @@
 		[ "D:/Qt_Projects/QuoteGeneration/basissection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/configdialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/database.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/pricesection.cpp", "MU", null ],

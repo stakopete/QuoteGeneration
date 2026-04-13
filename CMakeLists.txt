@@ -28,28 +28,30 @@ find_package(Qt6 REQUIRED COMPONENTS
 # Only list files that currently exist on disk.
 # We will add database.cpp and database.h in the next step.
 set(PROJECT_SOURCES
-    main.cpp
-    mainwindow.cpp
-    mainwindow.h
-    mainwindow.ui
-    database.h
-    database.cpp
-    configdialog.h
-    configdialog.cpp
-    titlesection.h
-    titlesection.cpp
-    animatedbutton.h
-    animatedbutton.cpp
-    systemsection.h
-    systemsection.cpp
-    stylemanager.h
-    stylemanager.cpp
-    basissection.h
-    basissection.cpp
-    pricesection.h
-    pricesection.cpp
-    scopesection.h
-    scopesection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/main.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/mainwindow.ui
+    ${CMAKE_CURRENT_SOURCE_DIR}/database.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/database.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/configdialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/configdialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/stylemanager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/stylemanager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/animatedbutton.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/animatedbutton.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/titlesection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/titlesection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/systemsection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/systemsection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/basissection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/basissection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/pricesection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/pricesection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/scopesection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/scopesection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -66,6 +68,8 @@ qt_add_executable(QuoteGeneration
     pricesection.cpp
     scopesection.cpp
     scopesection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.h
+       ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.cpp
 
 
 )

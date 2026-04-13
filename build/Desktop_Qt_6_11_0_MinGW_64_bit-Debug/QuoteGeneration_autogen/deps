@@ -709,6 +709,8 @@ QuoteGeneration_autogen/timestamp: \
 	D:/Qt_Projects/QuoteGeneration/configdialog.h \
 	D:/Qt_Projects/QuoteGeneration/database.cpp \
 	D:/Qt_Projects/QuoteGeneration/database.h \
+	D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp \
+	D:/Qt_Projects/QuoteGeneration/exclusionssection.h \
 	D:/Qt_Projects/QuoteGeneration/main.cpp \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.cpp \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.h \

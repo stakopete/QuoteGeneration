@@ -9,6 +9,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/database.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/database.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/main.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj"

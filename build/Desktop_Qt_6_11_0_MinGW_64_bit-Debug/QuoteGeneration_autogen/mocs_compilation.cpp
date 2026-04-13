@@ -2,6 +2,7 @@
 #include "EWIEGA46WW/moc_animatedbutton.cpp"
 #include "EWIEGA46WW/moc_basissection.cpp"
 #include "EWIEGA46WW/moc_configdialog.cpp"
+#include "EWIEGA46WW/moc_exclusionssection.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "EWIEGA46WW/moc_pricesection.cpp"
 #include "EWIEGA46WW/moc_scopesection.cpp"

@@ -274,6 +274,30 @@ database.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/database.cpp.s
 .PHONY : database.cpp.s
 
+exclusionssection.obj: exclusionssection.cpp.obj
+.PHONY : exclusionssection.obj
+
+# target to build an object file
+exclusionssection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj
+.PHONY : exclusionssection.cpp.obj
+
+exclusionssection.i: exclusionssection.cpp.i
+.PHONY : exclusionssection.i
+
+# target to preprocess a source file
+exclusionssection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.i
+.PHONY : exclusionssection.cpp.i
+
+exclusionssection.s: exclusionssection.cpp.s
+.PHONY : exclusionssection.s
+
+# target to generate assembly for a file
+exclusionssection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.s
+.PHONY : exclusionssection.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -468,6 +492,9 @@ help:
 	@echo ... database.obj
 	@echo ... database.i
 	@echo ... database.s
+	@echo ... exclusionssection.obj
+	@echo ... exclusionssection.i
+	@echo ... exclusionssection.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

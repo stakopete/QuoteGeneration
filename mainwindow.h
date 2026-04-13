@@ -23,6 +23,7 @@ class SystemSection;
 class BasisSection;
 class PriceSection;
 class ScopeSection;
+class ExclusionsSection;
 
 class MainWindow : public QMainWindow
 {
@@ -51,22 +52,23 @@ private:
     void applyStyleSheet();
     void resizeEvent(QResizeEvent *event) override;
 
-    QTabWidget    *m_tabs;
-    QLabel        *m_logoBanner;
-    QLabel        *m_statusLabel;
-    QAction       *m_actNewQuote;
-    QAction       *m_actOpenQuote;
-    QAction       *m_actPreview;
-    QAction       *m_actGeneratePdf;
-    QAction       *m_actSettings;
-    QAction       *m_actAbout;
-    AppConfig      m_config;
-    TitleSection  *m_titleSection;
-    SystemSection *m_systemSection;
-    QAction       *m_actToggleDarkMode;
-    BasisSection  *m_basisSection;
-    PriceSection  *m_priceSection;
-    ScopeSection  *m_scopeSection;
+    QTabWidget        *m_tabs;
+    QLabel            *m_logoBanner;
+    QLabel            *m_statusLabel;
+    QAction           *m_actNewQuote;
+    QAction           *m_actOpenQuote;
+    QAction           *m_actPreview;
+    QAction           *m_actGeneratePdf;
+    QAction           *m_actSettings;
+    QAction           *m_actAbout;
+    AppConfig          m_config;
+    TitleSection      *m_titleSection;
+    SystemSection     *m_systemSection;
+    QAction           *m_actToggleDarkMode;
+    BasisSection      *m_basisSection;
+    PriceSection      *m_priceSection;
+    ScopeSection      *m_scopeSection;
+    ExclusionsSection *m_exclusionsSection;
 };
 
 #endif // MAINWINDOW_H

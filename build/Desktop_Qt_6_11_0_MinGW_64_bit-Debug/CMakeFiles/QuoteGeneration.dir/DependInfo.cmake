@@ -13,6 +13,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Qt_Projects/QuoteGeneration/basissection.cpp" "CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/configdialog.cpp" "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/database.cpp" "CMakeFiles/QuoteGeneration.dir/database.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/database.cpp.obj.d"
+  "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp" "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/main.cpp" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/pricesection.cpp" "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj.d"
