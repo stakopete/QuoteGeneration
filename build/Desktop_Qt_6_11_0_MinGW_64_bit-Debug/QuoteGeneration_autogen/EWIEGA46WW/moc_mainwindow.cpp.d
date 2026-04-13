@@ -6,6 +6,7 @@ D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteG
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20functional.h \
@@ -128,6 +129,7 @@ D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteG
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtextstream.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtformat_impl.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \

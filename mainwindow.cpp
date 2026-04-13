@@ -31,6 +31,9 @@
 #include "generalconditionssection.h"
 #include "clarificationssection.h"
 #include "signaturesection.h"
+#include <QTimer>
+#include <QCloseEvent>
+#include <QDate>
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -65,6 +68,45 @@ MainWindow::MainWindow(QWidget *parent)
     setupTabs();
     setupStatusBar();
     applyStyleSheet();
+
+    // ── Quote management setup ────────────────────────────────────────────────
+    m_quoteModified = false;
+    m_currentQuote  = QuoteData();
+
+    // Auto-save timer fires every 2 minutes.
+    m_autoSaveTimer = new QTimer(this);
+    m_autoSaveTimer->setInterval(2 * 60 * 1000);    // 2 minutes in ms
+    connect(m_autoSaveTimer, &QTimer::timeout,
+            this, &MainWindow::onAutoSave);
+    m_autoSaveTimer->start();
+
+    // Connect all section dataChanged signals to our handler.
+    connect(m_titleSection,          &TitleSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_systemSection,         &SystemSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_basisSection,          &BasisSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_priceSection,          &PriceSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_scopeSection,          &ScopeSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_exclusionsSection,     &ExclusionsSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_generalSection,        &GeneralConditionsSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_clarificationsSection, &ClarificationsSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+    connect(m_signatureSection,      &SignatureSection::dataChanged,
+            this, &MainWindow::onQuoteDataChanged);
+
+    // Load the last open quote if one exists.
+    int lastId = Database::lastQuoteId();
+    if (lastId > 0)
+        loadQuote(lastId);
+    else
+        newQuote();
+
 }
 
 MainWindow::~MainWindow()
@@ -421,8 +463,35 @@ void MainWindow::applyStyleSheet()
 
 void MainWindow::onNewQuote()
 {
-    // Phase 4 — not yet implemented
-    statusBar()->showMessage("New Quote — coming in Phase 4", 3000);
+    if (m_quoteModified) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Unsaved Changes");
+        msgBox.setText(
+            "The current quote has unsaved changes.\n"
+            "Save before creating a new quote?"
+            );
+        msgBox.setIcon(QMessageBox::Question);
+
+        AnimatedButton *saveBtn   = new AnimatedButton("Save", &msgBox);
+        saveBtn->setFixedSize(110, 40);
+        AnimatedButton *discardBtn = new AnimatedButton("Discard", &msgBox);
+        discardBtn->setFixedSize(110, 40);
+        AnimatedButton *cancelBtn = new AnimatedButton("Cancel", &msgBox);
+        cancelBtn->setFixedSize(110, 40);
+
+        msgBox.addButton(saveBtn,    QMessageBox::YesRole);
+        msgBox.addButton(discardBtn, QMessageBox::NoRole);
+        msgBox.addButton(cancelBtn,  QMessageBox::RejectRole);
+        msgBox.exec();
+
+        QAbstractButton *clicked = msgBox.clickedButton();
+        if (clicked == cancelBtn)
+            return;
+        if (clicked == saveBtn)
+            saveCurrentQuote();
+    }
+
+    newQuote();
 }
 
 void MainWindow::onOpenQuote()
@@ -549,4 +618,163 @@ void MainWindow::onToggleDarkMode()
     statusBar()->showMessage(
         isDark ? "Dark mode enabled" : "Light mode enabled", 3000
         );
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// onQuoteDataChanged()
+//
+// Called whenever any section emits dataChanged.
+// Marks the quote as modified and updates the status bar.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::onQuoteDataChanged()
+{
+    m_quoteModified = true;
+    m_statusLabel->setText("  Status: " + m_currentQuote.status +
+                           "  |  Unsaved changes");
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// saveCurrentQuote()
+//
+// Gathers data from all sections and saves to the database.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::saveCurrentQuote()
+{
+    // Only save if the site name has been entered — minimum requirement.
+    if (m_titleSection->siteName().isEmpty())
+        return;
+
+    // Gather data from all sections.
+    m_currentQuote.quoteDate         = m_titleSection->quoteDate();
+    m_currentQuote.siteName          = m_titleSection->siteName();
+    m_currentQuote.titleText         = m_titleSection->quoteTitle();
+    m_currentQuote.systemText        = m_systemSection->systemText();
+    m_currentQuote.basisText         = m_basisSection->basisText();
+    m_currentQuote.scopeText         = m_scopeSection->scopeText();
+    m_currentQuote.exclusions        = m_exclusionsSection->exclusionsText();
+    m_currentQuote.generalConditions = m_generalSection->generalText();
+    m_currentQuote.clarifications    = m_clarificationsSection->clarificationsText();
+    m_currentQuote.contactStatement  = m_signatureSection->contactStatement();
+    m_currentQuote.signatoryName     = m_signatureSection->signatoryName();
+
+    // Save to database.
+    m_currentQuote = Database::saveQuote(m_currentQuote);
+
+    // Save price items separately.
+    if (m_currentQuote.id > 0) {
+        Database::savePriceItems(m_currentQuote.id,
+                                 m_priceSection->priceRows());
+    }
+
+    m_quoteModified = false;
+
+    // Update status bar.
+    m_statusLabel->setText(
+        "  Status: " + m_currentQuote.status +
+        "  |  Last saved: " + m_currentQuote.lastSaved
+        );
+
+    qDebug() << "Quote saved. ID:" << m_currentQuote.id;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// onAutoSave()
+//
+// Called by the timer every 2 minutes.
+// Only saves if there are unsaved changes.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::onAutoSave()
+{
+    if (m_quoteModified) {
+        saveCurrentQuote();
+        statusBar()->showMessage("Auto-saved.", 3000);
+    }
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// loadQuote()
+//
+// Loads a quote from the database and populates all sections.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::loadQuote(int id)
+{
+    m_currentQuote = Database::loadQuote(id);
+
+    if (m_currentQuote.id == 0)
+        return;
+
+    // Populate all sections with the loaded data.
+    m_titleSection->loadData(
+        m_currentQuote.quoteDate,
+        m_currentQuote.titleText,
+        m_currentQuote.siteName
+        );
+    m_systemSection->loadData(m_currentQuote.systemText);
+    m_basisSection->loadData(m_currentQuote.basisText);
+    m_scopeSection->loadData(m_currentQuote.scopeText);
+    m_exclusionsSection->loadData(m_currentQuote.exclusions);
+    m_generalSection->loadData(m_currentQuote.generalConditions);
+    m_clarificationsSection->loadData(m_currentQuote.clarifications);
+    m_signatureSection->loadData(
+        m_currentQuote.contactStatement,
+        m_currentQuote.signatoryName
+        );
+
+    // Load price items.
+    QList<PriceRow> rows = Database::loadPriceItems(m_currentQuote.id);
+    m_priceSection->loadData(rows);
+
+    m_quoteModified = false;
+
+    // Update window title and status bar.
+    setWindowTitle("Quote Generation — " + m_config.companyName +
+                   " — " + m_currentQuote.siteName);
+    m_statusLabel->setText(
+        "  Status: " + m_currentQuote.status +
+        "  |  Last saved: " + m_currentQuote.lastSaved
+        );
+
+    qDebug() << "Quote loaded. ID:" << m_currentQuote.id;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// newQuote()
+//
+// Resets all sections ready for a new quote.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::newQuote()
+{
+    m_currentQuote  = QuoteData();
+    m_quoteModified = false;
+
+    // Reset all sections to empty.
+    m_titleSection->loadData(
+        QDate::currentDate().toString("dd/MM/yyyy"), "", ""
+        );
+    m_systemSection->loadData("");
+    m_basisSection->loadData("");
+    m_scopeSection->loadData("");
+    m_exclusionsSection->loadData("");
+    m_generalSection->loadData("");
+    m_clarificationsSection->loadData("");
+    m_signatureSection->loadData("", "");
+    m_priceSection->loadData({});
+
+    setWindowTitle("Quote Generation — " + m_config.companyName +
+                   " — New Quote");
+    m_statusLabel->setText("  Status: Draft  |  New quote");
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// closeEvent()
+//
+// Called when the user closes the application.
+// Saves any unsaved changes before closing.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::closeEvent(QCloseEvent *event)
+{
+    if (m_quoteModified)
+        saveCurrentQuote();
+
+    event->accept();
 }

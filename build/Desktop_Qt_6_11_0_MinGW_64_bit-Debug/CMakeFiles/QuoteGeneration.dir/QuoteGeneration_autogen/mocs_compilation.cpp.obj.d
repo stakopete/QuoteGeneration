@@ -443,6 +443,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
  D:/Qt_Projects/QuoteGeneration/stylemanager.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_pricesection.cpp \
  D:/Qt_Projects/QuoteGeneration/pricesection.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \

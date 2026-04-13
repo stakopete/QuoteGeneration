@@ -11,6 +11,7 @@
 #include "database.h"
 #include <QResizeEvent>
 #include "stylemanager.h"
+#include <QTimer>
 
 // Forward declarations — we only need the full type definitions
 // in the .cpp file, not here in the header.
@@ -46,6 +47,15 @@ private slots:
     void onTabChanged(int index);
     void onToggleDarkMode();
 
+    void onAutoSave();
+    void onQuoteDataChanged();
+    void saveCurrentQuote();
+    void loadQuote(int id);
+    void newQuote();
+
+protected:
+    void closeEvent(QCloseEvent *event) override;
+
 private:
     void setupMenuBar();
     void setupToolBar();
@@ -75,6 +85,14 @@ private:
     GeneralConditionsSection *m_generalSection;
     ClarificationsSection    *m_clarificationsSection;
     SignatureSection         *m_signatureSection;
+
+    // ── Quote management ──────────────────────────────────────────────────────
+    QuoteData   m_currentQuote;     // The quote currently being edited
+    QTimer     *m_autoSaveTimer;    // Fires every 2 minutes to auto-save
+    bool        m_quoteModified;    // True if unsaved changes exist
+    QLabel     *m_lastSavedLabel;   // Shows last saved time in status bar
 };
+
+
 
 #endif // MAINWINDOW_H

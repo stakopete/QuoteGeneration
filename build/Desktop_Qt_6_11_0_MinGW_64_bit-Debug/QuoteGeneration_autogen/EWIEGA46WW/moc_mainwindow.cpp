@@ -48,7 +48,13 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "onAbout",
         "onTabChanged",
         "index",
-        "onToggleDarkMode"
+        "onToggleDarkMode",
+        "onAutoSave",
+        "onQuoteDataChanged",
+        "saveCurrentQuote",
+        "loadQuote",
+        "id",
+        "newQuote"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -70,6 +76,18 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         }}),
         // Slot 'onToggleDarkMode'
         QtMocHelpers::SlotData<void()>(10, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onAutoSave'
+        QtMocHelpers::SlotData<void()>(11, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onQuoteDataChanged'
+        QtMocHelpers::SlotData<void()>(12, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'saveCurrentQuote'
+        QtMocHelpers::SlotData<void()>(13, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'loadQuote'
+        QtMocHelpers::SlotData<void(int)>(14, 2, QMC::AccessPrivate, QMetaType::Void, {{
+            { QMetaType::Int, 15 },
+        }}),
+        // Slot 'newQuote'
+        QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -101,6 +119,11 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 5: _t->onAbout(); break;
         case 6: _t->onTabChanged((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 7: _t->onToggleDarkMode(); break;
+        case 8: _t->onAutoSave(); break;
+        case 9: _t->onQuoteDataChanged(); break;
+        case 10: _t->saveCurrentQuote(); break;
+        case 11: _t->loadQuote((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
+        case 12: _t->newQuote(); break;
         default: ;
         }
     }
@@ -125,14 +148,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 8)
+        if (_id < 13)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 8;
+        _id -= 13;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 8)
+        if (_id < 13)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 8;
+        _id -= 13;
     }
     return _id;
 }

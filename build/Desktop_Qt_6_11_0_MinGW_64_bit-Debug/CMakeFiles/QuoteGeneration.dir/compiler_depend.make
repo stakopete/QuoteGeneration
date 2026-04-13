@@ -9,6 +9,7 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20algorithm.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h \
@@ -132,6 +133,7 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtextstream.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtformat_impl.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtmocconstants.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtmochelpers.h \
@@ -2223,6 +2225,8 @@ CMakeFiles/QuoteGeneration.dir/configdialog.cpp.obj: D:/Qt_Projects/QuoteGenerat
 
 CMakeFiles/QuoteGeneration.dir/database.cpp.obj: D:/Qt_Projects/QuoteGeneration/database.cpp \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QCoreApplication \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QDate \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QDateTime \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QDebug \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
@@ -2251,6 +2255,7 @@ CMakeFiles/QuoteGeneration.dir/database.cpp.obj: D:/Qt_Projects/QuoteGeneration/
   C:/Qt/6.11.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qbytearraylist.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qbytearrayview.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qcalendar.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qchar.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qcompare.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qcompare_impl.h \
@@ -2267,6 +2272,7 @@ CMakeFiles/QuoteGeneration.dir/database.cpp.obj: D:/Qt_Projects/QuoteGeneration/
   C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdatastream.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qdatetime.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdebug.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qeventloop.h \
@@ -2286,6 +2292,7 @@ CMakeFiles/QuoteGeneration.dir/database.cpp.obj: D:/Qt_Projects/QuoteGeneration/
   C:/Qt/6.11.0/mingw_64/include/QtCore/qiterator.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qlatin1stringview.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qlist.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qlogging.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qmalloc.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qmap.h \
@@ -3478,6 +3485,7 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: D:/Qt_Projects/QuoteGeneration/main
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20functional.h \
@@ -3600,6 +3608,7 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: D:/Qt_Projects/QuoteGeneration/main
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtextstream.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtformat_impl.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -3905,6 +3914,7 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: D:/Qt_Projects/QuoteGeneration/main
   D:/Qt_Projects/QuoteGeneration/stylemanager.h
 
 CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneration/mainwindow.cpp \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QDate \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
@@ -3912,6 +3922,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20functional.h \
@@ -3938,6 +3949,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtCore/qbytearrayalgorithms.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qbytearraylist.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qbytearrayview.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qcalendar.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qchar.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qcheckedint_impl.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qcompare.h \
@@ -3955,6 +3967,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtCore/qcoreevent.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdarwinhelpers.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdatastream.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qdatetime.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdeadlinetimer.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qdebug.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qendian.h \
@@ -4034,6 +4047,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtenvironmentvariables.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtextstream.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtformat_impl.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtmetamacros.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtnoop.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qtpreprocessorsupport.h \
@@ -4052,6 +4066,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qyieldcpu.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QAction \
+  C:/Qt/6.11.0/mingw_64/include/QtGui/QCloseEvent \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QPalette \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap \
@@ -7075,6 +7090,8 @@ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractspinbox.h:
 
 C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/_mingw_secapi.h:
 
+C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer:
+
 C:/Qt/6.11.0/mingw_64/include/QtCore/qttranslation.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtGui/qimage.h:
@@ -7102,10 +7119,6 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/initializ
 C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ratio:
-
-C:/Qt/6.11.0/mingw_64/include/QtCore/qtaggedpointer.h:
-
-C:/Qt/6.11.0/mingw_64/include/QtCore/qglobal.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/qfunctionpointer.h:
 
@@ -7275,6 +7288,12 @@ C:/Qt/6.11.0/mingw_64/include/QtCore/qfloat16.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/qgenericatomic.h:
 
+C:/Qt/6.11.0/mingw_64/include/QtCore/qglobal.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtCore/qtaggedpointer.h:
+
 C:/Qt/6.11.0/mingw_64/include/QtCore/qglobalstatic.h:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ctime:
@@ -7292,6 +7311,8 @@ C:/Qt/6.11.0/mingw_64/include/QtCore/qhashfunctions.h:
 C:/Qt/6.11.0/mingw_64/include/QtCore/qiodevicebase.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/qiterable.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtGui/QCloseEvent:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/stl_tempbuf.h:
 
@@ -7507,9 +7528,9 @@ C:/Qt/6.11.0/mingw_64/include/QtCore/qtmetamacros.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/qtmocconstants.h:
 
-C:/Qt/6.11.0/mingw_64/include/QtCore/qtnoop.h:
-
 C:/Qt/6.11.0/mingw_64/include/QtCore/qfileinfo.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtCore/qtnoop.h:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/pstl/glue_algorithm_defs.h:
 
@@ -7984,6 +8005,8 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/exp_i
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/gamma.tcc:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/stdarg.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtCore/QDateTime:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/tr1/hypergeometric.tcc:
 

@@ -1920,6 +1920,7 @@ D:/Qt_Projects/QuoteGeneration/mainwindow.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QSize
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QString
+ mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/q20functional.h
@@ -2042,6 +2043,7 @@ D:/Qt_Projects/QuoteGeneration/mainwindow.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtenvironmentvariables.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtextstream.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtformat_impl.h
+ mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtmetamacros.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtnoop.h
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/qtpreprocessorsupport.h

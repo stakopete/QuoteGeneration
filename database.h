@@ -44,6 +44,35 @@ struct DropdownOption {
     QString text;
 };
 
+// Represents a complete quote with all its sections.
+struct QuoteData {
+    int     id              = 0;        // 0 = not yet saved
+    QString created;
+    QString quoteDate;
+    QString siteName;
+    QString titleText;
+    QString systemText;
+    QString basisText;
+    QString scopeText;
+    QString exclusions;
+    QString generalConditions;
+    QString clarifications;
+    QString contactStatement;
+    QString signatoryName;
+    QString status          = "Draft";
+    QString expiryDate;
+    QString emailTo;
+    bool    logoOnAllPages  = false;
+    bool    suppressWarnings = false;
+    QString lastSaved;
+};
+
+// Represents one row in the price grid.
+struct PriceRow {
+    QString description;
+    double  amount = 0.0;
+};
+
 // ── Database class ────────────────────────────────────────────────────────────
 
 class Database
@@ -84,6 +113,35 @@ public:
 
     // Returns the full path to the SQLite database file.
     static QString databasePath();
+
+    // ── Quote operations ─────────────────────────────────────────────────────
+
+    // Saves a quote to the database. If quote.id == 0 a new quote is
+    // created and the id is set on the returned struct.
+    // Returns the saved quote with updated id and lastSaved timestamp.
+    static QuoteData    saveQuote(const QuoteData &quote);
+
+    // Loads a quote by id. Returns an empty QuoteData if not found.
+    static QuoteData    loadQuote(int id);
+
+    // Returns a list of all quotes (id, siteName, status, lastSaved).
+    // Used for the open quote dialog.
+    static QList<QuoteData> listQuotes();
+
+    // Deletes a quote and all its price items.
+    static bool         deleteQuote(int id);
+
+    // Saves the price items for a quote.
+    // Replaces all existing price items for that quote.
+    static bool         savePriceItems(int quoteId,
+                               const QList<PriceRow> &rows);
+
+    // Loads the price items for a quote.
+    static QList<PriceRow> loadPriceItems(int quoteId);
+
+    // Returns the id of the most recently saved quote.
+    // Returns 0 if no quotes exist.
+    static int          lastQuoteId();
 
 private:
     // ── Private helpers called only from initialise() ─────────────────────────

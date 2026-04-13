@@ -18,16 +18,13 @@
 #include "database.h"
 #include <QEvent>
 
+
 class QTableWidget;
 class QLabel;
 class QGroupBox;
 class AnimatedButton;
 
-// Represents one row in the price grid.
-struct PriceRow {
-    QString description;
-    double  amount = 0.0;
-};
+
 
 class PriceSection : public QWidget
 {

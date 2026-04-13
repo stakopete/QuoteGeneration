@@ -11,6 +11,8 @@
 #include <QSqlError>
 #include <QCoreApplication>
 #include <QDebug>
+#include <QDateTime>
+#include <QDate>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // databasePath()
@@ -89,13 +91,14 @@ bool Database::createTables()
             exclusions          TEXT DEFAULT '',
             general_conditions  TEXT DEFAULT '',
             clarifications      TEXT DEFAULT '',
+            contact_statement   TEXT DEFAULT '',
+            signatory_name      TEXT DEFAULT '',
             status              TEXT DEFAULT 'Draft',
             expiry_date         TEXT DEFAULT '',
             email_to            TEXT DEFAULT '',
             logo_on_all_pages   INTEGER DEFAULT 0,
             suppress_warnings   INTEGER DEFAULT 0,
             last_saved          TEXT DEFAULT ''
-
         )
     )")) {
         qCritical() << "createTables - Quotes:" << q.lastError().text();
@@ -209,6 +212,29 @@ bool Database::migrateSchema()
         }
         qDebug() << "migrateSchema - added signature_path column to AppConfig";
     }
+
+    // ── Check for contact_statement column in Quotes ───────────────────────────
+    q.exec("PRAGMA table_info(Quotes)");
+    bool hasContactStatement = false;
+    bool hasSignatoryName = false;
+    while (q.next()) {
+        QString colName = q.value("name").toString();
+        if (colName == "contact_statement") hasContactStatement = true;
+        if (colName == "signatory_name")    hasSignatoryName = true;
+    }
+
+    if (!hasContactStatement) {
+        q.exec("ALTER TABLE Quotes ADD COLUMN "
+               "contact_statement TEXT DEFAULT ''");
+        qDebug() << "migrateSchema - added contact_statement to Quotes";
+    }
+
+    if (!hasSignatoryName) {
+        q.exec("ALTER TABLE Quotes ADD COLUMN "
+               "signatory_name TEXT DEFAULT ''");
+        qDebug() << "migrateSchema - added signatory_name to Quotes";
+    }
+
     return true;
 }
 
@@ -465,4 +491,242 @@ QList<TaxOption> Database::taxOptions()
         { "No Tax",     "Tax exempt",                0.0 },
         { "Other",      "Enter your own rate",       0.0 }
     };
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// saveQuote()
+//
+// Inserts a new quote or updates an existing one.
+// If quote.id == 0 we INSERT and return the new id.
+// If quote.id > 0 we UPDATE the existing row.
+// ─────────────────────────────────────────────────────────────────────────────
+QuoteData Database::saveQuote(const QuoteData &quote)
+{
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+
+    // Current timestamp for last_saved.
+    QString now = QDateTime::currentDateTime()
+                      .toString("dd/MM/yyyy hh:mm:ss");
+
+    QuoteData saved = quote;
+    saved.lastSaved = now;
+
+    if (quote.id == 0) {
+        // New quote — INSERT.
+        q.prepare(R"(
+            INSERT INTO Quotes (
+                created, quote_date, site_name, title_text,
+                system_text, basis_text, scope_text, exclusions,
+                general_conditions, clarifications, contact_statement,
+                signatory_name, status, expiry_date, email_to,
+                logo_on_all_pages, suppress_warnings, last_saved
+            ) VALUES (
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+            )
+        )");
+
+        QString created = QDate::currentDate().toString("dd/MM/yyyy");
+        q.addBindValue(created);
+        q.addBindValue(quote.quoteDate);
+        q.addBindValue(quote.siteName);
+        q.addBindValue(quote.titleText);
+        q.addBindValue(quote.systemText);
+        q.addBindValue(quote.basisText);
+        q.addBindValue(quote.scopeText);
+        q.addBindValue(quote.exclusions);
+        q.addBindValue(quote.generalConditions);
+        q.addBindValue(quote.clarifications);
+        q.addBindValue(quote.contactStatement);
+        q.addBindValue(quote.signatoryName);
+        q.addBindValue(quote.status);
+        q.addBindValue(quote.expiryDate);
+        q.addBindValue(quote.emailTo);
+        q.addBindValue(quote.logoOnAllPages ? 1 : 0);
+        q.addBindValue(quote.suppressWarnings ? 1 : 0);
+        q.addBindValue(now);
+
+        if (q.exec())
+            saved.id = q.lastInsertId().toInt();
+        else
+            qWarning() << "saveQuote INSERT failed:" << q.lastError().text();
+
+    } else {
+        // Existing quote — UPDATE.
+        q.prepare(R"(
+            UPDATE Quotes SET
+                quote_date = ?, site_name = ?, title_text = ?,
+                system_text = ?, basis_text = ?, scope_text = ?,
+                exclusions = ?, general_conditions = ?,
+                clarifications = ?, contact_statement = ?,
+                signatory_name = ?, status = ?, expiry_date = ?,
+                email_to = ?, logo_on_all_pages = ?,
+                suppress_warnings = ?, last_saved = ?
+            WHERE id = ?
+        )");
+
+        q.addBindValue(quote.quoteDate);
+        q.addBindValue(quote.siteName);
+        q.addBindValue(quote.titleText);
+        q.addBindValue(quote.systemText);
+        q.addBindValue(quote.basisText);
+        q.addBindValue(quote.scopeText);
+        q.addBindValue(quote.exclusions);
+        q.addBindValue(quote.generalConditions);
+        q.addBindValue(quote.clarifications);
+        q.addBindValue(quote.contactStatement);
+        q.addBindValue(quote.signatoryName);
+        q.addBindValue(quote.status);
+        q.addBindValue(quote.expiryDate);
+        q.addBindValue(quote.emailTo);
+        q.addBindValue(quote.logoOnAllPages ? 1 : 0);
+        q.addBindValue(quote.suppressWarnings ? 1 : 0);
+        q.addBindValue(now);
+        q.addBindValue(quote.id);
+
+        if (!q.exec())
+            qWarning() << "saveQuote UPDATE failed:" << q.lastError().text();
+    }
+
+    return saved;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// loadQuote()
+// ─────────────────────────────────────────────────────────────────────────────
+QuoteData Database::loadQuote(int id)
+{
+    QuoteData quote;
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+    q.prepare("SELECT * FROM Quotes WHERE id = ?");
+    q.addBindValue(id);
+    q.exec();
+
+    if (q.next()) {
+        quote.id                = q.value("id").toInt();
+        quote.created           = q.value("created").toString();
+        quote.quoteDate         = q.value("quote_date").toString();
+        quote.siteName          = q.value("site_name").toString();
+        quote.titleText         = q.value("title_text").toString();
+        quote.systemText        = q.value("system_text").toString();
+        quote.basisText         = q.value("basis_text").toString();
+        quote.scopeText         = q.value("scope_text").toString();
+        quote.exclusions        = q.value("exclusions").toString();
+        quote.generalConditions = q.value("general_conditions").toString();
+        quote.clarifications    = q.value("clarifications").toString();
+        quote.contactStatement  = q.value("contact_statement").toString();
+        quote.signatoryName     = q.value("signatory_name").toString();
+        quote.status            = q.value("status").toString();
+        quote.expiryDate        = q.value("expiry_date").toString();
+        quote.emailTo           = q.value("email_to").toString();
+        quote.logoOnAllPages    = q.value("logo_on_all_pages").toInt() == 1;
+        quote.suppressWarnings  = q.value("suppress_warnings").toInt() == 1;
+        quote.lastSaved         = q.value("last_saved").toString();
+    }
+    return quote;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// listQuotes()
+// ─────────────────────────────────────────────────────────────────────────────
+QList<QuoteData> Database::listQuotes()
+{
+    QList<QuoteData> list;
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+    q.exec("SELECT id, site_name, status, last_saved, quote_date "
+           "FROM Quotes ORDER BY id DESC");
+
+    while (q.next()) {
+        QuoteData quote;
+        quote.id        = q.value("id").toInt();
+        quote.siteName  = q.value("site_name").toString();
+        quote.status    = q.value("status").toString();
+        quote.lastSaved = q.value("last_saved").toString();
+        quote.quoteDate = q.value("quote_date").toString();
+        list.append(quote);
+    }
+    return list;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// deleteQuote()
+// ─────────────────────────────────────────────────────────────────────────────
+bool Database::deleteQuote(int id)
+{
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+    q.prepare("DELETE FROM Quotes WHERE id = ?");
+    q.addBindValue(id);
+    return q.exec();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// savePriceItems()
+// ─────────────────────────────────────────────────────────────────────────────
+bool Database::savePriceItems(int quoteId, const QList<PriceRow> &rows)
+{
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+
+    // Delete existing price items for this quote.
+    q.prepare("DELETE FROM PriceItems WHERE quote_id = ?");
+    q.addBindValue(quoteId);
+    if (!q.exec()) {
+        qWarning() << "savePriceItems DELETE failed:" << q.lastError().text();
+        return false;
+    }
+
+    // Insert new price items.
+    for (int i = 0; i < rows.count(); ++i) {
+        q.prepare("INSERT INTO PriceItems "
+                  "(quote_id, sort_order, description, amount) "
+                  "VALUES (?, ?, ?, ?)");
+        q.addBindValue(quoteId);
+        q.addBindValue(i);
+        q.addBindValue(rows[i].description);
+        q.addBindValue(rows[i].amount);
+        if (!q.exec()) {
+            qWarning() << "savePriceItems INSERT failed:"
+                       << q.lastError().text();
+            return false;
+        }
+    }
+    return true;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// loadPriceItems()
+// ─────────────────────────────────────────────────────────────────────────────
+QList<PriceRow> Database::loadPriceItems(int quoteId)
+{
+    QList<PriceRow> rows;
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+    q.prepare("SELECT description, amount FROM PriceItems "
+              "WHERE quote_id = ? ORDER BY sort_order");
+    q.addBindValue(quoteId);
+    q.exec();
+
+    while (q.next()) {
+        PriceRow row;
+        row.description = q.value("description").toString();
+        row.amount      = q.value("amount").toDouble();
+        rows.append(row);
+    }
+    return rows;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// lastQuoteId()
+// ─────────────────────────────────────────────────────────────────────────────
+int Database::lastQuoteId()
+{
+    QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
+    QSqlQuery q(db);
+    q.exec("SELECT MAX(id) FROM Quotes");
+    if (q.next())
+        return q.value(0).toInt();
+    return 0;
 }

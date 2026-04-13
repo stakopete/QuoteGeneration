@@ -420,6 +420,8 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qguiapplication_platform.h \
  D:\Qt_Projects\QuoteGeneration\stylemanager.h \
  C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qtimer.h \
  D:\Qt_Projects\QuoteGeneration\configdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
