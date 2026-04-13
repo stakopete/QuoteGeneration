@@ -705,12 +705,16 @@ QuoteGeneration_autogen/timestamp: \
 	D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeRCCompiler.cmake \
 	D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/CMakeFiles/3.30.5/CMakeSystem.cmake \
 	D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteGeneration_autogen/moc_predefs.h \
+	D:/Qt_Projects/QuoteGeneration/clarificationssection.cpp \
+	D:/Qt_Projects/QuoteGeneration/clarificationssection.h \
 	D:/Qt_Projects/QuoteGeneration/configdialog.cpp \
 	D:/Qt_Projects/QuoteGeneration/configdialog.h \
 	D:/Qt_Projects/QuoteGeneration/database.cpp \
 	D:/Qt_Projects/QuoteGeneration/database.h \
 	D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp \
 	D:/Qt_Projects/QuoteGeneration/exclusionssection.h \
+	D:/Qt_Projects/QuoteGeneration/generalconditionssection.cpp \
+	D:/Qt_Projects/QuoteGeneration/generalconditionssection.h \
 	D:/Qt_Projects/QuoteGeneration/main.cpp \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.cpp \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.h \
@@ -718,6 +722,8 @@ QuoteGeneration_autogen/timestamp: \
 	D:/Qt_Projects/QuoteGeneration/pricesection.h \
 	D:/Qt_Projects/QuoteGeneration/scopesection.cpp \
 	D:/Qt_Projects/QuoteGeneration/scopesection.h \
+	D:/Qt_Projects/QuoteGeneration/signaturesection.cpp \
+	D:/Qt_Projects/QuoteGeneration/signaturesection.h \
 	D:/Qt_Projects/QuoteGeneration/stylemanager.cpp \
 	D:/Qt_Projects/QuoteGeneration/stylemanager.h \
 	D:/Qt_Projects/QuoteGeneration/systemsection.cpp \

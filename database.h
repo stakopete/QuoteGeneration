@@ -29,6 +29,7 @@ struct AppConfig {
     double  taxRate         = 10.0;
     bool    configured      = false;
     bool    darkMode        = false;
+    QString signaturePath;      // Path to signature PNG file
 };
 
 struct TaxOption {

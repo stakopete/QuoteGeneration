@@ -396,6 +396,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:/Qt_Projects/QuoteGeneration/database.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_clarificationssection.cpp \
+ D:/Qt_Projects/QuoteGeneration/clarificationssection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_configdialog.cpp \
  D:/Qt_Projects/QuoteGeneration/configdialog.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
@@ -403,6 +405,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:/Qt_Projects/QuoteGeneration/animatedbutton.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_exclusionssection.cpp \
  D:/Qt_Projects/QuoteGeneration/exclusionssection.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_generalconditionssection.cpp \
+ D:/Qt_Projects/QuoteGeneration/generalconditionssection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_mainwindow.cpp \
  D:/Qt_Projects/QuoteGeneration/mainwindow.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \
@@ -444,6 +448,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_scopesection.cpp \
  D:/Qt_Projects/QuoteGeneration/scopesection.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_signaturesection.cpp \
+ D:/Qt_Projects/QuoteGeneration/signaturesection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_systemsection.cpp \
  D:/Qt_Projects/QuoteGeneration/systemsection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_titlesection.cpp \

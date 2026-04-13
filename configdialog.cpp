@@ -120,6 +120,34 @@ void ConfigDialog::setupUi()
     logoRow->addWidget(m_browseButton);
     form->addRow("Logo File:", logoRow);
 
+    // ── Signature image row ───────────────────────────────────────────────────
+    m_signaturePath = new QLineEdit();
+    m_signaturePath->setPlaceholderText(
+        "Optional — browse for your signature PNG file"
+        );
+    m_signaturePath->setReadOnly(true);
+
+    m_browseSignatureButton = new AnimatedButton("Browse...");
+    m_browseSignatureButton->setFixedWidth(90);
+    m_browseSignatureButton->setFixedHeight(32);
+    connect(m_browseSignatureButton, &AnimatedButton::clicked,
+            this, &ConfigDialog::onBrowseSignature);
+
+    // Signature preview — shows a small version of the signature image.
+    m_signaturePreview = new QLabel();
+    m_signaturePreview->setFixedHeight(60);
+    m_signaturePreview->setAlignment(Qt::AlignLeft | Qt::AlignVCenter);
+    m_signaturePreview->setStyleSheet(
+        "QLabel { background-color: white; border: 1px solid #999999; }"
+        );
+    m_signaturePreview->setText("No signature selected");
+
+    QHBoxLayout *sigRow = new QHBoxLayout();
+    sigRow->addWidget(m_signaturePath);
+    sigRow->addWidget(m_browseSignatureButton);
+    form->addRow("Signature File:", sigRow);
+    form->addRow("Preview:", m_signaturePreview);
+
     // ── Tax type dropdown ─────────────────────────────────────────────────────
     m_taxType = new QComboBox();
     populateTaxDropdown();
@@ -217,6 +245,18 @@ void ConfigDialog::loadExistingConfig()
             break;
         }
     }
+    m_signaturePath->setText(cfg.signaturePath);
+
+    // Load signature preview if path exists.
+    if (!cfg.signaturePath.isEmpty()) {
+        QPixmap sig;
+        if (sig.load(cfg.signaturePath)) {
+            m_signaturePreview->setPixmap(
+                sig.scaledToHeight(50, Qt::SmoothTransformation)
+                );
+        }
+    }
+
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -276,6 +316,7 @@ void ConfigDialog::onSave()
     cfg.phone       = m_phone->text().trimmed();
     cfg.email       = m_email->text().trimmed();
     cfg.logoPath    = m_logoPath->text().trimmed();
+    cfg.signaturePath = m_signaturePath->text().trimmed();
     cfg.taxRate     = m_taxRate->value();
     cfg.configured  = true;    // Mark setup as complete
 
@@ -337,6 +378,28 @@ bool ConfigDialog::validateInputs()
     }
 
     return true;
+}
+
+void ConfigDialog::onBrowseSignature()
+{
+    QString path = QFileDialog::getOpenFileName(
+        this,
+        "Select Signature Image",
+        QString(),
+        "PNG Images (*.png)"
+        );
+
+    if (!path.isEmpty()) {
+        m_signaturePath->setText(path);
+
+        // Show a preview of the signature.
+        QPixmap sig;
+        if (sig.load(path)) {
+            m_signaturePreview->setPixmap(
+                sig.scaledToHeight(50, Qt::SmoothTransformation)
+                );
+        }
+    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

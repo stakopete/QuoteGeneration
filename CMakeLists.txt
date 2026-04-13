@@ -52,6 +52,12 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/scopesection.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.h
     ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/generalconditionssection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/generalconditionssection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/clarificationssection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/clarificationssection.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/signaturesection.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/signaturesection.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -70,6 +76,12 @@ qt_add_executable(QuoteGeneration
     scopesection.h
     ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.h
        ${CMAKE_CURRENT_SOURCE_DIR}/exclusionssection.cpp
+       generalconditionssection.h
+       generalconditionssection.cpp
+       clarificationssection.h
+       clarificationssection.cpp
+       signaturesection.h
+       signaturesection.cpp
 
 
 )

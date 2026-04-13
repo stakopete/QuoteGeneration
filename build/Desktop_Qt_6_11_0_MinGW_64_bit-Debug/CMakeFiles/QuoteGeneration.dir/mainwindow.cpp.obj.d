@@ -463,4 +463,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  D:\Qt_Projects\QuoteGeneration\pricesection.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
  D:\Qt_Projects\QuoteGeneration\scopesection.h \
- D:\Qt_Projects\QuoteGeneration\exclusionssection.h
+ D:\Qt_Projects\QuoteGeneration\exclusionssection.h \
+ D:\Qt_Projects\QuoteGeneration\generalconditionssection.h \
+ D:\Qt_Projects\QuoteGeneration\clarificationssection.h \
+ D:\Qt_Projects\QuoteGeneration\signaturesection.h

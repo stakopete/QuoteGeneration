@@ -145,7 +145,8 @@ bool Database::createTables()
             tax_label       TEXT DEFAULT 'GST',
             tax_rate        REAL DEFAULT 10.0,
             configured      INTEGER DEFAULT 0,
-            dark_mode       INTEGER DEFAULT 0
+            dark_mode       INTEGER DEFAULT 0,
+            signature_path  TEXT DEFAULT ''
         )
     )")) {
         qCritical() << "createTables - AppConfig:" << q.lastError().text();
@@ -190,7 +191,24 @@ bool Database::migrateSchema()
         }
         qDebug() << "migrateSchema - added dark_mode column to AppConfig";
     }
+    // ── Check for signature_path column in AppConfig ──────────────────────────
+    q.exec("PRAGMA table_info(AppConfig)");
+    bool hasSignaturePath = false;
+    while (q.next()) {
+        if (q.value("name").toString() == "signature_path") {
+            hasSignaturePath = true;
+            break;
+        }
+    }
 
+    if (!hasSignaturePath) {
+        if (!q.exec("ALTER TABLE AppConfig ADD COLUMN signature_path TEXT DEFAULT ''")) {
+            qWarning() << "migrateSchema - failed to add signature_path column:"
+                       << q.lastError().text();
+            return false;
+        }
+        qDebug() << "migrateSchema - added signature_path column to AppConfig";
+    }
     return true;
 }
 
@@ -329,7 +347,8 @@ AppConfig Database::loadConfig()
     QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
     QSqlQuery q(db);
     q.exec("SELECT id, company_name, contact_name, phone, email, logo_path, "
-           "tax_label, tax_rate, configured, dark_mode FROM AppConfig WHERE id = 1");
+           "tax_label, tax_rate, configured, dark_mode, signature_path "
+           "FROM AppConfig WHERE id = 1");
 
     if (q.next()) {
         config.companyName  = q.value("company_name").toString();
@@ -341,6 +360,7 @@ AppConfig Database::loadConfig()
         config.taxRate      = q.value("tax_rate").toDouble();
         config.configured   = q.value("configured").toInt() == 1;
         config.darkMode     = q.value("dark_mode").toInt() == 1;
+        config.signaturePath = q.value("signature_path").toString();
     }
     return config;
 }
@@ -358,8 +378,8 @@ bool Database::saveConfig(const AppConfig &config)
     q.prepare(R"(
         INSERT OR REPLACE INTO AppConfig
             (id, company_name, contact_name, phone, email, logo_path,
-             tax_label, tax_rate, configured, dark_mode)
-        VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+             tax_label, tax_rate, configured, dark_mode, signature_path)
+        VALUES (1, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
     )");
     q.addBindValue(config.companyName);
     q.addBindValue(config.contactName);
@@ -370,6 +390,7 @@ bool Database::saveConfig(const AppConfig &config)
     q.addBindValue(config.taxRate);
     q.addBindValue(config.configured ? 1 : 0);
     q.addBindValue(config.darkMode ? 1 : 0);
+    q.addBindValue(config.signaturePath);
 
     if (!q.exec()) {
         qWarning() << "saveConfig failed:" << q.lastError().text();

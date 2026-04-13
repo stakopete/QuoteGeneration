@@ -28,6 +28,9 @@
 #include "pricesection.h"
 #include "scopesection.h"
 #include "exclusionssection.h"
+#include "generalconditionssection.h"
+#include "clarificationssection.h"
+#include "signaturesection.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -245,12 +248,12 @@ void MainWindow::setupTabs()
     m_tabs->addTab(m_scopeSection, "Scope");
     m_exclusionsSection = new ExclusionsSection();
     m_tabs->addTab(m_exclusionsSection, "Exclusions");
-    m_tabs->addTab(makePlaceholder("General Conditions"),
-                   "General");
-    m_tabs->addTab(makePlaceholder("Clarifications"),
-                   "Clarifications");
-    m_tabs->addTab(makePlaceholder("Signature Block"),
-                   "Signature");
+    m_generalSection = new GeneralConditionsSection();
+    m_tabs->addTab(m_generalSection, "General");
+    m_clarificationsSection = new ClarificationsSection();
+    m_tabs->addTab(m_clarificationsSection, "Clarifications");
+    m_signatureSection = new SignatureSection();
+    m_tabs->addTab(m_signatureSection, "Signature");
 
     // ── Central widget ────────────────────────────────────────────────────────
     // QMainWindow requires a central widget. We wrap the logo banner

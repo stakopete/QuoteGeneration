@@ -477,6 +477,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/clarificationssection.h",
+			"MU",
+			"EWIEGA46WW/moc_clarificationssection.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/configdialog.h",
 			"MU",
 			"EWIEGA46WW/moc_configdialog.cpp",
@@ -495,6 +501,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/generalconditionssection.h",
+			"MU",
+			"EWIEGA46WW/moc_generalconditionssection.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -510,6 +522,12 @@
 			"D:/Qt_Projects/QuoteGeneration/scopesection.h",
 			"MU",
 			"EWIEGA46WW/moc_scopesection.cpp",
+			null
+		],
+		[
+			"D:/Qt_Projects/QuoteGeneration/signaturesection.h",
+			"MU",
+			"EWIEGA46WW/moc_signaturesection.cpp",
 			null
 		],
 		[
@@ -611,13 +629,24 @@
 	[
 		[ "D:/Qt_Projects/QuoteGeneration/animatedbutton.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/basissection.cpp", "MU", null ],
+		[
+			"D:/Qt_Projects/QuoteGeneration/clarificationssection.cpp",
+			"MU",
+			null
+		],
 		[ "D:/Qt_Projects/QuoteGeneration/configdialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/database.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp", "MU", null ],
+		[
+			"D:/Qt_Projects/QuoteGeneration/generalconditionssection.cpp",
+			"MU",
+			null
+		],
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/pricesection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/scopesection.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/signaturesection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/stylemanager.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/systemsection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/titlesection.cpp", "MU", null ]

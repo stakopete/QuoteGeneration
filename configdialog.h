@@ -52,6 +52,8 @@ private slots:
     // Validates all fields and accepts the dialog if everything is filled in.
     void onSave();
 
+    void onBrowseSignature();
+
 private:
     // ── Helper methods ────────────────────────────────────────────────────────
     void setupUi();
@@ -73,6 +75,11 @@ private:
     // QDoubleSpinBox is a number field that accepts decimal values.
     // We use it for the tax rate (e.g. 10.0, 20.0).
     QDoubleSpinBox *m_taxRate;
+
+    //Signature Path
+    QLineEdit      *m_signaturePath;
+    QPushButton    *m_browseSignatureButton;
+    QLabel         *m_signaturePreview;
 
     // Buttons
     QPushButton    *m_browseButton;

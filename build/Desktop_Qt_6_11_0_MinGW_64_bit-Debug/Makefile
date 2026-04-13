@@ -226,6 +226,30 @@ basissection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/basissection.cpp.s
 .PHONY : basissection.cpp.s
 
+clarificationssection.obj: clarificationssection.cpp.obj
+.PHONY : clarificationssection.obj
+
+# target to build an object file
+clarificationssection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/clarificationssection.cpp.obj
+.PHONY : clarificationssection.cpp.obj
+
+clarificationssection.i: clarificationssection.cpp.i
+.PHONY : clarificationssection.i
+
+# target to preprocess a source file
+clarificationssection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/clarificationssection.cpp.i
+.PHONY : clarificationssection.cpp.i
+
+clarificationssection.s: clarificationssection.cpp.s
+.PHONY : clarificationssection.s
+
+# target to generate assembly for a file
+clarificationssection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/clarificationssection.cpp.s
+.PHONY : clarificationssection.cpp.s
+
 configdialog.obj: configdialog.cpp.obj
 .PHONY : configdialog.obj
 
@@ -297,6 +321,30 @@ exclusionssection.s: exclusionssection.cpp.s
 exclusionssection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.s
 .PHONY : exclusionssection.cpp.s
+
+generalconditionssection.obj: generalconditionssection.cpp.obj
+.PHONY : generalconditionssection.obj
+
+# target to build an object file
+generalconditionssection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj
+.PHONY : generalconditionssection.cpp.obj
+
+generalconditionssection.i: generalconditionssection.cpp.i
+.PHONY : generalconditionssection.i
+
+# target to preprocess a source file
+generalconditionssection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.i
+.PHONY : generalconditionssection.cpp.i
+
+generalconditionssection.s: generalconditionssection.cpp.s
+.PHONY : generalconditionssection.s
+
+# target to generate assembly for a file
+generalconditionssection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.s
+.PHONY : generalconditionssection.cpp.s
 
 main.obj: main.cpp.obj
 .PHONY : main.obj
@@ -394,6 +442,30 @@ scopesection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/scopesection.cpp.s
 .PHONY : scopesection.cpp.s
 
+signaturesection.obj: signaturesection.cpp.obj
+.PHONY : signaturesection.obj
+
+# target to build an object file
+signaturesection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.obj
+.PHONY : signaturesection.cpp.obj
+
+signaturesection.i: signaturesection.cpp.i
+.PHONY : signaturesection.i
+
+# target to preprocess a source file
+signaturesection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.i
+.PHONY : signaturesection.cpp.i
+
+signaturesection.s: signaturesection.cpp.s
+.PHONY : signaturesection.s
+
+# target to generate assembly for a file
+signaturesection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.s
+.PHONY : signaturesection.cpp.s
+
 stylemanager.obj: stylemanager.cpp.obj
 .PHONY : stylemanager.obj
 
@@ -486,6 +558,9 @@ help:
 	@echo ... basissection.obj
 	@echo ... basissection.i
 	@echo ... basissection.s
+	@echo ... clarificationssection.obj
+	@echo ... clarificationssection.i
+	@echo ... clarificationssection.s
 	@echo ... configdialog.obj
 	@echo ... configdialog.i
 	@echo ... configdialog.s
@@ -495,6 +570,9 @@ help:
 	@echo ... exclusionssection.obj
 	@echo ... exclusionssection.i
 	@echo ... exclusionssection.s
+	@echo ... generalconditionssection.obj
+	@echo ... generalconditionssection.i
+	@echo ... generalconditionssection.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s
@@ -507,6 +585,9 @@ help:
 	@echo ... scopesection.obj
 	@echo ... scopesection.i
 	@echo ... scopesection.s
+	@echo ... signaturesection.obj
+	@echo ... signaturesection.i
+	@echo ... signaturesection.s
 	@echo ... stylemanager.obj
 	@echo ... stylemanager.i
 	@echo ... stylemanager.s
