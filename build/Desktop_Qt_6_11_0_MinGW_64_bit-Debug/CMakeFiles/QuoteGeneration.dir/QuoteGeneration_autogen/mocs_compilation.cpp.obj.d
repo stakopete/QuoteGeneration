@@ -440,6 +440,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_pricesection.cpp \
  D:/Qt_Projects/QuoteGeneration/pricesection.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_scopesection.cpp \
+ D:/Qt_Projects/QuoteGeneration/scopesection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_systemsection.cpp \
  D:/Qt_Projects/QuoteGeneration/systemsection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_titlesection.cpp \

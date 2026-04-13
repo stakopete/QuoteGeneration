@@ -242,12 +242,44 @@ QString StyleManager::listWidgetStyle() const
         QListWidget::item:hover {
             background-color: %5;
         }
+        QScrollBar:vertical {
+            background: %5;
+            width: 16px;
+            border: 1px solid %3;
+        }
+        QScrollBar::handle:vertical {
+            background: %4;
+            min-height: 20px;
+            border-radius: 2px;
+        }
+        QScrollBar::add-line:vertical {
+            background: %5;
+            height: 16px;
+            subcontrol-position: bottom;
+            subcontrol-origin: margin;
+        }
+        QScrollBar::sub-line:vertical {
+            background: %5;
+            height: 16px;
+            subcontrol-position: top;
+            subcontrol-origin: margin;
+        }
+        QScrollBar::up-arrow:vertical,
+        QScrollBar::down-arrow:vertical {
+            width: 0;
+            height: 0;
+        }
+        QScrollBar::add-page:vertical,
+        QScrollBar::sub-page:vertical {
+            background: none;
+        }
     )")
         .arg(textColour(),
              inputBackground(),
              borderColour(),
              selectionBackground(),
-             panelBackground());
+             panelBackground()
+             );
 }
 
 QString StyleManager::textEditStyle() const

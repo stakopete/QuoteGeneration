@@ -26,6 +26,7 @@
 #include <QTabBar>
 #include "basissection.h"
 #include "pricesection.h"
+#include "scopesection.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -239,8 +240,8 @@ void MainWindow::setupTabs()
     m_tabs->addTab(m_basisSection, "Basis");
     m_priceSection = new PriceSection();
     m_tabs->addTab(m_priceSection, "Price");
-    m_tabs->addTab(makePlaceholder("Scope of Works"),
-                   "Scope");
+    m_scopeSection = new ScopeSection();
+    m_tabs->addTab(m_scopeSection, "Scope");
     m_tabs->addTab(makePlaceholder("Exclusions"),
                    "Exclusions");
     m_tabs->addTab(makePlaceholder("General Conditions"),

@@ -48,6 +48,8 @@ set(PROJECT_SOURCES
     basissection.cpp
     pricesection.h
     pricesection.cpp
+    scopesection.h
+    scopesection.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -60,6 +62,10 @@ qt_add_executable(QuoteGeneration
     stylemanager.cpp
     basissection.h
     basissection.cpp
+    pricesection.h
+    pricesection.cpp
+    scopesection.cpp
+    scopesection.h
 
 
 )

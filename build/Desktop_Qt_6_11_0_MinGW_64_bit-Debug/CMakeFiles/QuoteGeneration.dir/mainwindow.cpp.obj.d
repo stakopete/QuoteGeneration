@@ -461,4 +461,5 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qtabbar.h \
  D:\Qt_Projects\QuoteGeneration\basissection.h \
  D:\Qt_Projects\QuoteGeneration\pricesection.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
+ D:\Qt_Projects\QuoteGeneration\scopesection.h

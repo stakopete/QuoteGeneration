@@ -15,6 +15,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/systemsection.cpp.obj"

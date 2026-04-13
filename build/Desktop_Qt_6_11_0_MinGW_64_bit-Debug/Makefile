@@ -346,6 +346,30 @@ pricesection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/pricesection.cpp.s
 .PHONY : pricesection.cpp.s
 
+scopesection.obj: scopesection.cpp.obj
+.PHONY : scopesection.obj
+
+# target to build an object file
+scopesection.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj
+.PHONY : scopesection.cpp.obj
+
+scopesection.i: scopesection.cpp.i
+.PHONY : scopesection.i
+
+# target to preprocess a source file
+scopesection.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/scopesection.cpp.i
+.PHONY : scopesection.cpp.i
+
+scopesection.s: scopesection.cpp.s
+.PHONY : scopesection.s
+
+# target to generate assembly for a file
+scopesection.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/scopesection.cpp.s
+.PHONY : scopesection.cpp.s
+
 stylemanager.obj: stylemanager.cpp.obj
 .PHONY : stylemanager.obj
 
@@ -453,6 +477,9 @@ help:
 	@echo ... pricesection.obj
 	@echo ... pricesection.i
 	@echo ... pricesection.s
+	@echo ... scopesection.obj
+	@echo ... scopesection.i
+	@echo ... scopesection.s
 	@echo ... stylemanager.obj
 	@echo ... stylemanager.i
 	@echo ... stylemanager.s
