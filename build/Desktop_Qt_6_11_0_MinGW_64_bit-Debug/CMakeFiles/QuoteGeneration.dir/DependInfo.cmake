@@ -19,6 +19,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Qt_Projects/QuoteGeneration/main.cpp" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/pricesection.cpp" "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj.d"
+  "D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.cpp" "CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/scopesection.cpp" "CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/signaturesection.cpp" "CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/stylemanager.cpp" "CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/stylemanager.cpp.obj.d"

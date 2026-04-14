@@ -34,6 +34,7 @@
 #include <QTimer>
 #include <QCloseEvent>
 #include <QDate>
+#include "quotepreviewdialog.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -502,8 +503,31 @@ void MainWindow::onOpenQuote()
 
 void MainWindow::onPreviewQuote()
 {
-    // Phase 5 — not yet implemented
-    statusBar()->showMessage("Preview — coming in Phase 5", 3000);
+    // Must have at least a site name before previewing.
+    if (m_titleSection->siteName().isEmpty()) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Cannot Preview");
+        msgBox.setText(
+            "Please enter a Site / Project Name in the Title section "
+            "before previewing the quote."
+            );
+        msgBox.setIcon(QMessageBox::Information);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
+        return;
+    }
+
+    // Save current state before previewing.
+    saveCurrentQuote();
+
+    // Get current price rows.
+    QList<PriceRow> rows = m_priceSection->priceRows();
+
+    // Open the preview dialog.
+    QuotePreviewDialog dlg(m_currentQuote, rows, this);
+    dlg.exec();
 }
 
 void MainWindow::onGeneratePdf()

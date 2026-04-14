@@ -519,6 +519,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_quotepreviewdialog.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/scopesection.h",
 			"MU",
 			"EWIEGA46WW/moc_scopesection.cpp",
@@ -645,6 +651,7 @@
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/pricesection.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/scopesection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/signaturesection.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/stylemanager.cpp", "MU", null ],

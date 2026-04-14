@@ -418,6 +418,30 @@ pricesection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/pricesection.cpp.s
 .PHONY : pricesection.cpp.s
 
+quotepreviewdialog.obj: quotepreviewdialog.cpp.obj
+.PHONY : quotepreviewdialog.obj
+
+# target to build an object file
+quotepreviewdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj
+.PHONY : quotepreviewdialog.cpp.obj
+
+quotepreviewdialog.i: quotepreviewdialog.cpp.i
+.PHONY : quotepreviewdialog.i
+
+# target to preprocess a source file
+quotepreviewdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.i
+.PHONY : quotepreviewdialog.cpp.i
+
+quotepreviewdialog.s: quotepreviewdialog.cpp.s
+.PHONY : quotepreviewdialog.s
+
+# target to generate assembly for a file
+quotepreviewdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.s
+.PHONY : quotepreviewdialog.cpp.s
+
 scopesection.obj: scopesection.cpp.obj
 .PHONY : scopesection.obj
 
@@ -582,6 +606,9 @@ help:
 	@echo ... pricesection.obj
 	@echo ... pricesection.i
 	@echo ... pricesection.s
+	@echo ... quotepreviewdialog.obj
+	@echo ... quotepreviewdialog.i
+	@echo ... quotepreviewdialog.s
 	@echo ... scopesection.obj
 	@echo ... scopesection.i
 	@echo ... scopesection.s

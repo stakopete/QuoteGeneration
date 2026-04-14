@@ -130,7 +130,7 @@ void ExclusionsSection::setupUi()
     QVBoxLayout *customLayout = new QVBoxLayout(customGroup);
 
     QLabel *customHint = new QLabel(
-        "Custom exclusions are limited to 128 characters including spaces."
+        "Custom exclusions are limited to 256 characters including spaces."
         );
     customHint->setWordWrap(true);
     customLayout->addWidget(customHint);
@@ -141,7 +141,7 @@ void ExclusionsSection::setupUi()
     m_customClause->setPlaceholderText(
         "Type a custom exclusion (max 128 characters)..."
         );
-    m_customClause->setMaxLength(128);
+    m_customClause->setMaxLength(256);
     connect(m_customClause, &QLineEdit::textChanged,
             this, &ExclusionsSection::onCustomTextChanged);
     customInputRow->addWidget(m_customClause);
@@ -390,11 +390,11 @@ void ExclusionsSection::onCustomTextChanged(const QString &text)
 {
     int count = text.length();
     m_charCountLabel->setText(
-        QString("%1 / 128 characters").arg(count)
+        QString("%1 / 256 characters").arg(count)
         );
 
     // Turn red when approaching the 128 character limit.
-    if (count >= 110) {
+    if (count >= 240) {
         m_charCountLabel->setStyleSheet(
             "QLabel { color: #cc0000; font-size: 11px; }"
             );
