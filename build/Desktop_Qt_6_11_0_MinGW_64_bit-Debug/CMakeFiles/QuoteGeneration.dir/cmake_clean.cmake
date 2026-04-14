@@ -23,6 +23,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/scopesection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.obj"

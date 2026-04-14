@@ -54,8 +54,8 @@ void ScopeSection::setupUi()
     listsLayout->setSpacing(8);
 
     // ── Wet Fire list ─────────────────────────────────────────────────────────
-    QLabel *wetLabel = new QLabel("Wet Fire Scope Items:");
-    listsLayout->addWidget(wetLabel, 0, 0);
+    m_wetLabel = new QLabel("Wet Fire Scope Items:");
+    listsLayout->addWidget(m_wetLabel, 0, 0);
 
     m_wetClauseList = new QListWidget();
     m_wetClauseList->setMaximumHeight(180);
@@ -82,8 +82,8 @@ void ScopeSection::setupUi()
     listsLayout->addLayout(wetBtnRow, 2, 0);
 
     // ── Dry Fire list ─────────────────────────────────────────────────────────
-    QLabel *dryLabel = new QLabel("Dry Fire Scope Items:");
-    listsLayout->addWidget(dryLabel, 0, 1);
+    m_dryLabel = new QLabel("Dry Fire Scope Items:");
+    listsLayout->addWidget(m_dryLabel, 0, 1);
 
     m_dryClauseList = new QListWidget();
     m_dryClauseList->setMaximumHeight(180);
@@ -435,4 +435,18 @@ bool ScopeSection::isComplete() const
 void ScopeSection::loadData(const QString &text)
 {
     m_scopeText->setPlainText(text);
+}
+
+void ScopeSection::setQuoteType(const QString &type)
+{
+    bool showWet = (type == "Wet" || type == "Combined");
+    bool showDry = (type == "Dry" || type == "Combined");
+
+    m_wetLabel->setVisible(showWet);
+    m_wetClauseList->setVisible(showWet);
+    m_addWetButton->setVisible(showWet);
+
+    m_dryLabel->setVisible(showDry);
+    m_dryClauseList->setVisible(showDry);
+    m_addDryButton->setVisible(showDry);
 }

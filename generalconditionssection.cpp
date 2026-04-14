@@ -67,8 +67,8 @@ void GeneralConditionsSection::setupUi()
     listsLayout->setSpacing(8);
 
     // ── Wet Fire conditions ───────────────────────────────────────────────────
-    QLabel *wetLabel = new QLabel("Wet Fire General Conditions:");
-    listsLayout->addWidget(wetLabel, 0, 0);
+    m_wetLabel = new QLabel("Wet Fire General Conditions:");
+    listsLayout->addWidget(m_wetLabel, 0, 0);
 
     m_wetClauseList = new QListWidget();
     m_wetClauseList->setMaximumHeight(160);
@@ -94,8 +94,8 @@ void GeneralConditionsSection::setupUi()
     listsLayout->addLayout(wetBtnRow, 2, 0);
 
     // ── Dry Fire conditions ───────────────────────────────────────────────────
-    QLabel *dryLabel = new QLabel("Dry Fire General Conditions:");
-    listsLayout->addWidget(dryLabel, 0, 1);
+    m_dryLabel = new QLabel("Dry Fire General Conditions:");
+    listsLayout->addWidget(m_dryLabel, 0, 1);
 
     m_dryClauseList = new QListWidget();
     m_dryClauseList->setMaximumHeight(160);
@@ -420,4 +420,18 @@ bool GeneralConditionsSection::isComplete() const
 void GeneralConditionsSection::loadData(const QString &text)
 {
     m_generalText->setPlainText(text);
+}
+
+void GeneralConditionsSection::setQuoteType(const QString &type)
+{
+    bool showWet = (type == "Wet" || type == "Combined");
+    bool showDry = (type == "Dry" || type == "Combined");
+
+    m_wetLabel->setVisible(showWet);
+    m_wetClauseList->setVisible(showWet);
+    m_addWetButton->setVisible(showWet);
+
+    m_dryLabel->setVisible(showDry);
+    m_dryClauseList->setVisible(showDry);
+    m_addDryButton->setVisible(showDry);
 }

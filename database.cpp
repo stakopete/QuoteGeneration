@@ -98,7 +98,8 @@ bool Database::createTables()
             email_to            TEXT DEFAULT '',
             logo_on_all_pages   INTEGER DEFAULT 0,
             suppress_warnings   INTEGER DEFAULT 0,
-            last_saved          TEXT DEFAULT ''
+            last_saved          TEXT DEFAULT '',
+            quote_type          TEXT DEFAULT 'Combined'
         )
     )")) {
         qCritical() << "createTables - Quotes:" << q.lastError().text();
@@ -233,6 +234,22 @@ bool Database::migrateSchema()
         q.exec("ALTER TABLE Quotes ADD COLUMN "
                "signatory_name TEXT DEFAULT ''");
         qDebug() << "migrateSchema - added signatory_name to Quotes";
+    }
+
+    // ── Check for quote_type column in Quotes ─────────────────────────────────
+    q.exec("PRAGMA table_info(Quotes)");
+    bool hasQuoteType = false;
+    while (q.next()) {
+        if (q.value("name").toString() == "quote_type") {
+            hasQuoteType = true;
+            break;
+        }
+    }
+
+    if (!hasQuoteType) {
+        q.exec("ALTER TABLE Quotes ADD COLUMN "
+               "quote_type TEXT DEFAULT 'Combined'");
+        qDebug() << "migrateSchema - added quote_type to Quotes";
     }
 
     return true;
@@ -520,9 +537,9 @@ QuoteData Database::saveQuote(const QuoteData &quote)
                 system_text, basis_text, scope_text, exclusions,
                 general_conditions, clarifications, contact_statement,
                 signatory_name, status, expiry_date, email_to,
-                logo_on_all_pages, suppress_warnings, last_saved
+logo_on_all_pages, suppress_warnings, last_saved, quote_type
             ) VALUES (
-                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
+                ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?
             )
         )");
 
@@ -545,6 +562,7 @@ QuoteData Database::saveQuote(const QuoteData &quote)
         q.addBindValue(quote.logoOnAllPages ? 1 : 0);
         q.addBindValue(quote.suppressWarnings ? 1 : 0);
         q.addBindValue(now);
+        q.addBindValue(quote.quoteType);
 
         if (q.exec())
             saved.id = q.lastInsertId().toInt();
@@ -561,7 +579,7 @@ QuoteData Database::saveQuote(const QuoteData &quote)
                 clarifications = ?, contact_statement = ?,
                 signatory_name = ?, status = ?, expiry_date = ?,
                 email_to = ?, logo_on_all_pages = ?,
-                suppress_warnings = ?, last_saved = ?
+                suppress_warnings = ?, last_saved = ?, quote_type = ?
             WHERE id = ?
         )");
 
@@ -582,6 +600,7 @@ QuoteData Database::saveQuote(const QuoteData &quote)
         q.addBindValue(quote.logoOnAllPages ? 1 : 0);
         q.addBindValue(quote.suppressWarnings ? 1 : 0);
         q.addBindValue(now);
+        q.addBindValue(quote.quoteType);
         q.addBindValue(quote.id);
 
         if (!q.exec())
@@ -623,6 +642,7 @@ QuoteData Database::loadQuote(int id)
         quote.logoOnAllPages    = q.value("logo_on_all_pages").toInt() == 1;
         quote.suppressWarnings  = q.value("suppress_warnings").toInt() == 1;
         quote.lastSaved         = q.value("last_saved").toString();
+        quote.quoteType         = q.value("quote_type").toString();
     }
     return quote;
 }

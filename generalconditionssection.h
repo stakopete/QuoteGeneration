@@ -37,6 +37,8 @@ public:
     // Loads previously saved data.
     void loadData(const QString &text);
 
+    void setQuoteType(const QString &type);
+
 signals:
     void dataChanged();
 
@@ -64,6 +66,9 @@ private:
     AnimatedButton *m_addCustomButton;
     AnimatedButton *m_removeButton;
     AnimatedButton *m_clearButton;
+
+    QLabel         *m_wetLabel;
+    QLabel         *m_dryLabel;
 };
 
 #endif // GENERALCONDITIONSSECTION_H

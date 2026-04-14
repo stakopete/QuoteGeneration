@@ -442,6 +442,30 @@ quotepreviewdialog.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.s
 .PHONY : quotepreviewdialog.cpp.s
 
+quotetypedialog.obj: quotetypedialog.cpp.obj
+.PHONY : quotetypedialog.obj
+
+# target to build an object file
+quotetypedialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.obj
+.PHONY : quotetypedialog.cpp.obj
+
+quotetypedialog.i: quotetypedialog.cpp.i
+.PHONY : quotetypedialog.i
+
+# target to preprocess a source file
+quotetypedialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.i
+.PHONY : quotetypedialog.cpp.i
+
+quotetypedialog.s: quotetypedialog.cpp.s
+.PHONY : quotetypedialog.s
+
+# target to generate assembly for a file
+quotetypedialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.s
+.PHONY : quotetypedialog.cpp.s
+
 scopesection.obj: scopesection.cpp.obj
 .PHONY : scopesection.obj
 
@@ -609,6 +633,9 @@ help:
 	@echo ... quotepreviewdialog.obj
 	@echo ... quotepreviewdialog.i
 	@echo ... quotepreviewdialog.s
+	@echo ... quotetypedialog.obj
+	@echo ... quotetypedialog.i
+	@echo ... quotetypedialog.s
 	@echo ... scopesection.obj
 	@echo ... scopesection.i
 	@echo ... scopesection.s

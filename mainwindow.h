@@ -28,6 +28,7 @@ class ExclusionsSection;
 class GeneralConditionsSection;
 class ClarificationsSection;
 class SignatureSection;
+class QuoteTypeDialog;
 
 class MainWindow : public QMainWindow
 {
@@ -51,7 +52,7 @@ private slots:
     void onQuoteDataChanged();
     void saveCurrentQuote();
     void loadQuote(int id);
-    void newQuote();
+    void newQuote(const QString &quoteType = "Combined");
 
 protected:
     void closeEvent(QCloseEvent *event) override;

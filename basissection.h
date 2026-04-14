@@ -18,6 +18,7 @@ class QTextEdit;
 class QLineEdit;
 class QGroupBox;
 class AnimatedButton;
+class QLabel;
 
 class BasisSection : public QWidget
 {
@@ -35,6 +36,7 @@ public:
 
     // Loads previously saved data.
     void loadData(const QString &text);
+    void setQuoteType(const QString &type);
 
 signals:
     void dataChanged();
@@ -55,6 +57,9 @@ private:
     QListWidget    *m_dryClauseList;
     QTextEdit      *m_basisText;
     QLineEdit      *m_customClause;
+    QLabel         *m_charCountLabel;
+    QLabel         *m_wetLabel;
+    QLabel         *m_dryLabel;
     AnimatedButton *m_addWetButton;
     AnimatedButton *m_addDryButton;
     AnimatedButton *m_addCustomButton;

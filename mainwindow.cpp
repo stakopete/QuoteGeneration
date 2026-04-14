@@ -35,6 +35,7 @@
 #include <QCloseEvent>
 #include <QDate>
 #include "quotepreviewdialog.h"
+#include "quotetypedialog.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -492,7 +493,12 @@ void MainWindow::onNewQuote()
             saveCurrentQuote();
     }
 
-    newQuote();
+    // Show quote type selector.
+    QuoteTypeDialog typeDlg(this);
+    if (typeDlg.exec() != QDialog::Accepted)
+        return;
+
+    newQuote(typeDlg.selectedType());
 }
 
 void MainWindow::onOpenQuote()
@@ -698,6 +704,7 @@ void MainWindow::saveCurrentQuote()
         "  |  Last saved: " + m_currentQuote.lastSaved
         );
 
+
     qDebug() << "Quote saved. ID:" << m_currentQuote.id;
 }
 
@@ -757,7 +764,11 @@ void MainWindow::loadQuote(int id)
         "  Status: " + m_currentQuote.status +
         "  |  Last saved: " + m_currentQuote.lastSaved
         );
-
+    // Restore quote type visibility in all sections.
+    m_basisSection->setQuoteType(m_currentQuote.quoteType);
+    m_scopeSection->setQuoteType(m_currentQuote.quoteType);
+    m_exclusionsSection->setQuoteType(m_currentQuote.quoteType);
+    m_generalSection->setQuoteType(m_currentQuote.quoteType);
     qDebug() << "Quote loaded. ID:" << m_currentQuote.id;
 }
 
@@ -766,9 +777,15 @@ void MainWindow::loadQuote(int id)
 //
 // Resets all sections ready for a new quote.
 // ─────────────────────────────────────────────────────────────────────────────
-void MainWindow::newQuote()
+void MainWindow::newQuote(const QString &quoteType)
 {
     m_currentQuote  = QuoteData();
+    m_currentQuote.quoteType = quoteType;
+    // Update all sections to show appropriate clause lists.
+    m_basisSection->setQuoteType(quoteType);
+    m_scopeSection->setQuoteType(quoteType);
+    m_exclusionsSection->setQuoteType(quoteType);
+    m_generalSection->setQuoteType(quoteType);
     m_quoteModified = false;
 
     // Reset all sections to empty.

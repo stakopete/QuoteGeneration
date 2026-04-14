@@ -65,6 +65,7 @@ struct QuoteData {
     bool    logoOnAllPages  = false;
     bool    suppressWarnings = false;
     QString lastSaved;
+    QString quoteType = "Combined";  // Wet, Dry, Combined, General
 };
 
 // Represents one row in the price grid.

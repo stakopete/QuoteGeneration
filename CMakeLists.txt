@@ -60,6 +60,8 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/signaturesection.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/quotepreviewdialog.h
     ${CMAKE_CURRENT_SOURCE_DIR}/quotepreviewdialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/quotetypedialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/quotetypedialog.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -86,6 +88,8 @@ qt_add_executable(QuoteGeneration
        signaturesection.cpp
        quotepreviewdialog.h
        quotepreviewdialog.cpp
+       quotetypedialog.h
+       quotetypedialog.cpp
 
 
 )

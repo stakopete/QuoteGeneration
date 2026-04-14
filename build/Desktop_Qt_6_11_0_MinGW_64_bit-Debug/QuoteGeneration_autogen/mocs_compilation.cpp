@@ -8,6 +8,7 @@
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "EWIEGA46WW/moc_pricesection.cpp"
 #include "EWIEGA46WW/moc_quotepreviewdialog.cpp"
+#include "EWIEGA46WW/moc_quotetypedialog.cpp"
 #include "EWIEGA46WW/moc_scopesection.cpp"
 #include "EWIEGA46WW/moc_signaturesection.cpp"
 #include "EWIEGA46WW/moc_systemsection.cpp"
