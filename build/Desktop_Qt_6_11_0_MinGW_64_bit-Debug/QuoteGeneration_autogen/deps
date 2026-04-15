@@ -726,6 +726,8 @@ QuoteGeneration_autogen/timestamp: \
 	D:/Qt_Projects/QuoteGeneration/mainwindow.h \
 	D:/Qt_Projects/QuoteGeneration/pricesection.cpp \
 	D:/Qt_Projects/QuoteGeneration/pricesection.h \
+	D:/Qt_Projects/QuoteGeneration/quotepdfgenerator.cpp \
+	D:/Qt_Projects/QuoteGeneration/quotepdfgenerator.h \
 	D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.cpp \
 	D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.h \
 	D:/Qt_Projects/QuoteGeneration/quotetypedialog.cpp \

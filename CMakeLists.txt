@@ -66,6 +66,8 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/dropdownmanagerdialog.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/editoptiondialog.h
     ${CMAKE_CURRENT_SOURCE_DIR}/editoptiondialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/quotepdfgenerator.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/quotepdfgenerator.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -98,6 +100,8 @@ qt_add_executable(QuoteGeneration
        editoptiondialog.cpp
        dropdownmanagerdialog.h
        dropdownmanagerdialog.cpp
+       quotepdfgenerator.h
+       quotepdfgenerator.cpp
 
 
 )

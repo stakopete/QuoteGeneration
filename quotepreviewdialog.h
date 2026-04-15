@@ -29,6 +29,8 @@ public:
 
 private slots:
     void onClose();
+    void onGeneratePdf();  // Saves the current quote to a PDF file
+
 
 protected:
     void resizeEvent(QResizeEvent *event) override;
@@ -54,6 +56,7 @@ private:
     QLabel         *m_logoBanner;
     AnimatedButton *m_closeButton;
     AnimatedButton *m_printButton;
+
 
     // ── Data ──────────────────────────────────────────────────────────────────
     QuoteData        m_quote;

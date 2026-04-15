@@ -6145,3 +6145,5 @@ D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.h
  mdp:C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h
  mdp:D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteGeneration_autogen/moc_predefs.h
  mdp:D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.h
+D:/Qt_Projects/QuoteGeneration/quotepdfgenerator.h
+D:/Qt_Projects/QuoteGeneration/quotepdfgenerator.cpp

@@ -1,5 +1,16 @@
 // ─────────────────────────────────────────────────────────────────────────────
 // quotepreviewdialog.cpp
+//
+// Screen preview of the quote. The HTML built here deliberately mirrors the
+// PDF generator so what you see on screen matches what is printed.
+//
+// Key rules carried over from the PDF generator:
+//   1. No <h2> tags — QTextDocument applies its own size multiplier to <h2>
+//      that overrides any font-size you specify. We use <p> with inline styles.
+//   2. No width:100% on tables — QTextDocument ignores it. We use width:100%
+//      via the HTML width attribute instead (width='100%' on the <table> tag).
+//   3. All font sizes are inline style attributes — <style> block rules are
+//      not reliably applied to block elements by QTextDocument.
 // ─────────────────────────────────────────────────────────────────────────────
 
 #include "quotepreviewdialog.h"
@@ -14,7 +25,19 @@
 #include <QLocale>
 #include <QResizeEvent>
 #include <QRegularExpression>
+#include <QDate>
+#include <QDir>
+#include "quotepdfgenerator.h"
+#include <QFileDialog>
+#include <QMessageBox>
+#include <QStandardPaths>
 
+// ─────────────────────────────────────────────────────────────────────────────
+// resizeEvent()
+//
+// Rescales the logo banner whenever the dialog is resized so it always
+// fills the full width of the window.
+// ─────────────────────────────────────────────────────────────────────────────
 void QuotePreviewDialog::resizeEvent(QResizeEvent *event)
 {
     QDialog::resizeEvent(event);
@@ -54,6 +77,11 @@ QuotePreviewDialog::QuotePreviewDialog(const QuoteData &quote,
 
 // ─────────────────────────────────────────────────────────────────────────────
 // setupUi()
+//
+// Builds the dialog layout:
+//   - Logo banner at the top (full width QLabel)
+//   - QTextEdit in read-only mode for the HTML preview
+//   - Button bar at the bottom
 // ─────────────────────────────────────────────────────────────────────────────
 void QuotePreviewDialog::setupUi()
 {
@@ -80,6 +108,7 @@ void QuotePreviewDialog::setupUi()
             );
 
     if (loaded) {
+        // Store the original so resizeEvent() can rescale it cleanly.
         m_logoBanner->setProperty("originalPixmap", logo);
         m_logoBanner->setScaledContents(false);
         m_logoBanner->setPixmap(
@@ -89,16 +118,14 @@ void QuotePreviewDialog::setupUi()
                         Qt::SmoothTransformation)
             );
     } else {
-        m_logoBanner->setText(
-            "<h2>" + m_config.companyName + "</h2>"
-            );
+        m_logoBanner->setText("<b>" + m_config.companyName + "</b>");
     }
 
     mainLayout->addWidget(m_logoBanner);
 
     // ── Preview text area ─────────────────────────────────────────────────────
-    // QTextEdit in read-only mode renders HTML so we can format the
-    // quote professionally with headings, tables and font styles.
+    // Read-only QTextEdit renders HTML — same engine as QTextDocument in the
+    // PDF generator, so font sizes and styles behave identically.
     m_preview = new QTextEdit();
     m_preview->setReadOnly(true);
     m_preview->setStyleSheet(
@@ -107,8 +134,8 @@ void QuotePreviewDialog::setupUi()
         "    color: #1a1a1a;"
         "    border: none;"
         "    padding: 20px;"
-        "    font-family: Arial, sans-serif;"
-        "    font-size: 11pt;"
+        "    font-family: 'Times New Roman', Times, serif;"
+        "    font-size: 9pt;"
         "}"
         );
     mainLayout->addWidget(m_preview);
@@ -117,11 +144,11 @@ void QuotePreviewDialog::setupUi()
     QHBoxLayout *buttonRow = new QHBoxLayout();
     buttonRow->setContentsMargins(16, 8, 16, 8);
 
-    m_printButton = new AnimatedButton("Print / Save PDF");
-    m_printButton->setFixedSize(150, 40);
-    // Print will be wired up in Phase 6.
-    m_printButton->setEnabled(false);
-    m_printButton->setToolTip("PDF generation coming in Phase 6");
+    m_printButton = new AnimatedButton("Save as PDF");
+
+    m_printButton->setFixedSize(120, 40);
+    connect(m_printButton, &AnimatedButton::clicked,
+            this, &QuotePreviewDialog::onGeneratePdf);
 
     m_closeButton = new AnimatedButton("Close");
     m_closeButton->setFixedSize(120, 40);
@@ -138,151 +165,106 @@ void QuotePreviewDialog::setupUi()
 // ─────────────────────────────────────────────────────────────────────────────
 // buildPreview()
 //
-// Assembles all quote sections into a single HTML document.
-// Sections that are empty are omitted automatically.
+// Builds the complete HTML for the screen preview, mirroring the PDF layout.
 // ─────────────────────────────────────────────────────────────────────────────
 void QuotePreviewDialog::buildPreview()
 {
     QString html;
 
-    // ── Document styles ───────────────────────────────────────────────────────
+    // Minimal <style> block — body defaults only.
+    // All heading and element sizes use inline styles (see file header comment).
     html += R"(
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            font-size: 10pt;
-            color: #1a1a1a;
-            line-height: 1.5;
-            text-align: justify;
-            margin: 0;
-            padding: 0;
-        }
-        h1.quote-title {
-            font-size: 11pt;
-            color: #1a1a1a;
-            text-align: center;
-            margin-bottom: 2px;
-            margin-top: 4px;
-        }
-        h1.site-name {
-            font-size: 12pt;
-            color: #1a1a1a;
-            text-align: center;
-            font-weight: bold;
-            margin-top: 2px;
-            margin-bottom: 4px;
-        }
-        h2 {
-            font-size: 10pt;
-            color: #2c3e50;
-            border-bottom: 1px solid #2c3e50;
-            padding-bottom: 2px;
-            margin-top: 12px;
-            margin-bottom: 4px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-        h3 {
-            font-size: 10pt;
-            color: #2c3e50;
-            margin-top: 8px;
-            margin-bottom: 2px;
-            font-style: italic;
-        }
-        p {
-            margin: 3px 0;
-            font-size: 10pt;
-        }
-        p.date {
-            font-size: 9pt;
-            text-align: left;
-            margin-bottom: 4px;
-        }
-        p.draft-stamp {
-            font-size: 9pt;
-            text-align: center;
-            color: #cc0000;
-            margin: 2px 0;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 8px 0;
-            font-size: 10pt;
-        }
-        th {
-            background-color: #2c3e50;
-            color: white;
-            padding: 5px 8px;
-            text-align: left;
-            font-size: 10pt;
-        }
-        td {
-            padding: 4px 8px;
-            border-bottom: 1px solid #cccccc;
-            font-size: 10pt;
-        }
-        td.amount {
-            text-align: right;
-        }
-        td.total {
-            font-weight: bold;
-            text-align: right;
-        }
-        .total-row {
-            font-weight: bold;
-            background-color: #f5f5f5;
-        }
-        .grand-total {
-            font-weight: bold;
-            background-color: #e8eaed;
-        }
-        ol {
-            margin: 4px 0;
-            padding-left: 20px;
-            font-size: 10pt;
-        }
-        li {
-            margin: 2px 0;
-        }
-    </style>
-    )";
+<style>
+    body {
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 9pt;
+        color: #1a1a1a;
+        margin: 0;
+        padding: 0;
+    }
+    p {
+        margin: 2px 0;
+        line-height: 1.4;
+    }
+    ol {
+        margin: 4px 0;
+        padding-left: 20px;
+        font-size: 9pt;
+    }
+    li { margin: 2px 0; }
+</style>
+)";
 
-    // Draft stamp — centred.
-    html += "<p class='draft-stamp'><b>" +
-            m_quote.status.toUpper() + "</b></p>";
+    // ── Status stamp ──────────────────────────────────────────────────────────
+    html += "<p style='font-size:9pt; text-align:center; color:#cc0000;"
+            " margin:2px 0;'><b>" + m_quote.status.toUpper() + "</b></p>";
 
-    // Date — left aligned, smaller font.
-    html += "<p class='date'>" + m_quote.quoteDate + "</p>";
+    // ── Date ──────────────────────────────────────────────────────────────────
+    html += "<p style='font-size:9pt; text-align:left; margin-bottom:4px;'>"
+            + m_quote.quoteDate + "</p>";
 
-    // ── Quote title ───────────────────────────────────────────────────────────
-    html += "<p style='text-align:center; font-size:11pt; "
-            "color:#1a1a1a; margin:2px 0;'>" +
-            m_quote.titleText.toHtmlEscaped() + "</p>";
-    html += "<p style='text-align:center; font-size:12pt; "
-            "font-weight:bold; text-decoration:underline; "
-            "color:#1a1a1a; margin:2px 0;'>" +
-            m_quote.siteName.toHtmlEscaped() + "</p>";
+    // ── Quote Title — 11pt, centred, not bold ─────────────────────────────────
+    if (!m_quote.titleText.trimmed().isEmpty()) {
+        html += "<p style='font-size:11pt; text-align:center;"
+                " color:#1a1a1a; margin:2px 0;'>"
+                + m_quote.titleText.toHtmlEscaped() + "</p>";
+    }
+
+    // ── Site/Project Name — 12pt, centred, bold ───────────────────────────────
+    html += "<p style='font-size:12pt; font-weight:bold; text-align:center;"
+            " color:#1a1a1a; margin:2px 0;'>"
+            + m_quote.siteName.toHtmlEscaped() + "</p>";
+
+    // ── Quote Reference / Date table ──────────────────────────────────────────
+    // Quote Type removed. Reference format YYMMnnn e.g. 2603001.
+    QString quoteRef;
+    if (m_quote.id > 0) {
+        QDate   today = QDate::currentDate();
+        QString yy    = today.toString("yy");
+        QString mm    = today.toString("MM");
+        QString seq   = QString("%1").arg(m_quote.id, 3, 10, QChar('0'));
+        quoteRef = yy + mm + seq;
+    } else {
+        quoteRef = "Draft";
+    }
+
+    // Narrow info table — width:auto so it only takes as much space as needed.
+    html += "<table style='border-collapse:collapse; margin-top:8px;"
+            " margin-bottom:12px; width:auto;'>";
+    html += QString("<tr>"
+                    "<td style='font-size:9pt; font-weight:bold;"
+                    " padding:2px 6px 2px 0; width:25%;'>Quote Reference:</td>"
+                    "<td style='font-size:9pt; padding:2px 0;'>%1</td>"
+                    "</tr>").arg(quoteRef);
+    html += QString("<tr>"
+                    "<td style='font-size:9pt; font-weight:bold;"
+                    " padding:2px 6px 2px 0;'>Date:</td>"
+                    "<td style='font-size:9pt; padding:2px 0;'>%1</td>"
+                    "</tr>").arg(m_quote.quoteDate.toHtmlEscaped());
+    if (!m_quote.expiryDate.isEmpty()) {
+        html += QString("<tr>"
+                        "<td style='font-size:9pt; font-weight:bold;"
+                        " padding:2px 6px 2px 0;'>Valid Until:</td>"
+                        "<td style='font-size:9pt; padding:2px 0;'>%1</td>"
+                        "</tr>").arg(m_quote.expiryDate.toHtmlEscaped());
+    }
+    html += "</table>";
 
     // ── System Offered ────────────────────────────────────────────────────────
     if (!m_quote.systemText.isEmpty()) {
         html += sectionHeading("System Offered");
-        // Split into lines and render as an indented list
-        // matching the style of other sections.
-        QStringList sysLines = m_quote.systemText.split("\n",
-                                                        Qt::SkipEmptyParts);
+        QStringList sysLines = m_quote.systemText.split("\n", Qt::SkipEmptyParts);
         html += "<ol>";
-        for (const QString &line : sysLines) {
+        for (const QString &line : sysLines)
             html += "<li>" + line.trimmed().toHtmlEscaped() + "</li>";
-        }
         html += "</ol>";
     }
 
     // ── Basis of Proposal ─────────────────────────────────────────────────────
     if (!m_quote.basisText.isEmpty()) {
         html += sectionHeading("Basis of Proposal");
-        html += "<p>This proposal has been prepared in accordance "
-                "with the following: -</p>";
+        html += "<p style='font-size:9pt;'>This proposal has been prepared "
+                "in accordance with the following: -</p>";
         html += processTaggedText(m_quote.basisText,
                                   "Wet Fire Systems",
                                   "Dry Fire Systems");
@@ -321,14 +303,10 @@ void QuotePreviewDialog::buildPreview()
     // ── Clarifications ────────────────────────────────────────────────────────
     if (!m_quote.clarifications.isEmpty()) {
         html += sectionHeading("Clarifications");
-
-        // Clarifications have no Wet/Dry split — render as simple list.
-        QStringList lines = m_quote.clarifications.split("\n",
-                                                         Qt::SkipEmptyParts);
+        QStringList lines = m_quote.clarifications.split("\n", Qt::SkipEmptyParts);
         html += "<ol>";
         for (const QString &line : lines) {
             QString text = line.trimmed();
-            // Strip number prefix if present.
             int dotPos = text.indexOf(". ");
             if (dotPos > 0 && dotPos < 4)
                 text = text.mid(dotPos + 2);
@@ -337,26 +315,32 @@ void QuotePreviewDialog::buildPreview()
         html += "</ol>";
     }
 
-    // ── Signature Block ───────────────────────────────────────────────────────
-    html += "<br><br>";
-    html += "<p>" + m_quote.contactStatement.toHtmlEscaped()
-                        .replace("\n", "<br>") + "</p>";
-    html += "<br>";
-    html += "<p>Yours Sincerely,</p>";
-    html += "<br>";
+    // ── Signature block ───────────────────────────────────────────────────────
+    // No "Authorisation" heading. Contact statement is 9pt bold.
+    // No "Authorised Signatory" label.
+    html += "<p style='margin-top:16px;'></p>";
 
-    // Signature image.
+    if (!m_quote.contactStatement.trimmed().isEmpty()) {
+        html += "<p style='font-size:9pt; font-weight:bold;'>"
+                + m_quote.contactStatement.toHtmlEscaped()
+                      .replace("\n", "<br>")
+                + "</p>";
+    }
+
+    html += "<p style='font-size:9pt; margin-top:8px;'>Yours Sincerely,</p>";
+    html += "<p style='margin-top:20px;'></p>";
+
     if (!m_config.signaturePath.isEmpty()) {
         html += QString("<img src='%1' height='70'><br>")
         .arg(m_config.signaturePath);
     } else {
-        html += "<br><br><br>";
+        html += "<p style='margin:30px 0;'></p>";
     }
 
-    html += "<p><b>" + m_quote.signatoryName + "</b></p>";
-    html += "<p>" + m_config.companyName + "</p>";
-    html += "<p>" + m_config.phone + "</p>";
-    html += "<p>" + m_config.email + "</p>";
+    html += "<p style='font-size:9pt;'><b>"
+            + m_quote.signatoryName.toHtmlEscaped() + "</b></p>";
+    html += "<p style='font-size:9pt;'>"
+            + m_config.companyName.toHtmlEscaped() + "</p>";
 
     m_preview->setHtml(html);
 }
@@ -364,23 +348,30 @@ void QuotePreviewDialog::buildPreview()
 // ─────────────────────────────────────────────────────────────────────────────
 // sectionHeading()
 //
-// Returns an HTML section heading.
+// Returns a styled section heading as a <p> tag with inline styles.
+// We use <p> rather than <h2> because QTextDocument overrides the font-size
+// on <h2> tags regardless of what you specify — <p> gives exact control.
 // ─────────────────────────────────────────────────────────────────────────────
 QString QuotePreviewDialog::sectionHeading(const QString &title) const
 {
     return QString(
-        "<p style='"
-        "font-size:9pt;"
-        "font-weight:bold;"
-        "text-decoration:underline;"
-        "color:#2c3e50;"
-        "margin-top:12px;"
-        "margin-bottom:4px;"
-        "letter-spacing:1px;"
-        "'>" + title.toUpper() + "</p>"
-        );
+               "<p style='"
+               "font-size:10pt;"
+               "font-weight:bold;"
+               "text-decoration:underline;"
+               "color:#2c3e50;"
+               "margin-top:14px;"
+               "margin-bottom:4px;"
+               "'>%1</p>"
+               ).arg(title.toHtmlEscaped());
 }
 
+// ─────────────────────────────────────────────────────────────────────────────
+// processTaggedText()
+//
+// Splits text into [WET], [DRY] and [GEN] tagged items and renders each
+// group under its own sub-heading as a numbered list.
+// ─────────────────────────────────────────────────────────────────────────────
 QString QuotePreviewDialog::processTaggedText(const QString &text,
                                               const QString &wetHeading,
                                               const QString &dryHeading) const
@@ -392,30 +383,24 @@ QString QuotePreviewDialog::processTaggedText(const QString &text,
     QStringList lines = text.split("\n", Qt::SkipEmptyParts);
     for (const QString &line : lines) {
         QString trimmed = line.trimmed();
-
-        // Strip the number prefix — handles any number of digits.
-        // e.g. "1. [WET] text" or "10. [DRY] text"
         QRegularExpression numPrefix("^\\d+\\.\\s+");
         trimmed = trimmed.remove(numPrefix);
 
-        // Sort by tag.
-        if (trimmed.startsWith("[WET] ")) {
+        if (trimmed.startsWith("[WET] "))
             wetItems.append(trimmed.mid(6));
-        } else if (trimmed.startsWith("[DRY] ")) {
+        else if (trimmed.startsWith("[DRY] "))
             dryItems.append(trimmed.mid(6));
-        } else if (trimmed.startsWith("[GEN] ")) {
+        else if (trimmed.startsWith("[GEN] "))
             genItems.append(trimmed.mid(6));
-        } else {
-            // No tag — treat as general.
+        else
             genItems.append(trimmed);
-        }
     }
 
     QString html;
 
     if (!wetItems.isEmpty()) {
-        html += "<p style='font-size:10pt; font-weight:bold; "
-                "font-style:italic; color:#2c3e50; margin:6px 0 2px 0;'>"
+        html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
+                " color:#2c3e50; margin:6px 0 2px 0;'>"
                 + wetHeading + "</p><ol>";
         for (const QString &item : wetItems)
             html += "<li>" + item.toHtmlEscaped() + "</li>";
@@ -423,8 +408,8 @@ QString QuotePreviewDialog::processTaggedText(const QString &text,
     }
 
     if (!dryItems.isEmpty()) {
-        html += "<p style='font-size:10pt; font-weight:bold; "
-                "font-style:italic; color:#2c3e50; margin:6px 0 2px 0;'>"
+        html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
+                " color:#2c3e50; margin:6px 0 2px 0;'>"
                 + dryHeading + "</p><ol>";
         for (const QString &item : dryItems)
             html += "<li>" + item.toHtmlEscaped() + "</li>";
@@ -433,9 +418,8 @@ QString QuotePreviewDialog::processTaggedText(const QString &text,
 
     if (!genItems.isEmpty()) {
         if (!wetItems.isEmpty() || !dryItems.isEmpty())
-            html += "<p style='font-size:10pt; font-weight:bold; "
-                    "font-style:italic; color:#2c3e50; margin:6px 0 2px 0;'>"
-                    "General</p>";
+            html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
+                    " color:#2c3e50; margin:6px 0 2px 0;'>General</p>";
         html += "<ol>";
         for (const QString &item : genItems)
             html += "<li>" + item.toHtmlEscaped() + "</li>";
@@ -448,44 +432,51 @@ QString QuotePreviewDialog::processTaggedText(const QString &text,
 // ─────────────────────────────────────────────────────────────────────────────
 // buildPriceTable()
 //
-// Builds an HTML table for the proposed price section.
+// Full-width price table with 80/20 column split.
+//
+// The screen preview uses width='100%' as an HTML attribute (not a CSS
+// property) on the <table> tag. QTextDocument honours HTML attributes on
+// tables more reliably than CSS style properties.
 // ─────────────────────────────────────────────────────────────────────────────
 QString QuotePreviewDialog::buildPriceTable() const
 {
     QLocale locale;
     QString sym = "$";
-    if (m_config.taxLabel == "VAT") {
+    if (m_config.taxLabel == "VAT")
         sym = qAbs(m_config.taxRate - 20.0) < 0.01 ? "£" : "€";
-    }
 
     QString html;
 
-    // Use a QTextDocument friendly table format.
-    // Qt's rich text engine respects width attributes on td/th elements.
-    html += "<table border='1' cellspacing='0' cellpadding='5' "
-            "style='border-collapse:collapse; width:100%;'>";
+    // width='100%' as HTML attribute — more reliable than CSS in QTextDocument.
+    html += "<table width='100%' border='1' cellspacing='0' cellpadding='4'"
+            " style='border-collapse:collapse; margin-bottom:4px;'>";
 
-    // Header.
+    // Header row — column widths set here apply to the whole table.
     html += "<tr bgcolor='#2c3e50'>"
-            "<td width='80%' style='color:white; font-weight:bold;'>"
-            "Description</td>"
-            "<td width='20%' align='right' "
-            "style='color:white; font-weight:bold;'>"
-            "Amount</td>"
+            "<td width='80%' style='color:white; font-size:9pt;"
+            " font-weight:bold; padding:4px 6px;'>Description</td>"
+            "<td width='20%' align='right' style='color:white; font-size:9pt;"
+            " font-weight:bold; padding:4px 6px;'>Amount</td>"
             "</tr>";
 
-    // Data rows.
     double subtotal = 0.0;
+    bool   evenRow  = false;
+
     for (const PriceRow &row : m_priceRows) {
         if (row.description.trimmed().isEmpty())
             continue;
         subtotal += row.amount;
+        QString bg = evenRow ? "#f5f5f5" : "#ffffff";
+        evenRow    = !evenRow;
         html += QString(
-                    "<tr>"
-                    "<td width='80%'>%1</td>"
-                    "<td width='20%' align='right'>%2%3</td>"
+                    "<tr bgcolor='%1'>"
+                    "<td width='80%' style='font-size:9pt;"
+                    " padding:3px 6px;'>%2</td>"
+                    "<td width='20%' align='right' style='font-size:9pt;"
+                    " padding:3px 6px;'>%3%4</td>"
                     "</tr>"
-                    ).arg(row.description.toHtmlEscaped(),
+                    ).arg(bg,
+                         row.description.toHtmlEscaped(),
                          sym,
                          locale.toString(row.amount, 'f', 2));
     }
@@ -493,42 +484,35 @@ QString QuotePreviewDialog::buildPriceTable() const
     double tax   = subtotal * (m_config.taxRate / 100.0);
     double total = subtotal + tax;
 
-
-
-    // Subtotal.
     html += QString(
-                "<tr bgcolor='#f5f5f5'>"
-                "<td width='80%' align='right' "
-                "style='font-weight:bold; border-top:2px solid #2c3e50;'>"
-                "Subtotal (ex %1)</td>"
-                "<td width='20%' align='right' "
-                "style='font-weight:bold; border-top:2px solid #2c3e50;'>"
-                "%2%3</td>"
+                "<tr bgcolor='#eeeeee'>"
+                "<td width='80%' align='right' style='font-size:9pt;"
+                " font-weight:bold; border-top:2px solid #2c3e50;"
+                " padding:3px 6px;'>Subtotal (ex %1)</td>"
+                "<td width='20%' align='right' style='font-size:9pt;"
+                " font-weight:bold; border-top:2px solid #2c3e50;"
+                " padding:3px 6px;'>%2%3</td>"
                 "</tr>"
                 ).arg(m_config.taxLabel, sym, locale.toString(subtotal, 'f', 2));
 
-    // Tax.
     html += QString(
-                "<tr bgcolor='#f5f5f5'>"
-                "<td width='80%' align='right' style='font-weight:bold;'>"
-                "%1 (%2%)</td>"
-                "<td width='20%' align='right' style='font-weight:bold;'>"
-                "%3%4</td>"
+                "<tr bgcolor='#eeeeee'>"
+                "<td width='80%' align='right' style='font-size:9pt;"
+                " font-weight:bold; padding:3px 6px;'>%1 (%2%)</td>"
+                "<td width='20%' align='right' style='font-size:9pt;"
+                " font-weight:bold; padding:3px 6px;'>%3%4</td>"
                 "</tr>"
                 ).arg(m_config.taxLabel,
                      QString::number(m_config.taxRate, 'f', 1),
                      sym,
                      locale.toString(tax, 'f', 2));
 
-    // Total.
     html += QString(
-                "<tr bgcolor='#e8eaed'>"
-                "<td width='80%' align='right' "
-                "style='font-weight:bold; font-size:11pt;'>"
-                "Total (inc %1)</td>"
-                "<td width='20%' align='right' "
-                "style='font-weight:bold; font-size:11pt;'>"
-                "%2%3</td>"
+                "<tr bgcolor='#d5dde5'>"
+                "<td width='80%' align='right' style='font-size:9pt;"
+                " font-weight:bold; padding:4px 6px;'>Total (inc %1)</td>"
+                "<td width='20%' align='right' style='font-size:9pt;"
+                " font-weight:bold; padding:4px 6px;'>%2%3</td>"
                 "</tr>"
                 ).arg(m_config.taxLabel, sym, locale.toString(total, 'f', 2));
 
@@ -542,4 +526,62 @@ QString QuotePreviewDialog::buildPriceTable() const
 void QuotePreviewDialog::onClose()
 {
     accept();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// onGeneratePdf()
+// ─────────────────────────────────────────────────────────────────────────────
+void QuotePreviewDialog::onGeneratePdf()
+{
+    QString safeName = m_quote.siteName;
+    safeName.replace(QRegularExpression(R"([\\/:*?"<>|])"), "_");
+    if (safeName.trimmed().isEmpty())
+        safeName = "Quote";
+
+    // Reference string in YYMMnnn format — matches the PDF.
+    QString ref;
+    if (m_quote.id > 0) {
+        QDate   today = QDate::currentDate();
+        QString yy    = today.toString("yy");
+        QString mm    = today.toString("MM");
+        QString seq   = QString("%1").arg(m_quote.id, 3, 10, QChar('0'));
+        ref = yy + mm + seq;
+    } else {
+        ref = "Draft";
+    }
+
+    QString defaultName = QString("%1_%2.pdf").arg(ref, safeName);
+
+    QString quotesPath = "D:/Quotes";
+    QDir quotesDir(quotesPath);
+    if (!quotesDir.exists())
+        quotesDir.mkpath(quotesPath);
+
+    QString defaultPath = quotesPath + "/" + defaultName;
+
+    QString filePath = QFileDialog::getSaveFileName(
+        this,
+        "Save Quote as PDF",
+        defaultPath,
+        "PDF Files (*.pdf)");
+
+    if (filePath.isEmpty())
+        return;
+
+    QuotePdfGenerator generator(m_quote, m_priceRows, m_config);
+    bool ok = generator.generate(filePath);
+
+    if (ok) {
+        QMessageBox::information(
+            this,
+            "PDF Saved",
+            QString("Quote saved successfully:\n%1").arg(filePath));
+    } else {
+        QMessageBox::critical(
+            this,
+            "PDF Error",
+            QString("The PDF could not be saved to:\n%1\n\n"
+                    "Check that the folder exists and you have "
+                    "permission to write there.").arg(filePath));
+    }
 }
