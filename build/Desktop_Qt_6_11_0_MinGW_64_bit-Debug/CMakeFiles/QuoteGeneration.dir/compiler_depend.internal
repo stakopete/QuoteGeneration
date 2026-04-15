@@ -3493,6 +3493,7 @@ CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj
 CMakeFiles/QuoteGeneration.dir/main.cpp.obj
  D:/Qt_Projects/QuoteGeneration/main.cpp
  C:/Qt/6.11.0/mingw_64/include/QtCore/QList
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QLoggingCategory
  C:/Qt/6.11.0/mingw_64/include/QtCore/QObject
  C:/Qt/6.11.0/mingw_64/include/QtCore/QRect
  C:/Qt/6.11.0/mingw_64/include/QtCore/QSize
@@ -3566,6 +3567,7 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlist.h
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h
  C:/Qt/6.11.0/mingw_64/include/QtCore/qlogging.h
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qloggingcategory.h
  C:/Qt/6.11.0/mingw_64/include/QtCore/qmalloc.h
  C:/Qt/6.11.0/mingw_64/include/QtCore/qmap.h
  C:/Qt/6.11.0/mingw_64/include/QtCore/qmargins.h

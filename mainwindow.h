@@ -86,6 +86,7 @@ private:
     GeneralConditionsSection *m_generalSection;
     ClarificationsSection    *m_clarificationsSection;
     SignatureSection         *m_signatureSection;
+    QTimer                   *m_saveDebounceTimer;
 
     // ── Quote management ──────────────────────────────────────────────────────
     QuoteData   m_currentQuote;     // The quote currently being edited

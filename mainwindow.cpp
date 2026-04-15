@@ -82,6 +82,14 @@ MainWindow::MainWindow(QWidget *parent)
             this, &MainWindow::onAutoSave);
     m_autoSaveTimer->start();
 
+    // Debounce timer — saves 3 seconds after the user stops making changes.
+    // This prevents saving on every single keystroke.
+    m_saveDebounceTimer = new QTimer(this);
+    m_saveDebounceTimer->setInterval(3000);  // 3 seconds
+    m_saveDebounceTimer->setSingleShot(true); // Only fires once then stops.
+    connect(m_saveDebounceTimer, &QTimer::timeout,
+            this, &MainWindow::saveCurrentQuote);
+
     // Connect all section dataChanged signals to our handler.
     connect(m_titleSection,          &TitleSection::dataChanged,
             this, &MainWindow::onQuoteDataChanged);
@@ -327,8 +335,9 @@ void MainWindow::setupTabs()
 // ─────────────────────────────────────────────────────────────────────────────
 void MainWindow::setupStatusBar()
 {
-    m_statusLabel = new QLabel("  No quote open");
-    statusBar()->addWidget(m_statusLabel);
+    m_statusLabel = new QLabel("  Ready");
+    m_statusLabel->setStyleSheet("color: white;");
+    statusBar()->addWidget(m_statusLabel, 1);
     statusBar()->setSizeGripEnabled(true);
 }
 
@@ -551,7 +560,8 @@ void MainWindow::onSettings()
         // Reload config and update the window title.
         m_config = Database::loadConfig();
         setWindowTitle("Quote Generation — " + m_config.companyName);
-        statusBar()->showMessage("Settings saved.", 3000);
+        m_statusLabel->setText("  Status: " + m_currentQuote.status +
+                               "  |  Settings saved.");
     }
 }
 
@@ -569,19 +579,9 @@ void MainWindow::onAbout()
 
 void MainWindow::onTabChanged(int index)
 {
-    // Update the status bar to show which section is active.
-    // We will expand this in Phase 4 to show section completion status.
-    QStringList sections = {
-        "Title & Date", "System Offered", "Basis of Proposal",
-        "Proposed Price", "Scope of Works", "Exclusions",
-        "General Conditions", "Clarifications", "Signature Block"
-    };
-
-    if (index >= 0 && index < sections.size()) {
-        statusBar()->showMessage(
-            "Section: " + sections[index], 2000
-            );
-    }
+    Q_UNUSED(index)
+    // Tab changes don't need to update the status bar —
+    // the permanent quote status label already shows what matters.
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -645,8 +645,8 @@ void MainWindow::onToggleDarkMode()
                  QColor(StyleManager::instance().windowBackground()));
     setPalette(pal);
 
-    statusBar()->showMessage(
-        isDark ? "Dark mode enabled" : "Light mode enabled", 3000
+    m_statusLabel->setText(
+        isDark ? "  Dark mode enabled" : "  Light mode enabled"
         );
 }
 
@@ -659,8 +659,10 @@ void MainWindow::onToggleDarkMode()
 void MainWindow::onQuoteDataChanged()
 {
     m_quoteModified = true;
-    m_statusLabel->setText("  Status: " + m_currentQuote.status +
-                           "  |  Unsaved changes");
+    QString status = m_currentQuote.status.isEmpty() ?
+                         "Draft" : m_currentQuote.status;
+    m_statusLabel->setText("  Status: " + status + "  |  Unsaved changes");
+    m_saveDebounceTimer->start();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -718,7 +720,7 @@ void MainWindow::onAutoSave()
 {
     if (m_quoteModified) {
         saveCurrentQuote();
-        statusBar()->showMessage("Auto-saved.", 3000);
+         // Auto-save message is handled by saveCurrentQuote() updating the label.
     }
 }
 

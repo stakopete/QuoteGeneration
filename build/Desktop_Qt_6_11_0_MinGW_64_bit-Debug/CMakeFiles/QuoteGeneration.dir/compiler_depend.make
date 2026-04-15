@@ -3484,6 +3484,7 @@ CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj: D:/Qt_Projects/
 
 CMakeFiles/QuoteGeneration.dir/main.cpp.obj: D:/Qt_Projects/QuoteGeneration/main.cpp \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QLoggingCategory \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
@@ -3557,6 +3558,7 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: D:/Qt_Projects/QuoteGeneration/main
   C:/Qt/6.11.0/mingw_64/include/QtCore/qlist.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qlocale.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qlogging.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qloggingcategory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qmalloc.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qmap.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qmargins.h \
@@ -9045,6 +9047,8 @@ C:/Qt/6.11.0/mingw_64/include/QtCore/qdirlisting.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/qfiledevice.h:
 
+C:/Qt/6.11.0/mingw_64/include/QtCore/qloggingcategory.h:
+
 C:/Qt/6.11.0/mingw_64/include/QtCore/qtimezone.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtWidgets/QComboBox:
@@ -9092,6 +9096,8 @@ C:/Qt/6.11.0/mingw_64/include/QtCore/qmetaobject.h:
 C:/Qt/6.11.0/mingw_64/include/QtSql/QSqlQuery:
 
 C:/Qt/6.11.0/mingw_64/include/QtSql/qsqldatabase.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtCore/QLoggingCategory:
 
 C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap:
 

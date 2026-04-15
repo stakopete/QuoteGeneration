@@ -42,41 +42,21 @@ AnimatedButton::AnimatedButton(QWidget *parent)
 // ─────────────────────────────────────────────────────────────────────────────
 void AnimatedButton::applyStyle(bool pressed)
 {
-    // When pressed we scale the button down using a transform.
-    // This shrinks the whole button visually without affecting layout.
-    if (pressed) {
-        setStyleSheet(QString(
-                          "QPushButton {"
-                          "    color: white;"
-                          "    font-weight: bold;"
-                          "    font-size: 11px;"
-                          "    border: none;"
-                          "    padding: 4px 8px;"
-                          "    border-image: url('%1');"
-                          "    background-repeat: no-repeat;"
-                          "    background-position: center;"
-                          "    background-size: contain;"
-                          "    border-radius: 4px;"
-                          "    margin: 2px;"
-                          "}"
-                          ).arg(BUTTON_IMAGE_PATH));
-    } else {
-        setStyleSheet(QString(
-                          "QPushButton {"
-                          "    color: white;"
-                          "    font-weight: bold;"
-                          "    font-size: 12px;"
-                          "    border: none;"
-                          "    padding: 4px 8px;"
-                          "    border-image: url('%1');"
-                          "    background-repeat: no-repeat;"
-                          "    background-position: center;"
-                          "    background-size: contain;"
-                          "    border-radius: 4px;"
-                          "    margin: 0px;"
-                          "}"
-                          ).arg(BUTTON_IMAGE_PATH));
-    }
+    QString margin = pressed ? "2px" : "0px";
+    QString fontSize = pressed ? "11px" : "12px";
+
+    setStyleSheet(QString(
+                      "QPushButton {"
+                      "    color: white;"
+                      "    font-weight: bold;"
+                      "    font-size: %1;"
+                      "    border: none;"
+                      "    padding: 4px 8px;"
+                      "    border-image: url('%2') 0 0 0 0 stretch stretch;"
+                      "    border-radius: 4px;"
+                      "    margin: %3;"
+                      "}"
+                      ).arg(fontSize, BUTTON_IMAGE_PATH, margin));
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

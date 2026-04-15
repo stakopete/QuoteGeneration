@@ -12,10 +12,15 @@
 
 #include <QApplication>
 #include <QMessageBox>
+#include <QLoggingCategory>
 
 int main(int argc, char *argv[])
 {
     QApplication app(argc, argv);
+
+    // Suppress Qt internal CSS warnings that are not actionable.
+    // These come from Qt's style engine and do not affect functionality.
+    QLoggingCategory::setFilterRules("qt.widgets.stylesheet.warning=false");
 
     app.setOrganizationName("PB Software Solutions");
     app.setApplicationName("Quote Generation");
