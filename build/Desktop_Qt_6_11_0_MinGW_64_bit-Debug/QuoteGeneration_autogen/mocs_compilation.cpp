@@ -3,6 +3,8 @@
 #include "EWIEGA46WW/moc_basissection.cpp"
 #include "EWIEGA46WW/moc_clarificationssection.cpp"
 #include "EWIEGA46WW/moc_configdialog.cpp"
+#include "EWIEGA46WW/moc_dropdownmanagerdialog.cpp"
+#include "EWIEGA46WW/moc_editoptiondialog.cpp"
 #include "EWIEGA46WW/moc_exclusionssection.cpp"
 #include "EWIEGA46WW/moc_generalconditionssection.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"

@@ -403,6 +403,10 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QDialog \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialog.h \
  D:/Qt_Projects/QuoteGeneration/animatedbutton.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_dropdownmanagerdialog.cpp \
+ D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_editoptiondialog.cpp \
+ D:/Qt_Projects/QuoteGeneration/editoptiondialog.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_exclusionssection.cpp \
  D:/Qt_Projects/QuoteGeneration/exclusionssection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_generalconditionssection.cpp \

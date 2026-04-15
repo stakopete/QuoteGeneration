@@ -62,6 +62,10 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/quotepreviewdialog.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/quotetypedialog.h
     ${CMAKE_CURRENT_SOURCE_DIR}/quotetypedialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/dropdownmanagerdialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/dropdownmanagerdialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/editoptiondialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/editoptiondialog.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -90,6 +94,10 @@ qt_add_executable(QuoteGeneration
        quotepreviewdialog.cpp
        quotetypedialog.h
        quotetypedialog.cpp
+       editoptiondialog.h
+       editoptiondialog.cpp
+       dropdownmanagerdialog.h
+       dropdownmanagerdialog.cpp
 
 
 )

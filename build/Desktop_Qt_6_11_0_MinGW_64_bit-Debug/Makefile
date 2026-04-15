@@ -298,6 +298,54 @@ database.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/database.cpp.s
 .PHONY : database.cpp.s
 
+dropdownmanagerdialog.obj: dropdownmanagerdialog.cpp.obj
+.PHONY : dropdownmanagerdialog.obj
+
+# target to build an object file
+dropdownmanagerdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj
+.PHONY : dropdownmanagerdialog.cpp.obj
+
+dropdownmanagerdialog.i: dropdownmanagerdialog.cpp.i
+.PHONY : dropdownmanagerdialog.i
+
+# target to preprocess a source file
+dropdownmanagerdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.i
+.PHONY : dropdownmanagerdialog.cpp.i
+
+dropdownmanagerdialog.s: dropdownmanagerdialog.cpp.s
+.PHONY : dropdownmanagerdialog.s
+
+# target to generate assembly for a file
+dropdownmanagerdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.s
+.PHONY : dropdownmanagerdialog.cpp.s
+
+editoptiondialog.obj: editoptiondialog.cpp.obj
+.PHONY : editoptiondialog.obj
+
+# target to build an object file
+editoptiondialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj
+.PHONY : editoptiondialog.cpp.obj
+
+editoptiondialog.i: editoptiondialog.cpp.i
+.PHONY : editoptiondialog.i
+
+# target to preprocess a source file
+editoptiondialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.i
+.PHONY : editoptiondialog.cpp.i
+
+editoptiondialog.s: editoptiondialog.cpp.s
+.PHONY : editoptiondialog.s
+
+# target to generate assembly for a file
+editoptiondialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.s
+.PHONY : editoptiondialog.cpp.s
+
 exclusionssection.obj: exclusionssection.cpp.obj
 .PHONY : exclusionssection.obj
 
@@ -615,6 +663,12 @@ help:
 	@echo ... database.obj
 	@echo ... database.i
 	@echo ... database.s
+	@echo ... dropdownmanagerdialog.obj
+	@echo ... dropdownmanagerdialog.i
+	@echo ... dropdownmanagerdialog.s
+	@echo ... editoptiondialog.obj
+	@echo ... editoptiondialog.i
+	@echo ... editoptiondialog.s
 	@echo ... exclusionssection.obj
 	@echo ... exclusionssection.i
 	@echo ... exclusionssection.s

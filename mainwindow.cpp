@@ -36,6 +36,7 @@
 #include <QDate>
 #include "quotepreviewdialog.h"
 #include "quotetypedialog.h"
+#include "dropdownmanagerdialog.h"
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -551,18 +552,24 @@ void MainWindow::onGeneratePdf()
     statusBar()->showMessage("Generate PDF — coming in Phase 6", 3000);
 }
 
+// void MainWindow::onSettings()
+// {
+//     // Open the config dialog for editing.
+//     // Unlike first run, cancelling here is fine — we just don't save.
+//     ConfigDialog dlg(this);
+//     if (dlg.exec() == QDialog::Accepted) {
+//         // Reload config and update the window title.
+//         m_config = Database::loadConfig();
+//         setWindowTitle("Quote Generation — " + m_config.companyName);
+//         m_statusLabel->setText("  Status: " + m_currentQuote.status +
+//                                "  |  Settings saved.");
+//     }
+// }
+
 void MainWindow::onSettings()
 {
-    // Open the config dialog for editing.
-    // Unlike first run, cancelling here is fine — we just don't save.
-    ConfigDialog dlg(this);
-    if (dlg.exec() == QDialog::Accepted) {
-        // Reload config and update the window title.
-        m_config = Database::loadConfig();
-        setWindowTitle("Quote Generation — " + m_config.companyName);
-        m_statusLabel->setText("  Status: " + m_currentQuote.status +
-                               "  |  Settings saved.");
-    }
+    DropdownManagerDialog dlg(this);
+    dlg.exec();
 }
 
 void MainWindow::onAbout()

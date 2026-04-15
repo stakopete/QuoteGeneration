@@ -474,4 +474,5 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qdatetime.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcalendar.h \
  D:\Qt_Projects\QuoteGeneration\quotepreviewdialog.h \
- D:\Qt_Projects\QuoteGeneration\quotetypedialog.h
+ D:\Qt_Projects\QuoteGeneration\quotetypedialog.h \
+ D:\Qt_Projects\QuoteGeneration\dropdownmanagerdialog.h

@@ -338,6 +338,36 @@ CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\quotetypedialog.cpp -o CMakeFiles\QuoteGeneration.dir\quotetypedialog.cpp.s
 
+CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj: D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.cpp
+CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Building CXX object CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\dropdownmanagerdialog.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\dropdownmanagerdialog.cpp.obj -c D:\Qt_Projects\QuoteGeneration\dropdownmanagerdialog.cpp
+
+CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\dropdownmanagerdialog.cpp > CMakeFiles\QuoteGeneration.dir\dropdownmanagerdialog.cpp.i
+
+CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\dropdownmanagerdialog.cpp -o CMakeFiles\QuoteGeneration.dir\dropdownmanagerdialog.cpp.s
+
+CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj: D:/Qt_Projects/QuoteGeneration/editoptiondialog.cpp
+CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_20) "Building CXX object CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\editoptiondialog.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\editoptiondialog.cpp.obj -c D:\Qt_Projects\QuoteGeneration\editoptiondialog.cpp
+
+CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\editoptiondialog.cpp > CMakeFiles\QuoteGeneration.dir\editoptiondialog.cpp.i
+
+CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\editoptiondialog.cpp -o CMakeFiles\QuoteGeneration.dir\editoptiondialog.cpp.s
+
 # Object files for target QuoteGeneration
 QuoteGeneration_OBJECTS = \
 "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj" \
@@ -357,7 +387,9 @@ QuoteGeneration_OBJECTS = \
 "CMakeFiles/QuoteGeneration.dir/clarificationssection.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj" \
-"CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.obj"
+"CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj"
 
 # External object files for target QuoteGeneration
 QuoteGeneration_EXTERNAL_OBJECTS =
@@ -380,6 +412,8 @@ QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/clarificationssection.cpp.ob
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/signaturesection.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/quotetypedialog.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/build.make
 QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6Sql.a
 QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6PrintSupport.a
@@ -391,7 +425,7 @@ QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6EntryPoint.a
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/linkLibs.rsp
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/objects1.rsp
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_19) "Linking CXX executable QuoteGeneration.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_21) "Linking CXX executable QuoteGeneration.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\QuoteGeneration.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

@@ -495,6 +495,18 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.h",
+			"MU",
+			"EWIEGA46WW/moc_dropdownmanagerdialog.cpp",
+			null
+		],
+		[
+			"D:/Qt_Projects/QuoteGeneration/editoptiondialog.h",
+			"MU",
+			"EWIEGA46WW/moc_editoptiondialog.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/exclusionssection.h",
 			"MU",
 			"EWIEGA46WW/moc_exclusionssection.cpp",
@@ -648,6 +660,12 @@
 		],
 		[ "D:/Qt_Projects/QuoteGeneration/configdialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/database.cpp", "MU", null ],
+		[
+			"D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.cpp",
+			"MU",
+			null
+		],
+		[ "D:/Qt_Projects/QuoteGeneration/editoptiondialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp", "MU", null ],
 		[
 			"D:/Qt_Projects/QuoteGeneration/generalconditionssection.cpp",
