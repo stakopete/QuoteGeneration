@@ -29,6 +29,7 @@ class GeneralConditionsSection;
 class ClarificationsSection;
 class SignatureSection;
 class QuoteTypeDialog;
+class QuoteListDialog;
 
 class MainWindow : public QMainWindow
 {

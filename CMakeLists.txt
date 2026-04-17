@@ -70,6 +70,8 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/quotepdfgenerator.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/appsettings.h
     ${CMAKE_CURRENT_SOURCE_DIR}/appsettings.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/quotelistdialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/quotelistdialog.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -106,6 +108,8 @@ qt_add_executable(QuoteGeneration
        quotepdfgenerator.cpp
        appsettings.h
        appsettings.cpp
+       quotelistdialog.h
+       quotelistdialog.cpp
 
 
 )

@@ -531,4 +531,5 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qslider.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractslider.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstyle.h \
- C:/Qt/6.11.0/mingw_64/include/QtWidgets/qrubberband.h
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qrubberband.h \
+ D:\Qt_Projects\QuoteGeneration\quotelistdialog.h

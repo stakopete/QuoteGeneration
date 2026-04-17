@@ -490,6 +490,30 @@ pricesection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/pricesection.cpp.s
 .PHONY : pricesection.cpp.s
 
+quotelistdialog.obj: quotelistdialog.cpp.obj
+.PHONY : quotelistdialog.obj
+
+# target to build an object file
+quotelistdialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.obj
+.PHONY : quotelistdialog.cpp.obj
+
+quotelistdialog.i: quotelistdialog.cpp.i
+.PHONY : quotelistdialog.i
+
+# target to preprocess a source file
+quotelistdialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.i
+.PHONY : quotelistdialog.cpp.i
+
+quotelistdialog.s: quotelistdialog.cpp.s
+.PHONY : quotelistdialog.s
+
+# target to generate assembly for a file
+quotelistdialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.s
+.PHONY : quotelistdialog.cpp.s
+
 quotepdfgenerator.obj: quotepdfgenerator.cpp.obj
 .PHONY : quotepdfgenerator.obj
 
@@ -735,6 +759,9 @@ help:
 	@echo ... pricesection.obj
 	@echo ... pricesection.i
 	@echo ... pricesection.s
+	@echo ... quotelistdialog.obj
+	@echo ... quotelistdialog.i
+	@echo ... quotelistdialog.s
 	@echo ... quotepdfgenerator.obj
 	@echo ... quotepdfgenerator.i
 	@echo ... quotepdfgenerator.s

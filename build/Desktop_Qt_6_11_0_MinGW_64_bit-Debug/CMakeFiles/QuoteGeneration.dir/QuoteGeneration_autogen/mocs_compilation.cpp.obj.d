@@ -452,6 +452,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_pricesection.cpp \
  D:/Qt_Projects/QuoteGeneration/pricesection.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_quotelistdialog.cpp \
+ D:/Qt_Projects/QuoteGeneration/quotelistdialog.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_quotepreviewdialog.cpp \
  D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_quotetypedialog.cpp \

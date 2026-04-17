@@ -27,6 +27,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/quotepdfgenerator.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/quotepdfgenerator.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj"

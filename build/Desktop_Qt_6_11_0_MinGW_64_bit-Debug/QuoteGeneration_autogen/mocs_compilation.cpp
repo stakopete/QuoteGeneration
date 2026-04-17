@@ -9,6 +9,7 @@
 #include "EWIEGA46WW/moc_generalconditionssection.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "EWIEGA46WW/moc_pricesection.cpp"
+#include "EWIEGA46WW/moc_quotelistdialog.cpp"
 #include "EWIEGA46WW/moc_quotepreviewdialog.cpp"
 #include "EWIEGA46WW/moc_quotetypedialog.cpp"
 #include "EWIEGA46WW/moc_scopesection.cpp"
