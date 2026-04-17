@@ -62,5 +62,8 @@ private:
                              const QString &body) const;
     QString buildPriceTableHtml() const;
     QString buildSignatureHtml() const;
+    QString processTaggedText(const QString &text,
+                              const QString &wetHeading,
+                              const QString &dryHeading) const;
 };
 #endif // QUOTEPDFGENERATOR_H

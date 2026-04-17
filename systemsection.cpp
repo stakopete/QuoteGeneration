@@ -48,10 +48,9 @@ void SystemSection::setupUi()
     QLabel *heading = new QLabel("<h3>System Offered</h3>");
     heading->setStyleSheet(StyleManager::instance().headingLabelStyle());
     mainLayout->addWidget(heading);
-    mainLayout->addWidget(heading);
 
     // ── Available clauses group ───────────────────────────────────────────────
-    QGroupBox *clauseGroup = new QGroupBox("Available Tasks");
+    QGroupBox *clauseGroup = new QGroupBox("Installation Types");
     applyGroupBoxStyle(clauseGroup);
     QVBoxLayout *clauseLayout = new QVBoxLayout(clauseGroup);
 
@@ -74,6 +73,8 @@ void SystemSection::setupUi()
     m_clauseList->addItem("Special Hazard Suppression System");
     m_clauseList->addItem("Fire Pump System");
     m_clauseList->setMaximumHeight(160);
+    m_clauseList->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+    m_clauseList->setStyleSheet(StyleManager::instance().listWidgetStyle());
     clauseLayout->addWidget(m_clauseList);
 
     // Add selected clause button.
@@ -94,15 +95,18 @@ void SystemSection::setupUi()
     m_customClause->setPlaceholderText("Type a custom task...");
     m_customClause->setMaxLength(256);
 
+
     m_addCustomButton = new AnimatedButton("Add");
-    m_addCustomButton->setFixedWidth(80);
+    m_addCustomButton->setFixedWidth(120);
+    m_addCustomButton->setFixedHeight(40);
     connect(m_addCustomButton, &AnimatedButton::clicked,
             this, &SystemSection::onAddCustomClause);
 
     QHBoxLayout *customRow = new QHBoxLayout();
-    customRow->addWidget(customLabel);
-    customRow->addWidget(m_customClause);
-    customRow->addWidget(m_addCustomButton);
+    customRow->addWidget(customLabel, 0);        // label fixed size
+    customRow->addWidget(m_customClause, 1);     // edit box takes all spare space
+    customRow->addSpacing(8);
+    customRow->addWidget(m_addCustomButton, 0);  // button fixed size
     clauseLayout->addLayout(customRow);
 
     mainLayout->addWidget(clauseGroup);
@@ -137,10 +141,18 @@ void SystemSection::setupUi()
     connect(m_removeButton, &AnimatedButton::clicked,
             this, &SystemSection::onRemoveClause);
 
+    m_clearButton = new AnimatedButton("Clear All");
+    m_clearButton->setFixedWidth(120);
+    m_clearButton->setFixedHeight(40);
+    connect(m_clearButton, &AnimatedButton::clicked,
+            this, &SystemSection::onClearAll);
+
     QHBoxLayout *removeRow = new QHBoxLayout();
-    removeRow->setContentsMargins(0, 8, 0, 0);  // 8px top margin only
+    removeRow->setContentsMargins(0, 8, 0, 0);
     removeRow->addStretch();
     removeRow->addWidget(m_removeButton);
+    removeRow->addSpacing(8);
+    removeRow->addWidget(m_clearButton);
     textLayout->addLayout(removeRow);
 
     mainLayout->addWidget(textGroup);
@@ -156,9 +168,14 @@ void SystemSection::onAddClause()
 {
     QListWidgetItem *item = m_clauseList->currentItem();
     if (!item) {
-        QMessageBox::information(this, "No Selection",
-                                 "Please select a clause from the list first.");
-        return;
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("No Selection");
+        msgBox.setText("Please select an installation type from the list first.");
+        msgBox.setIcon(QMessageBox::Information);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
     }
 
     QString current = m_systemText->toPlainText().trimmed();
@@ -176,8 +193,14 @@ void SystemSection::onAddCustomClause()
 {
     QString text = m_customClause->text().trimmed();
     if (text.isEmpty()) {
-        QMessageBox::information(this, "Empty Clause",
-                                 "Please type a clause before clicking Add.");
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Empty Task");
+        msgBox.setText("Please type a task before clicking Add.");
+        msgBox.setIcon(QMessageBox::Information);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
         return;
     }
 
@@ -224,4 +247,27 @@ bool SystemSection::isComplete() const
 void SystemSection::loadData(const QString &text)
 {
     m_systemText->setPlainText(text);
+}
+
+void SystemSection::onClearAll()
+{
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Clear All");
+    msgBox.setText("Are you sure you want to clear all system items?");
+    msgBox.setIcon(QMessageBox::Question);
+
+    AnimatedButton *yesBtn = new AnimatedButton("Yes", &msgBox);
+    yesBtn->setFixedSize(110, 40);
+    AnimatedButton *noBtn  = new AnimatedButton("No",  &msgBox);
+    noBtn->setFixedSize(110, 40);
+
+    msgBox.addButton(yesBtn, QMessageBox::YesRole);
+    msgBox.addButton(noBtn,  QMessageBox::NoRole);
+    msgBox.setDefaultButton(noBtn);
+    msgBox.exec();
+
+    if (msgBox.clickedButton() == yesBtn) {
+        m_systemText->clear();
+        emit dataChanged();
+    }
 }

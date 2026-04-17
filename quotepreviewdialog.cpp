@@ -199,9 +199,6 @@ void QuotePreviewDialog::buildPreview()
     html += "<p style='font-size:9pt; text-align:center; color:#cc0000;"
             " margin:2px 0;'><b>" + m_quote.status.toUpper() + "</b></p>";
 
-    // ── Date ──────────────────────────────────────────────────────────────────
-    html += "<p style='font-size:9pt; text-align:left; margin-bottom:4px;'>"
-            + m_quote.quoteDate + "</p>";
 
     // ── Quote Title — 11pt, centred, not bold ─────────────────────────────────
     if (!m_quote.titleText.trimmed().isEmpty()) {
@@ -210,10 +207,12 @@ void QuotePreviewDialog::buildPreview()
                 + m_quote.titleText.toHtmlEscaped() + "</p>";
     }
 
-    // ── Site/Project Name — 12pt, centred, bold ───────────────────────────────
+    // Double underline achieved by stacking two border-bottom lines
+    // using a nested table — Qt's HTML renderer does not support
+    // text-decoration:underline double directly.
     html += "<p style='font-size:12pt; font-weight:bold; text-align:center;"
             " color:#1a1a1a; margin:2px 0;'>"
-            + m_quote.siteName.toHtmlEscaped() + "</p>";
+            "<u>" + m_quote.siteName.toHtmlEscaped() + "</u></p>";
 
     // ── Quote Reference / Date table ──────────────────────────────────────────
     // Quote Type removed. Reference format YYMMnnn e.g. 2603001.

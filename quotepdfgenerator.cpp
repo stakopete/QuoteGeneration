@@ -13,7 +13,7 @@
 #include <QImage>
 #include <QBuffer>
 #include <QByteArray>
-//#include <QDebug>
+#include <QRegularExpression>
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -123,19 +123,35 @@ QString QuotePdfGenerator::buildHtml() const
     if (!m_quote.systemText.trimmed().isEmpty())
         html += buildSectionHtml("System Offered", m_quote.systemText);
 
-    if (!m_quote.basisText.trimmed().isEmpty())
-        html += buildSectionHtml("Basis of Design", m_quote.basisText);
+    if (!m_quote.basisText.trimmed().isEmpty()) {
+        html += buildSectionHtml("Basis of Design", "");
+        html += processTaggedText(m_quote.basisText,
+                                  "Wet Fire Systems",
+                                  "Dry Fire Systems");
+    }
 
-    if (!m_quote.scopeText.trimmed().isEmpty())
-        html += buildSectionHtml("Scope of Works", m_quote.scopeText);
+    if (!m_quote.scopeText.trimmed().isEmpty()) {
+        html += buildSectionHtml("Scope of Works", "");
+        html += processTaggedText(m_quote.scopeText,
+                                  "Wet Fire Works",
+                                  "Dry Fire Works");
+    }
 
     html += buildPriceTableHtml();
 
-    if (!m_quote.exclusions.trimmed().isEmpty())
-        html += buildSectionHtml("Exclusions", m_quote.exclusions);
+    if (!m_quote.basisText.trimmed().isEmpty()) {
+        html += buildSectionHtml("Basis of Design", "");
+        html += processTaggedText(m_quote.basisText,
+                                  "Wet Fire Systems",
+                                  "Dry Fire Systems");
+    }
 
-    if (!m_quote.generalConditions.trimmed().isEmpty())
-        html += buildSectionHtml("General Conditions", m_quote.generalConditions);
+    if (!m_quote.scopeText.trimmed().isEmpty()) {
+        html += buildSectionHtml("Scope of Works", "");
+        html += processTaggedText(m_quote.scopeText,
+                                  "Wet Fire Works",
+                                  "Dry Fire Works");
+    }
 
     if (!m_quote.clarifications.trimmed().isEmpty())
         html += buildSectionHtml("Clarifications", m_quote.clarifications);
@@ -143,6 +159,82 @@ QString QuotePdfGenerator::buildHtml() const
     html += buildSignatureHtml();
 
     html += "</body></html>";
+    return html;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// processTaggedText()
+//
+// Processes text containing [WET] and [DRY] tags and groups items under
+// appropriate subheadings. Mirrors the same function in quotepreviewdialog.cpp.
+// ─────────────────────────────────────────────────────────────────────────────
+QString QuotePdfGenerator::processTaggedText(const QString &text,
+                                             const QString &wetHeading,
+                                             const QString &dryHeading) const
+{
+    QStringList wetItems;
+    QStringList dryItems;
+    QStringList genItems;
+
+    QStringList lines = text.split("\n", Qt::SkipEmptyParts);
+    for (const QString &line : lines) {
+        QString trimmed = line.trimmed();
+
+        // Strip the number prefix — handles any number of digits.
+        QRegularExpression numPrefix("^\\d+\\.\\s+");
+        trimmed = trimmed.remove(numPrefix);
+
+        if (trimmed.startsWith("[WET] "))
+            wetItems.append(trimmed.mid(6));
+        else if (trimmed.startsWith("[DRY] "))
+            dryItems.append(trimmed.mid(6));
+        else if (trimmed.startsWith("[GEN] "))
+            genItems.append(trimmed.mid(6));
+        else
+            genItems.append(trimmed);
+    }
+
+    QString html;
+
+    // Wet Fire subheading and items.
+    if (!wetItems.isEmpty()) {
+        html += QString(
+                    "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
+                    " color:#2c3e50; margin:2px 0 2px 0;'>%1</p>"
+                    ).arg(wetHeading.toHtmlEscaped());
+        html += "<ol>";
+        for (const QString &item : wetItems)
+            html += "<li style='font-size:9pt; margin:2px 0;'>"
+                    + item.toHtmlEscaped() + "</li>";
+        html += "</ol>";
+    }
+
+    // Dry Fire subheading and items.
+    if (!dryItems.isEmpty()) {
+        html += QString(
+                    "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
+                    " color:#2c3e50; margin:2px 0 2px 0;'>%1</p>"
+                    ).arg(dryHeading.toHtmlEscaped());
+        html += "<ol>";
+        for (const QString &item : dryItems)
+            html += "<li style='font-size:9pt; margin:2px 0;'>"
+                    + item.toHtmlEscaped() + "</li>";
+        html += "</ol>";
+    }
+
+    // General items — only show heading if there are also wet or dry items.
+    if (!genItems.isEmpty()) {
+        if (!wetItems.isEmpty() || !dryItems.isEmpty()) {
+            html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
+                    " color:#2c3e50; margin:6px 0 2px 0;'>General</p>";
+        }
+        html += "<ol>";
+        for (const QString &item : genItems)
+            html += "<li style='font-size:9pt; margin:2px 0;'>"
+                    + item.toHtmlEscaped() + "</li>";
+        html += "</ol>";
+    }
+
     return html;
 }
 
@@ -228,8 +320,10 @@ QString QuotePdfGenerator::buildTitleBlockHtml() const
     }
 
     // Site/Project Name — 12pt, centred, bold.
+    // Site/Project Name — 12pt, centred, bold, underlined.
     html += QString(
                 "<p style='font-size:12pt; font-weight:bold; text-align:center;"
+                " text-decoration:underline;"
                 " color:#1a1a1a; margin-bottom:8px;'>%1</p>"
                 ).arg(m_quote.siteName.toHtmlEscaped());
 
@@ -272,14 +366,15 @@ QString QuotePdfGenerator::buildSectionHtml(const QString &heading,
                 "'>%1</p>"
                 ).arg(heading.toHtmlEscaped());
 
-    const QStringList lines = body.split('\n');
-    for (const QString &line : lines) {
-        if (line.trimmed().isEmpty())
-            html += "<p style='margin:4px 0;'>&nbsp;</p>";
-        else
-           // qDebug("Table width will be: %d px", m_pageWidthPx);
-            html += QString("<p style='font-size:9pt; margin:2px 0;'>%1</p>")
-                        .arg(line.toHtmlEscaped());
+    if (!body.trimmed().isEmpty()) {
+        const QStringList lines = body.split('\n');
+        for (const QString &line : lines) {
+            if (line.trimmed().isEmpty())
+                continue;   // Skip blank lines instead of adding empty paragraphs
+            else
+                html += QString("<p style='font-size:9pt; margin:2px 0;'>%1</p>")
+                            .arg(line.toHtmlEscaped());
+        }
     }
 
     return html;

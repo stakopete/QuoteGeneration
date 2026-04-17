@@ -475,4 +475,60 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qcalendar.h \
  D:\Qt_Projects\QuoteGeneration\quotepreviewdialog.h \
  D:\Qt_Projects\QuoteGeneration\quotetypedialog.h \
- D:\Qt_Projects\QuoteGeneration\dropdownmanagerdialog.h
+ D:\Qt_Projects\QuoteGeneration\dropdownmanagerdialog.h \
+ D:\Qt_Projects\QuoteGeneration\quotepdfgenerator.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QFileDialog \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qfiledialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qdir.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qdirlisting.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qfiledevice.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/filesystem \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_fwd.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_path.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/locale \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/cwctype \
+ C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_base.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/ctype_inline.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/time_members.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/x86_64-w64-mingw32/bits/messages_members.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/codecvt.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_facets_nonio.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_conv.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/iomanip \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/quoted_string.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/sstream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/istream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ios \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_ios.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/basic_ios.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/ostream \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ostream.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/istream.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/sstream.tcc \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/codecvt \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_dir.h \
+ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/fs_ops.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qfile.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qfileinfo.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qtimezone.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QRegularExpression \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qregularexpression.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QListWidget \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlistwidget.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qlistview.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractitemview.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractscrollarea.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qabstractitemmodel.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qitemselectionmodel.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractitemdelegate.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstyleoption.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractspinbox.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qvalidator.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qslider.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractslider.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstyle.h \
+ C:/Qt/6.11.0/mingw_64/include/QtWidgets/qrubberband.h

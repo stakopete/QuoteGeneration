@@ -15,6 +15,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
+#include <QScrollBar>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -83,7 +84,10 @@ void GeneralConditionsSection::setupUi()
     listsLayout->addWidget(m_wetClauseList, 1, 0);
 
     m_addWetButton = new AnimatedButton("Add Wet Condition");
-    m_addWetButton->setFixedSize(120, 40);
+    m_addWetButton->setFixedSize(138, 40);
+    QFont wetFont = m_addWetButton->font();
+    wetFont.setPointSize(8);
+    m_addWetButton->setFont(wetFont);
     connect(m_addWetButton, &AnimatedButton::clicked,
             this, &GeneralConditionsSection::onAddWetClause);
 
@@ -110,7 +114,10 @@ void GeneralConditionsSection::setupUi()
     listsLayout->addWidget(m_dryClauseList, 1, 1);
 
     m_addDryButton = new AnimatedButton("Add Dry Condition");
-    m_addDryButton->setFixedSize(120, 40);
+    m_addDryButton->setFixedSize(138, 40);
+    QFont dryFont = m_addDryButton->font();
+    dryFont.setPointSize(8);
+    m_addDryButton->setFont(dryFont);
     connect(m_addDryButton, &AnimatedButton::clicked,
             this, &GeneralConditionsSection::onAddDryClause);
 
@@ -130,7 +137,7 @@ void GeneralConditionsSection::setupUi()
     QVBoxLayout *customLayout = new QVBoxLayout(customGroup);
 
     QLabel *customHint = new QLabel(
-        "Custom conditions are limited to 256 characters including spaces."
+        "Custom conditions are limited to 512 characters including spaces."
         );
     customHint->setWordWrap(true);
     customLayout->addWidget(customHint);
@@ -139,9 +146,9 @@ void GeneralConditionsSection::setupUi()
 
     m_customClause = new QLineEdit();
     m_customClause->setPlaceholderText(
-        "Type a custom general condition (max 256 characters)..."
+        "Type a custom general condition (max 512 characters)..."
         );
-    m_customClause->setMaxLength(256);
+    m_customClause->setMaxLength(512);
     connect(m_customClause, &QLineEdit::textChanged,
             this, &GeneralConditionsSection::onCustomTextChanged);
     customInputRow->addWidget(m_customClause);
@@ -155,7 +162,7 @@ void GeneralConditionsSection::setupUi()
     customLayout->addLayout(customInputRow);
 
     // Character counter.
-    m_charCountLabel = new QLabel("0 / 256 characters");
+    m_charCountLabel = new QLabel("0 / 512 characters");
     m_charCountLabel->setStyleSheet(
         QString("QLabel { color: %1; font-size: 11px; }")
             .arg(StyleManager::instance().labelColour())
@@ -224,22 +231,38 @@ void GeneralConditionsSection::appendToGeneral(const QString &text,
 
     int itemCount = 0;
     if (!current.isEmpty())
-        itemCount = current.split("\n").count();
+        itemCount = current.split("\n", Qt::SkipEmptyParts).count();
 
     QString tag = "";
     if (systemType == "wet")      tag = "[WET] ";
     else if (systemType == "dry") tag = "[DRY] ";
 
+    // Strip any newlines from the clause text — each clause must be
+    // on a single line so the tag parser can identify it correctly.
+    // Long clauses will word-wrap visually in the text box.
+    QString cleanText = text;
+    cleanText.replace("\n", " ").replace("\r", " ");
+    // Collapse any double spaces created by the replacement.
+    while (cleanText.contains("  "))
+        cleanText.replace("  ", " ");
+    cleanText = cleanText.trimmed();
+
     QString newItem = QString("%1. %2%3")
                           .arg(itemCount + 1)
                           .arg(tag)
-                          .arg(text);
+                          .arg(cleanText);
 
     if (!current.isEmpty())
         current += "\n";
     current += newItem;
 
     m_generalText->setPlainText(current);
+
+    // Scroll to bottom so the newly added item is fully visible.
+    m_generalText->verticalScrollBar()->setValue(
+        m_generalText->verticalScrollBar()->maximum()
+        );
+
     emit dataChanged();
 }
 
@@ -389,10 +412,10 @@ void GeneralConditionsSection::onCustomTextChanged(const QString &text)
 {
     int count = text.length();
     m_charCountLabel->setText(
-        QString("%1 / 256 characters").arg(count)
+        QString("%1 / 512 characters").arg(count)
         );
 
-    if (count >= 240) {
+    if (count >= 492) {
         m_charCountLabel->setStyleSheet(
             "QLabel { color: #cc0000; font-size: 11px; }"
             );

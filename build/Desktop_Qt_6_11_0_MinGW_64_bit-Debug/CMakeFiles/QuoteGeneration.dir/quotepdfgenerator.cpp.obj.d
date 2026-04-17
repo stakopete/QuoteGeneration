@@ -432,4 +432,6 @@ CMakeFiles/QuoteGeneration.dir/quotepdfgenerator.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qline.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QBuffer \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qbuffer.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QByteArray
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QByteArray \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QRegularExpression \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qregularexpression.h

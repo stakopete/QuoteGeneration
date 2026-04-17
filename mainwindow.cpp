@@ -37,6 +37,10 @@
 #include "quotepreviewdialog.h"
 #include "quotetypedialog.h"
 #include "dropdownmanagerdialog.h"
+#include "quotepdfgenerator.h"
+#include <QFileDialog>
+#include <QRegularExpression>
+#include <QListWidget>
 
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -513,8 +517,148 @@ void MainWindow::onNewQuote()
 
 void MainWindow::onOpenQuote()
 {
-    // Phase 7 — not yet implemented
-    statusBar()->showMessage("Open Quote — coming in Phase 7", 3000);
+    // ── Check for unsaved changes first ───────────────────────────────────────
+    if (m_quoteModified) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Unsaved Changes");
+        msgBox.setText(
+            "The current quote has unsaved changes.\n"
+            "Save before opening another quote?"
+            );
+        msgBox.setIcon(QMessageBox::Question);
+        AnimatedButton *saveBtn    = new AnimatedButton("Save",    &msgBox);
+        AnimatedButton *discardBtn = new AnimatedButton("Discard", &msgBox);
+        AnimatedButton *cancelBtn  = new AnimatedButton("Cancel",  &msgBox);
+        saveBtn->setFixedSize(110, 40);
+        discardBtn->setFixedSize(110, 40);
+        cancelBtn->setFixedSize(110, 40);
+        msgBox.addButton(saveBtn,    QMessageBox::YesRole);
+        msgBox.addButton(discardBtn, QMessageBox::NoRole);
+        msgBox.addButton(cancelBtn,  QMessageBox::RejectRole);
+        msgBox.exec();
+
+        QAbstractButton *clicked = msgBox.clickedButton();
+        if (clicked == cancelBtn)
+            return;
+        if (clicked == saveBtn)
+            saveCurrentQuote();
+    }
+
+    // ── Load the list of all saved quotes ─────────────────────────────────────
+    QList<QuoteData> quotes = Database::listQuotes();
+
+    if (quotes.isEmpty()) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("No Quotes Found");
+        msgBox.setText("There are no saved quotes to open.");
+        msgBox.setIcon(QMessageBox::Information);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
+        return;
+    }
+
+    // ── Build the selection dialog ────────────────────────────────────────────
+    // We build this inline rather than creating a separate dialog class
+    // because the logic is simple enough not to warrant a new file.
+    QDialog dlg(this);
+    dlg.setWindowTitle("Open Quote");
+    dlg.setMinimumWidth(600);
+    dlg.setMinimumHeight(400);
+
+    QVBoxLayout *layout = new QVBoxLayout(&dlg);
+    layout->setContentsMargins(16, 16, 16, 16);
+    layout->setSpacing(8);
+
+    // Instruction label.
+    QLabel *lbl = new QLabel("Select a quote to open:");
+    lbl->setStyleSheet("font-size: 10pt;");
+    layout->addWidget(lbl);
+
+    // List widget — one row per quote.
+    // Each row shows: Reference | Site Name | Status | Last Saved
+    QListWidget *list = new QListWidget();
+    list->setStyleSheet(
+        "QListWidget {"
+        "    background-color: white;"
+        "    color: #1a1a1a;"
+        "    font-size: 10pt;"
+        "    border: 1px solid #999;"
+        "}"
+        "QListWidget::item { padding: 6px; }"
+        "QListWidget::item:selected {"
+        "    background-color: #3d5166;"
+        "    color: white;"
+        "}"
+        );
+    list->setAlternatingRowColors(true);
+
+    // Populate the list.
+    // We store the quote id in the item's UserRole data so we can
+    // retrieve it when the user makes a selection.
+    for (const QuoteData &q : quotes) {
+        // Build the reference string in YYMMnnn format.
+        QString ref = "Draft";
+        if (q.id > 0) {
+            // Use lastSaved date for the reference if available,
+            // otherwise fall back to today.
+            QDate date = QDate::fromString(q.lastSaved.left(10), "yyyy-MM-dd");
+            if (!date.isValid())
+                date = QDate::currentDate();
+            ref = date.toString("yy") + date.toString("MM")
+                  + QString("%1").arg(q.id, 3, 10, QChar('0'));
+        }
+
+        QString display = QString("%1   |   %2   |   %3   |   %4")
+                              .arg(ref, -10)
+                              .arg(q.siteName, -30)
+                              .arg(q.status, -10)
+                              .arg(q.lastSaved);
+
+        QListWidgetItem *item = new QListWidgetItem(display);
+        item->setData(Qt::UserRole, q.id);  // Store id for retrieval.
+        list->addItem(item);
+    }
+
+    layout->addWidget(list);
+
+    // Button row.
+    QHBoxLayout *btnRow = new QHBoxLayout();
+    AnimatedButton *openBtn   = new AnimatedButton("Open");
+    AnimatedButton *cancelBtn = new AnimatedButton("Cancel");
+    openBtn->setFixedSize(110, 40);
+    cancelBtn->setFixedSize(110, 40);
+
+    // Open is only enabled when an item is selected.
+    openBtn->setEnabled(false);
+    connect(list, &QListWidget::itemSelectionChanged, [&]() {
+        openBtn->setEnabled(!list->selectedItems().isEmpty());
+    });
+
+    // Double-clicking a row is the same as selecting and clicking Open.
+    connect(list, &QListWidget::itemDoubleClicked, [&]() {
+        dlg.accept();
+    });
+
+    connect(openBtn,   &AnimatedButton::clicked, &dlg, &QDialog::accept);
+    connect(cancelBtn, &AnimatedButton::clicked, &dlg, &QDialog::reject);
+
+    btnRow->addStretch();
+    btnRow->addWidget(openBtn);
+    btnRow->addWidget(cancelBtn);
+    layout->addLayout(btnRow);
+
+    // ── Show dialog and load selected quote ───────────────────────────────────
+    if (dlg.exec() != QDialog::Accepted)
+        return;
+
+    QList<QListWidgetItem*> selected = list->selectedItems();
+    if (selected.isEmpty())
+        return;
+
+    int selectedId = selected.first()->data(Qt::UserRole).toInt();
+    loadQuote(selectedId);
 }
 
 void MainWindow::onPreviewQuote()
@@ -548,8 +692,77 @@ void MainWindow::onPreviewQuote()
 
 void MainWindow::onGeneratePdf()
 {
-    // Phase 6 — not yet implemented
-    statusBar()->showMessage("Generate PDF — coming in Phase 6", 3000);
+    // Must have at least a site name before generating.
+    if (m_titleSection->siteName().isEmpty()) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Cannot Generate PDF");
+        msgBox.setText(
+            "Please enter a Site / Project Name in the Title section "
+            "before generating a PDF."
+            );
+        msgBox.setIcon(QMessageBox::Information);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
+        return;
+    }
+
+    // Save current state first so the PDF reflects the latest data.
+    saveCurrentQuote();
+
+    // Build the default filename and path — same logic as the preview dialog.
+    QString safeName = m_currentQuote.siteName;
+    safeName.replace(QRegularExpression(R"([\\/:*?"<>|])"), "_");
+
+    QString ref;
+    if (m_currentQuote.id > 0) {
+        QDate   today = QDate::currentDate();
+        QString yy    = today.toString("yy");
+        QString mm    = today.toString("MM");
+        QString seq   = QString("%1").arg(m_currentQuote.id, 3, 10, QChar('0'));
+        ref = yy + mm + seq;
+    } else {
+        ref = "Draft";
+    }
+
+    QString defaultName = QString("%1_%2.pdf").arg(ref, safeName);
+    QString quotesPath  = "D:/Quotes";
+    QDir quotesDir(quotesPath);
+    if (!quotesDir.exists())
+        quotesDir.mkpath(quotesPath);
+
+    QString defaultPath = quotesPath + "/" + defaultName;
+
+    // Show the save dialog.
+    QString filePath = QFileDialog::getSaveFileName(
+        this,
+        "Save Quote as PDF",
+        defaultPath,
+        "PDF Files (*.pdf)"
+        );
+
+    if (filePath.isEmpty())
+        return;   // User cancelled.
+
+    // Generate the PDF.
+    QList<PriceRow> rows = m_priceSection->priceRows();
+    QuotePdfGenerator generator(m_currentQuote, rows, m_config);
+    bool ok = generator.generate(filePath);
+
+    if (ok) {
+        QMessageBox::information(
+            this,
+            "PDF Saved",
+            QString("Quote saved successfully:\n%1").arg(filePath));
+    } else {
+        QMessageBox::critical(
+            this,
+            "PDF Error",
+            QString("The PDF could not be saved to:\n%1\n\n"
+                    "Check that the folder exists and you have "
+                    "permission to write there.").arg(filePath));
+    }
 }
 
 // void MainWindow::onSettings()

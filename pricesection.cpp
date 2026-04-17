@@ -51,7 +51,7 @@ void PriceSection::setupUi()
     mainLayout->addWidget(heading);
 
     // ── Price grid group ──────────────────────────────────────────────────────
-    QGroupBox *gridGroup = new QGroupBox("Proposed Price Breakdown");
+    QGroupBox *gridGroup = new QGroupBox("Price Breakdown");
     applyGroupBoxStyle(gridGroup);
     QVBoxLayout *gridLayout = new QVBoxLayout(gridGroup);
 

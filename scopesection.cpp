@@ -15,6 +15,8 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
+#include <QRegularExpression>
+#include <QScrollBar>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -118,7 +120,7 @@ void ScopeSection::setupUi()
     QVBoxLayout *customLayout = new QVBoxLayout(customGroup);
 
     QLabel *customHint = new QLabel(
-        "Custom items are limited to 256 characters including spaces."
+        "Custom items are limited to 512 characters including spaces."
         );
     customHint->setWordWrap(true);
     customLayout->addWidget(customHint);
@@ -127,9 +129,9 @@ void ScopeSection::setupUi()
 
     m_customClause = new QLineEdit();
     m_customClause->setPlaceholderText(
-        "Type a custom scope item (max 256 characters)..."
+        "Type a custom scope item (max 512 characters)..."
         );
-    m_customClause->setMaxLength(256);
+    m_customClause->setMaxLength(512);
     connect(m_customClause, &QLineEdit::textChanged,
             this, &ScopeSection::onCustomTextChanged);
     customInputRow->addWidget(m_customClause);
@@ -143,7 +145,7 @@ void ScopeSection::setupUi()
     customLayout->addLayout(customInputRow);
 
     // Character counter.
-    m_charCountLabel = new QLabel("0 / 256 characters");
+    m_charCountLabel = new QLabel("0 / 512 characters");
     m_charCountLabel->setStyleSheet(
         QString("QLabel { color: %1; font-size: 11px; }")
             .arg(StyleManager::instance().labelColour())
@@ -171,7 +173,7 @@ void ScopeSection::setupUi()
     m_scopeText->setPlaceholderText(
         "Scope of works items will appear here..."
         );
-    m_scopeText->setMinimumHeight(150);
+    m_scopeText->setMinimumHeight(100);
     m_scopeText->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
     m_scopeText->setSizePolicy(
         QSizePolicy::Expanding, QSizePolicy::Expanding
@@ -181,6 +183,9 @@ void ScopeSection::setupUi()
     textLayout->addWidget(m_scopeText);
 
     // Buttons.
+    mainLayout->addWidget(textGroup, 1);
+
+    // Buttons placed in mainLayout so they never overlap the text box.
     m_removeButton = new AnimatedButton("Remove Last");
     m_removeButton->setFixedSize(120, 40);
     connect(m_removeButton, &AnimatedButton::clicked,
@@ -192,14 +197,12 @@ void ScopeSection::setupUi()
             this, &ScopeSection::onClearAll);
 
     QHBoxLayout *buttonRow = new QHBoxLayout();
-    buttonRow->setContentsMargins(0, 8, 0, 0);
+    buttonRow->setContentsMargins(0, 4, 0, 0);
     buttonRow->addStretch();
     buttonRow->addWidget(m_removeButton);
     buttonRow->addSpacing(8);
     buttonRow->addWidget(m_clearButton);
-    textLayout->addLayout(buttonRow);
-
-    mainLayout->addWidget(textGroup);
+    mainLayout->addLayout(buttonRow);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -213,9 +216,12 @@ void ScopeSection::appendToScope(const QString &text,
 {
     QString current = m_scopeText->toPlainText().trimmed();
 
+    // Count only non-empty lines to avoid blank lines inflating the number.
+    // Qt::SkipEmptyParts ensures trailing newlines don't add phantom items.
+
     int itemCount = 0;
     if (!current.isEmpty())
-        itemCount = current.split("\n").count();
+        itemCount = current.split("\n", Qt::SkipEmptyParts).count();
 
     // Prefix with system type tag so preview/PDF can group them.
     // [WET] and [DRY] tags are stripped when displaying but used
@@ -225,16 +231,33 @@ void ScopeSection::appendToScope(const QString &text,
     else if (systemType == "dry")  tag = "[DRY] ";
     else                           tag = "[GEN] ";
 
+    // Strip any newlines from the clause text — each clause must be
+    // on a single line so the tag parser can identify it correctly.
+    // Long clauses will word-wrap visually in the text box.
+    QString cleanText = text;
+    cleanText.replace("\n", " ").replace("\r", " ");
+    // Collapse any double spaces created by the replacement.
+    while (cleanText.contains("  "))
+        cleanText.replace("  ", " ");
+    cleanText = cleanText.trimmed();
+
     QString newItem = QString("%1. %2%3")
                           .arg(itemCount + 1)
                           .arg(tag)
-                          .arg(text);
+                          .arg(cleanText);
 
     if (!current.isEmpty())
         current += "\n";
     current += newItem;
 
     m_scopeText->setPlainText(current);
+
+    // Scroll to the absolute bottom of the text edit so the full
+    // last added item is visible.
+    m_scopeText->verticalScrollBar()->setValue(
+        m_scopeText->verticalScrollBar()->maximum()
+        );
+
     emit dataChanged();
 }
 
@@ -350,17 +373,19 @@ void ScopeSection::onRemoveLastClause()
     if (current.isEmpty())
         return;
 
-    QStringList lines = current.split("\n");
+    QStringList lines = current.split("\n", Qt::SkipEmptyParts);
     lines.removeLast();
 
-    // Renumber remaining items.
+    // Renumber remaining items correctly.
+    // We must preserve the [WET] [DRY] [GEN] tag when renumbering.
+    // The format of each line is: "N. [TAG] text"
+    // We strip only the leading number and dot, keeping everything after.
+    QRegularExpression numPrefix("^\\d+\\.\\s+");
     QStringList renumbered;
     for (int i = 0; i < lines.count(); ++i) {
-        QString line = lines[i];
-        // Strip existing number prefix and re-apply.
-        int dotPos = line.indexOf(". ");
-        if (dotPos > 0)
-            line = line.mid(dotPos + 2);
+        QString line = lines[i].trimmed();
+        // Remove only the number prefix — leave the tag and text intact.
+        line.remove(numPrefix);
         renumbered.append(QString("%1. %2").arg(i + 1).arg(line));
     }
 
@@ -403,11 +428,11 @@ void ScopeSection::onCustomTextChanged(const QString &text)
 {
     int count = text.length();
     m_charCountLabel->setText(
-        QString("%1 / 256 characters").arg(count)
+        QString("%1 / 512 characters").arg(count)
         );
 
     // Turn the counter red when approaching the limit.
-    if (count >= 240) {
+    if (count >= 492) {
         m_charCountLabel->setStyleSheet(
             "QLabel { color: #cc0000; font-size: 11px; }"
             );

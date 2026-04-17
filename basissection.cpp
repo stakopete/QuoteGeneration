@@ -88,9 +88,11 @@ void BasisSection::setupUi()
 
     listsLayout->addWidget(m_wetClauseList, 1, 0);
 
-    // Fix 3: Add wet button centred below list, fixed size 138x50
-    m_addWetButton = new AnimatedButton("Add Wet Clause");
+    m_addWetButton = new AnimatedButton("Add Wet Standard");
     m_addWetButton->setFixedSize(138, 50);
+    // Reduce font size slightly to fit the longer text on the button.
+    m_addWetButton->setStyleSheet(m_addWetButton->styleSheet() +
+                                  "QPushButton { font-size: 10px; }");
 
     QHBoxLayout *wetBtnRow = new QHBoxLayout();
     wetBtnRow->addStretch();
@@ -118,9 +120,10 @@ void BasisSection::setupUi()
 
     listsLayout->addWidget(m_dryClauseList, 1, 1);
 
-    // Fix 3: Add dry button centred below list, fixed size 138x50
-    m_addDryButton = new AnimatedButton("Add Dry Clause");
+    m_addDryButton = new AnimatedButton("Add Dry Standard");
     m_addDryButton->setFixedSize(138, 50);
+    m_addDryButton->setStyleSheet(m_addDryButton->styleSheet() +
+                                  "QPushButton { font-size: 10px; }");
 
     QHBoxLayout *dryBtnRow = new QHBoxLayout();
     dryBtnRow->addStretch();
@@ -173,17 +176,20 @@ void BasisSection::setupUi()
         "Selected standards and references will appear here..."
         );
     m_basisText->setMinimumHeight(100);
-
-    // Fix 6: Add vertical scroll bar so content is always accessible.
     m_basisText->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+
+    // Use Expanding horizontally but Preferred vertically so the text
+    // edit grows with available space but does not push buttons out.
     m_basisText->setSizePolicy(
-        QSizePolicy::Expanding, QSizePolicy::Expanding
+        QSizePolicy::Expanding, QSizePolicy::Preferred
         );
     connect(m_basisText, &QTextEdit::textChanged,
             this, &BasisSection::dataChanged);
     textLayout->addWidget(m_basisText);
 
-    // Fix 5: Remove and Clear buttons — same size as others 138x50
+    mainLayout->addWidget(textGroup, 1);  // stretch=1 lets it grow
+
+    // ── Buttons anchored below the text group ─────────────────────────────────
     m_removeButton = new AnimatedButton("Remove Last");
     m_removeButton->setFixedSize(138, 50);
     connect(m_removeButton, &AnimatedButton::clicked,
@@ -192,13 +198,11 @@ void BasisSection::setupUi()
     m_clearButton = new AnimatedButton("Clear All");
     m_clearButton->setFixedSize(138, 50);
     connect(m_clearButton, &AnimatedButton::clicked, this, [this]() {
-        // Fix 7: Use styled QMessageBox for the warning dialog.
         QMessageBox msgBox(this);
         msgBox.setWindowTitle("Clear All");
         msgBox.setText("Are you sure you want to clear all basis clauses?");
         msgBox.setIcon(QMessageBox::Question);
 
-        // Use AnimatedButton for Yes and No.
         AnimatedButton *yesBtn = new AnimatedButton("Yes", &msgBox);
         yesBtn->setFixedSize(110, 40);
         AnimatedButton *noBtn  = new AnimatedButton("No",  &msgBox);
@@ -207,7 +211,6 @@ void BasisSection::setupUi()
         msgBox.addButton(yesBtn,  QMessageBox::YesRole);
         msgBox.addButton(noBtn,   QMessageBox::NoRole);
         msgBox.setDefaultButton(noBtn);
-
         msgBox.exec();
 
         if (msgBox.clickedButton() == yesBtn) {
@@ -217,19 +220,12 @@ void BasisSection::setupUi()
     });
 
     QHBoxLayout *buttonRow = new QHBoxLayout();
-    buttonRow->setContentsMargins(0, 8, 0, 0);
+    buttonRow->setContentsMargins(0, 4, 0, 0);
     buttonRow->addStretch();
     buttonRow->addWidget(m_removeButton);
     buttonRow->addSpacing(8);
     buttonRow->addWidget(m_clearButton);
-    textLayout->addLayout(buttonRow);
-
-    mainLayout->addWidget(textGroup);
-
-    // Fix 6: Wrap everything in a scroll area so nothing gets cut off
-    // at smaller window sizes or lower screen resolutions.
-    // We do this by making the main widget scrollable.
-    setLayout(mainLayout);
+    mainLayout->addLayout(buttonRow);
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

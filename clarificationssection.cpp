@@ -73,9 +73,9 @@ void ClarificationsSection::setupUi()
 
     m_customClause = new QLineEdit();
     m_customClause->setPlaceholderText(
-        "Type a clarification (max 256 characters)..."
+        "Type a clarification (max 512 characters)..."
         );
-    m_customClause->setMaxLength(256);
+    m_customClause->setMaxLength(512);
     connect(m_customClause, &QLineEdit::textChanged,
             this, &ClarificationsSection::onCustomTextChanged);
     customInputRow->addWidget(m_customClause);
@@ -249,10 +249,10 @@ void ClarificationsSection::onCustomTextChanged(const QString &text)
 {
     int count = text.length();
     m_charCountLabel->setText(
-        QString("%1 / 256 characters").arg(count)
+        QString("%1 / 512 characters").arg(count)
         );
 
-    if (count >= 240) {
+    if (count >= 492) {
         m_charCountLabel->setStyleSheet(
             "QLabel { color: #cc0000; font-size: 11px; }"
             );

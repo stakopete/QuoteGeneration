@@ -40,6 +40,7 @@ private slots:
     void onAddClause();
     void onAddCustomClause();
     void onRemoveClause();
+    void onClearAll();
 
 private:
     void setupUi();
@@ -52,6 +53,7 @@ private:
     AnimatedButton *m_addButton;
     AnimatedButton *m_addCustomButton;
     AnimatedButton *m_removeButton;
+    AnimatedButton *m_clearButton;
 };
 
 #endif // SYSTEMSECTION_H
