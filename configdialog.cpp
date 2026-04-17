@@ -20,6 +20,7 @@
 #include "stylemanager.h"
 #include "animatedbutton.h"
 #include <QPushButton>
+#include "appsettings.h"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -337,6 +338,21 @@ void ConfigDialog::onSave()
             );
         return;
     }
+    // Sync the same data to the INI file.
+    AppSettings &ini = AppSettings::instance();
+    ini.setCompanyName(cfg.companyName);
+    ini.setContactName(cfg.contactName);
+    ini.setPhone(cfg.phone);
+    ini.setEmail(cfg.email);
+    ini.setLogoPath(cfg.logoPath);
+    ini.setSignaturePath(cfg.signaturePath);
+    ini.setTaxLabel(cfg.taxLabel);
+    ini.setTaxRate(cfg.taxRate);
+    ini.setDarkMode(cfg.darkMode);
+    ini.save();
+
+    accept();
+
 
     // accept() closes the dialog and makes exec() return QDialog::Accepted.
     accept();

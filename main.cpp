@@ -9,6 +9,7 @@
 #include "database.h"
 #include "configdialog.h"
 #include "stylemanager.h"
+#include "appsettings.h"
 
 #include <QApplication>
 #include <QMessageBox>
@@ -19,7 +20,6 @@ int main(int argc, char *argv[])
     QApplication app(argc, argv);
 
     // Suppress Qt internal CSS warnings that are not actionable.
-    // These come from Qt's style engine and do not affect functionality.
     QLoggingCategory::setFilterRules("qt.widgets.stylesheet.warning=false");
 
     app.setOrganizationName("PB Software Solutions");
@@ -38,23 +38,47 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    // ── First run check ───────────────────────────────────────────────────────
-    // Load the config and check if setup has been completed.
-    // If configured is false this is the first time the app has been run.
+    // ── Load INI file settings ────────────────────────────────────────────────
+    // Must happen before the config dialog or main window so all paths
+    // and preferences are available immediately.
+    AppSettings::instance().load();
+
+    // ── Load AppConfig from database ──────────────────────────────────────────
+    // Declared once here and used throughout the rest of main().
     AppConfig cfg = Database::loadConfig();
-    // Apply the saved light/dark mode preference before any UI is shown.
+
+    // ── Sync INI paths into AppConfig ─────────────────────────────────────────
+    // The INI file is the primary store for paths and preferences.
+    // If the INI has values that differ from the database we update the database.
+    bool needsSync = false;
+
+    if (!AppSettings::instance().logoPath().isEmpty() &&
+        cfg.logoPath != AppSettings::instance().logoPath()) {
+        cfg.logoPath = AppSettings::instance().logoPath();
+        needsSync = true;
+    }
+    if (!AppSettings::instance().signaturePath().isEmpty() &&
+        cfg.signaturePath != AppSettings::instance().signaturePath()) {
+        cfg.signaturePath = AppSettings::instance().signaturePath();
+        needsSync = true;
+    }
+    if (!AppSettings::instance().companyName().isEmpty() &&
+        cfg.companyName != AppSettings::instance().companyName()) {
+        cfg.companyName = AppSettings::instance().companyName();
+        needsSync = true;
+    }
+    if (needsSync)
+        Database::saveConfig(cfg);
+
+    // ── Apply light/dark mode ─────────────────────────────────────────────────
     StyleManager::instance().setDarkMode(cfg.darkMode);
     StyleManager::instance().applyToApplication(&app);
 
+    // ── First run check ───────────────────────────────────────────────────────
     if (!cfg.configured) {
-        // Show the configuration dialog.
-        // exec() blocks until the user clicks Save or Cancel.
         ConfigDialog dlg;
         int result = dlg.exec();
 
-        // If the user clicked Cancel on first run we cannot continue —
-        // the app needs the config data to function.
-        // We warn them and exit cleanly.
         if (result != QDialog::Accepted) {
             QMessageBox::information(
                 nullptr,

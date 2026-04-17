@@ -471,6 +471,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/appsettings.h",
+			"MU",
+			"EWIEGA46WW/moc_appsettings.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/basissection.h",
 			"MU",
 			"EWIEGA46WW/moc_basissection.cpp",
@@ -658,6 +664,7 @@
 	"SOURCES" : 
 	[
 		[ "D:/Qt_Projects/QuoteGeneration/animatedbutton.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/appsettings.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/basissection.cpp", "MU", null ],
 		[
 			"D:/Qt_Projects/QuoteGeneration/clarificationssection.cpp",

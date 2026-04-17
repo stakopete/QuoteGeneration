@@ -202,6 +202,30 @@ animatedbutton.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.s
 .PHONY : animatedbutton.cpp.s
 
+appsettings.obj: appsettings.cpp.obj
+.PHONY : appsettings.obj
+
+# target to build an object file
+appsettings.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/appsettings.cpp.obj
+.PHONY : appsettings.cpp.obj
+
+appsettings.i: appsettings.cpp.i
+.PHONY : appsettings.i
+
+# target to preprocess a source file
+appsettings.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/appsettings.cpp.i
+.PHONY : appsettings.cpp.i
+
+appsettings.s: appsettings.cpp.s
+.PHONY : appsettings.s
+
+# target to generate assembly for a file
+appsettings.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/appsettings.cpp.s
+.PHONY : appsettings.cpp.s
+
 basissection.obj: basissection.cpp.obj
 .PHONY : basissection.obj
 
@@ -675,6 +699,9 @@ help:
 	@echo ... animatedbutton.obj
 	@echo ... animatedbutton.i
 	@echo ... animatedbutton.s
+	@echo ... appsettings.obj
+	@echo ... appsettings.i
+	@echo ... appsettings.s
 	@echo ... basissection.obj
 	@echo ... basissection.i
 	@echo ... basissection.s

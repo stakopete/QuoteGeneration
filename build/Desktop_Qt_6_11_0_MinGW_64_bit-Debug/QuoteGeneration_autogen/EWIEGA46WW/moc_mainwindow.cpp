@@ -55,7 +55,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         "loadQuote",
         "id",
         "newQuote",
-        "quoteType"
+        "quoteType",
+        "onDropdownManager"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -93,6 +94,8 @@ template <> constexpr inline auto MainWindow::qt_create_metaobjectdata<qt_meta_t
         }}),
         // Slot 'newQuote'
         QtMocHelpers::SlotData<void()>(16, 2, QMC::AccessPrivate | QMC::MethodCloned, QMetaType::Void),
+        // Slot 'onDropdownManager'
+        QtMocHelpers::SlotData<void()>(18, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -130,6 +133,7 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 11: _t->loadQuote((*reinterpret_cast<std::add_pointer_t<int>>(_a[1]))); break;
         case 12: _t->newQuote((*reinterpret_cast<std::add_pointer_t<QString>>(_a[1]))); break;
         case 13: _t->newQuote(); break;
+        case 14: _t->onDropdownManager(); break;
         default: ;
         }
     }
@@ -154,14 +158,14 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 14)
+        if (_id < 15)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 14;
+        _id -= 15;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 14)
+        if (_id < 15)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 14;
+        _id -= 15;
     }
     return _id;
 }

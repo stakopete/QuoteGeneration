@@ -171,6 +171,10 @@ void MainWindow::setupMenuBar()
     m_actSettings = toolsMenu->addAction("&Settings");
     connect(m_actSettings, &QAction::triggered, this, &MainWindow::onSettings);
 
+    QAction *actDropdown = toolsMenu->addAction("&Dropdown Manager");
+    connect(actDropdown, &QAction::triggered,
+            this, &MainWindow::onDropdownManager);
+
     m_actToggleDarkMode = toolsMenu->addAction("Toggle &Dark Mode");
     m_actToggleDarkMode->setCheckable(true);
     m_actToggleDarkMode->setChecked(StyleManager::instance().isDarkMode());
@@ -781,8 +785,13 @@ void MainWindow::onGeneratePdf()
 
 void MainWindow::onSettings()
 {
-    DropdownManagerDialog dlg(this);
-    dlg.exec();
+    ConfigDialog dlg(this);
+    if (dlg.exec() == QDialog::Accepted) {
+        m_config = Database::loadConfig();
+        setWindowTitle("Quote Generation — " + m_config.companyName);
+        m_statusLabel->setText("  Status: " + m_currentQuote.status +
+                               "  |  Settings saved.");
+    }
 }
 
 void MainWindow::onAbout()
@@ -795,6 +804,12 @@ void MainWindow::onAbout()
         "<p>Developed by PB Software Solutions</p>"
         "<p>Built with Qt " + QString(QT_VERSION_STR) + "</p>"
         );
+}
+
+void MainWindow::onDropdownManager()
+{
+    DropdownManagerDialog dlg(this);
+    dlg.exec();
 }
 
 void MainWindow::onTabChanged(int index)

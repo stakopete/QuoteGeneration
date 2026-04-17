@@ -53,6 +53,7 @@ private slots:
     void saveCurrentQuote();
     void loadQuote(int id);
     void newQuote(const QString &quoteType = "Combined");
+    void onDropdownManager();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

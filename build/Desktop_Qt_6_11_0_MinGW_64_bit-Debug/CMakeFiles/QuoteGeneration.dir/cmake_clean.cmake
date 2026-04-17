@@ -3,6 +3,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/animatedbutton.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/appsettings.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/appsettings.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/basissection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/clarificationssection.cpp.obj"
