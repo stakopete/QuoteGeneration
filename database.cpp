@@ -13,6 +13,8 @@
 #include <QDebug>
 #include <QDateTime>
 #include <QDate>
+#include <QStandardPaths>
+#include <QDir>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // databasePath()
@@ -22,7 +24,13 @@
 // ─────────────────────────────────────────────────────────────────────────────
 QString Database::databasePath()
 {
-    return QCoreApplication::applicationDirPath() + "/QuoteGeneration.sqlite";
+    // Store the database in the user's AppData folder.
+    // This folder is always writable regardless of where the app is installed.
+    QString appData = QStandardPaths::writableLocation(
+        QStandardPaths::AppDataLocation
+        );
+    QDir().mkpath(appData);  // Create the folder if it doesn't exist.
+    return appData + "/QuoteGeneration.sqlite";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

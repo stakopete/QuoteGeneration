@@ -398,4 +398,6 @@ CMakeFiles/QuoteGeneration.dir/appsettings.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qfile.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qfileinfo.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/qtimezone.h \
- C:/Qt/6.11.0/mingw_64/include/QtCore/QDate
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QDate \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QStandardPaths \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qstandardpaths.h

@@ -8,6 +8,8 @@
 #include <QCoreApplication>
 #include <QDir>
 #include <QDate>
+#include <QStandardPaths>
+#include <QDir>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // instance()
@@ -26,8 +28,12 @@ AppSettings &AppSettings::instance()
 // ─────────────────────────────────────────────────────────────────────────────
 QString AppSettings::iniFilePath()
 {
-    return QCoreApplication::applicationDirPath()
-    + "/QuoteGeneration.ini";
+    // Store the INI file in the user's AppData folder alongside the database.
+    QString appData = QStandardPaths::writableLocation(
+        QStandardPaths::AppDataLocation
+        );
+    QDir().mkpath(appData);
+    return appData + "/QuoteGeneration.ini";
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
