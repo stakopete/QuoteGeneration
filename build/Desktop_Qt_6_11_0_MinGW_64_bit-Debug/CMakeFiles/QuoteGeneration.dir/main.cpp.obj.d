@@ -436,4 +436,6 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qmessagebox.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qdialogbuttonbox.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QLoggingCategory \
- C:/Qt/6.11.0/mingw_64/include/QtCore/qloggingcategory.h
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qloggingcategory.h \
+ D:\Qt_Projects\QuoteGeneration\licencemanager.h \
+ D:\Qt_Projects\QuoteGeneration\licencedialog.h

@@ -539,4 +539,6 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtGui/qdesktopservices.h \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QUrl \
  C:/Qt/6.11.0/mingw_64/include/QtCore/QFileInfo \
- D:\Qt_Projects\QuoteGeneration\appsettings.h
+ D:\Qt_Projects\QuoteGeneration\appsettings.h \
+ D:\Qt_Projects\QuoteGeneration\licencemanager.h \
+ D:\Qt_Projects\QuoteGeneration\licencedialog.h

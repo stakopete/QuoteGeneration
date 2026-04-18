@@ -8,6 +8,7 @@
 #include "EWIEGA46WW/moc_emaildialog.cpp"
 #include "EWIEGA46WW/moc_exclusionssection.cpp"
 #include "EWIEGA46WW/moc_generalconditionssection.cpp"
+#include "EWIEGA46WW/moc_licencedialog.cpp"
 #include "EWIEGA46WW/moc_mainwindow.cpp"
 #include "EWIEGA46WW/moc_pricesection.cpp"
 #include "EWIEGA46WW/moc_quotelistdialog.cpp"

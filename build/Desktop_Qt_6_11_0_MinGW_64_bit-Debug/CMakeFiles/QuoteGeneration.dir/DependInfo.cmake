@@ -20,6 +20,8 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Qt_Projects/QuoteGeneration/emaildialog.cpp" "CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp" "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/generalconditionssection.cpp" "CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj.d"
+  "D:/Qt_Projects/QuoteGeneration/licencedialog.cpp" "CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj.d"
+  "D:/Qt_Projects/QuoteGeneration/licencemanager.cpp" "CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/main.cpp" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/pricesection.cpp" "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/pricesection.cpp.obj.d"

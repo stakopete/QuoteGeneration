@@ -531,6 +531,18 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/licencedialog.h",
+			"MU",
+			"EWIEGA46WW/moc_licencedialog.cpp",
+			null
+		],
+		[
+			"D:/Qt_Projects/QuoteGeneration/licencemanager.h",
+			"MU",
+			"EWIEGA46WW/moc_licencemanager.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/mainwindow.h",
 			"MU",
 			"EWIEGA46WW/moc_mainwindow.cpp",
@@ -698,6 +710,8 @@
 			"MU",
 			null
 		],
+		[ "D:/Qt_Projects/QuoteGeneration/licencedialog.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/licencemanager.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/main.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/mainwindow.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/pricesection.cpp", "MU", null ],

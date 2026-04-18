@@ -413,6 +413,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:/Qt_Projects/QuoteGeneration/exclusionssection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_generalconditionssection.cpp \
  D:/Qt_Projects/QuoteGeneration/generalconditionssection.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_licencedialog.cpp \
+ D:/Qt_Projects/QuoteGeneration/licencedialog.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_mainwindow.cpp \
  D:/Qt_Projects/QuoteGeneration/mainwindow.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMainWindow \

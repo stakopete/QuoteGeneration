@@ -14,6 +14,8 @@
 #include <QApplication>
 #include <QMessageBox>
 #include <QLoggingCategory>
+#include "licencemanager.h"
+#include "licencedialog.h"
 
 int main(int argc, char *argv[])
 {
@@ -42,6 +44,21 @@ int main(int argc, char *argv[])
     // Must happen before the config dialog or main window so all paths
     // and preferences are available immediately.
     AppSettings::instance().load();
+
+    AppSettings::instance().load();
+
+    // ── Licence / Trial check ─────────────────────────────────────────────────
+    // Check if the trial is still valid or the app is licensed.
+    // If neither, show the licence dialog and exit if not activated.
+    if (!LicenceManager::instance().checkStartup()) {
+        // Trial has expired — show the licence dialog.
+        // The dialog cannot be dismissed without a valid licence key.
+        LicenceDialog dlg(LicenceDialog::Mode::TrialExpired);
+        if (dlg.exec() != QDialog::Accepted) {
+            // User did not activate — exit.
+            return 0;
+        }
+    }
 
     // ── Load AppConfig from database ──────────────────────────────────────────
     // Declared once here and used throughout the rest of main().

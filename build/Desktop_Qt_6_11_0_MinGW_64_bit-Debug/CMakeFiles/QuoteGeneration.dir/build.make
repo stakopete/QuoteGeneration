@@ -428,6 +428,36 @@ CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.s"
 	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\emaildialog.cpp -o CMakeFiles\QuoteGeneration.dir\emaildialog.cpp.s
 
+CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj: D:/Qt_Projects/QuoteGeneration/licencemanager.cpp
+CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Building CXX object CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\licencemanager.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\licencemanager.cpp.obj -c D:\Qt_Projects\QuoteGeneration\licencemanager.cpp
+
+CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\licencemanager.cpp > CMakeFiles\QuoteGeneration.dir\licencemanager.cpp.i
+
+CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\licencemanager.cpp -o CMakeFiles\QuoteGeneration.dir\licencemanager.cpp.s
+
+CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/flags.make
+CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/includes_CXX.rsp
+CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj: D:/Qt_Projects/QuoteGeneration/licencedialog.cpp
+CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj: CMakeFiles/QuoteGeneration.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_26) "Building CXX object CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj -MF CMakeFiles\QuoteGeneration.dir\licencedialog.cpp.obj.d -o CMakeFiles\QuoteGeneration.dir\licencedialog.cpp.obj -c D:\Qt_Projects\QuoteGeneration\licencedialog.cpp
+
+CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Preprocessing CXX source to CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.i"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E D:\Qt_Projects\QuoteGeneration\licencedialog.cpp > CMakeFiles\QuoteGeneration.dir\licencedialog.cpp.i
+
+CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green "Compiling CXX source to assembly CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.s"
+	C:\Qt\Tools\mingw1310_64\bin\g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S D:\Qt_Projects\QuoteGeneration\licencedialog.cpp -o CMakeFiles\QuoteGeneration.dir\licencedialog.cpp.s
+
 # Object files for target QuoteGeneration
 QuoteGeneration_OBJECTS = \
 "CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj" \
@@ -453,7 +483,9 @@ QuoteGeneration_OBJECTS = \
 "CMakeFiles/QuoteGeneration.dir/quotepdfgenerator.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/appsettings.cpp.obj" \
 "CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.obj" \
-"CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj"
+"CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj" \
+"CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj"
 
 # External object files for target QuoteGeneration
 QuoteGeneration_EXTERNAL_OBJECTS =
@@ -482,6 +514,8 @@ QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/quotepdfgenerator.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/appsettings.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/quotelistdialog.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj
+QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/build.make
 QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6Sql.a
 QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6PrintSupport.a
@@ -493,7 +527,7 @@ QuoteGeneration.exe: C:/Qt/6.11.0/mingw_64/lib/libQt6EntryPoint.a
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/linkLibs.rsp
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/objects1.rsp
 QuoteGeneration.exe: CMakeFiles/QuoteGeneration.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_25) "Linking CXX executable QuoteGeneration.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --green --bold --progress-dir=D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\CMakeFiles --progress-num=$(CMAKE_PROGRESS_27) "Linking CXX executable QuoteGeneration.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\QuoteGeneration.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

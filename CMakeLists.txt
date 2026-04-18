@@ -74,6 +74,11 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/quotelistdialog.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/emaildialog.h
     ${CMAKE_CURRENT_SOURCE_DIR}/emaildialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/licencemanager.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/licencemanager.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/licencedialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/licencedialog.cpp
+
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -114,6 +119,10 @@ qt_add_executable(QuoteGeneration
        quotelistdialog.cpp
        emaildialog.h
        emaildialog.cpp
+       licencemanager.h
+       licencemanager.cpp
+       licencedialog.h
+       licencedialog.cpp
 
 
 )
@@ -127,7 +136,7 @@ target_link_libraries(QuoteGeneration PRIVATE
     Qt6::Gui
 )
 if(WIN32)
-    target_link_libraries(QuoteGeneration PRIVATE Mapi32)
+    target_link_libraries(QuoteGeneration PRIVATE Mapi32 ole32 oleaut32)
 endif()
 
 # ── Suppress console window on Windows ───────────────────────────────────────

@@ -442,6 +442,54 @@ generalconditionssection.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.s
 .PHONY : generalconditionssection.cpp.s
 
+licencedialog.obj: licencedialog.cpp.obj
+.PHONY : licencedialog.obj
+
+# target to build an object file
+licencedialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.obj
+.PHONY : licencedialog.cpp.obj
+
+licencedialog.i: licencedialog.cpp.i
+.PHONY : licencedialog.i
+
+# target to preprocess a source file
+licencedialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.i
+.PHONY : licencedialog.cpp.i
+
+licencedialog.s: licencedialog.cpp.s
+.PHONY : licencedialog.s
+
+# target to generate assembly for a file
+licencedialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/licencedialog.cpp.s
+.PHONY : licencedialog.cpp.s
+
+licencemanager.obj: licencemanager.cpp.obj
+.PHONY : licencemanager.obj
+
+# target to build an object file
+licencemanager.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.obj
+.PHONY : licencemanager.cpp.obj
+
+licencemanager.i: licencemanager.cpp.i
+.PHONY : licencemanager.i
+
+# target to preprocess a source file
+licencemanager.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.i
+.PHONY : licencemanager.cpp.i
+
+licencemanager.s: licencemanager.cpp.s
+.PHONY : licencemanager.s
+
+# target to generate assembly for a file
+licencemanager.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/licencemanager.cpp.s
+.PHONY : licencemanager.cpp.s
+
 main.obj: main.cpp.obj
 .PHONY : main.obj
 
@@ -777,6 +825,12 @@ help:
 	@echo ... generalconditionssection.obj
 	@echo ... generalconditionssection.i
 	@echo ... generalconditionssection.s
+	@echo ... licencedialog.obj
+	@echo ... licencedialog.i
+	@echo ... licencedialog.s
+	@echo ... licencemanager.obj
+	@echo ... licencemanager.i
+	@echo ... licencemanager.s
 	@echo ... main.obj
 	@echo ... main.i
 	@echo ... main.s

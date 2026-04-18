@@ -56,7 +56,7 @@
 			{
 				"command" : 3,
 				"file" : 1,
-				"line" : 80,
+				"line" : 82,
 				"parent" : 0
 			},
 			{
@@ -80,13 +80,13 @@
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 122,
+				"line" : 128,
 				"parent" : 0
 			},
 			{
 				"command" : 4,
 				"file" : 1,
-				"line" : 130,
+				"line" : 136,
 				"parent" : 0
 			},
 			{
@@ -487,7 +487,9 @@
 				40,
 				42,
 				44,
-				46
+				46,
+				48,
+				50
 			]
 		}
 	],
@@ -532,6 +534,16 @@
 			{
 				"backtrace" : 6,
 				"fragment" : "-lMapi32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-lole32",
+				"role" : "libraries"
+			},
+			{
+				"backtrace" : 6,
+				"fragment" : "-loleaut32",
 				"role" : "libraries"
 			},
 			{
@@ -652,7 +664,9 @@
 				40,
 				42,
 				44,
-				46
+				46,
+				48,
+				50
 			]
 		},
 		{
@@ -681,7 +695,9 @@
 				41,
 				43,
 				45,
-				47
+				47,
+				49,
+				51
 			]
 		},
 		{
@@ -695,14 +711,14 @@
 			"name" : "",
 			"sourceIndexes" : 
 			[
-				48
+				52
 			]
 		},
 		{
 			"name" : "CMake Rules",
 			"sourceIndexes" : 
 			[
-				49
+				53
 			]
 		}
 	],
@@ -966,6 +982,28 @@
 			"backtrace" : 4,
 			"compileGroupIndex" : 0,
 			"path" : "emaildialog.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "licencemanager.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "licencemanager.cpp",
+			"sourceGroupIndex" : 0
+		},
+		{
+			"backtrace" : 4,
+			"path" : "licencedialog.h",
+			"sourceGroupIndex" : 1
+		},
+		{
+			"backtrace" : 4,
+			"compileGroupIndex" : 0,
+			"path" : "licencedialog.cpp",
 			"sourceGroupIndex" : 0
 		},
 		{

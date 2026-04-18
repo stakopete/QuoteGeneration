@@ -47,6 +47,8 @@
 #include <QUrl>
 #include <QFileInfo>
 #include "appsettings.h"
+#include "licencemanager.h"
+#include "licencedialog.h"
 
 
 
@@ -185,6 +187,11 @@ void MainWindow::setupMenuBar()
     QAction *actDropdown = toolsMenu->addAction("&Dropdown Manager");
     connect(actDropdown, &QAction::triggered,
             this, &MainWindow::onDropdownManager);
+    QAction *actActivate = toolsMenu->addAction("&Activate Licence");
+    connect(actActivate, &QAction::triggered, this, [this]() {
+        LicenceDialog dlg(LicenceDialog::Mode::Activate, this);
+        dlg.exec();
+    });
 
     m_actToggleDarkMode = toolsMenu->addAction("Toggle &Dark Mode");
     m_actToggleDarkMode->setCheckable(true);
@@ -358,6 +365,14 @@ void MainWindow::setupStatusBar()
     m_statusLabel = new QLabel("  Ready");
     m_statusLabel->setStyleSheet("color: white;");
     statusBar()->addWidget(m_statusLabel, 1);
+
+    // Show trial status on the right side of the status bar.
+    QLabel *trialLabel = new QLabel(
+        LicenceManager::instance().trialStatusString() + "  "
+        );
+    trialLabel->setStyleSheet("color: #f0e68c;");
+    statusBar()->addPermanentWidget(trialLabel);
+
     statusBar()->setSizeGripEnabled(true);
 }
 
@@ -807,6 +822,8 @@ void MainWindow::saveCurrentQuote()
 
     // Save to database.
     m_currentQuote = Database::saveQuote(m_currentQuote);
+    // Increment the trial quote counter each time a quote is saved.
+    LicenceManager::instance().onQuoteGenerated();
 
     // Save price items separately.
     if (m_currentQuote.id > 0) {
