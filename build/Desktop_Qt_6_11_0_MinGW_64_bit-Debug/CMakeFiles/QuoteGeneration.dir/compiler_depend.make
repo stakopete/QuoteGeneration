@@ -5189,14 +5189,17 @@ CMakeFiles/QuoteGeneration.dir/main.cpp.obj: D:/Qt_Projects/QuoteGeneration/main
 CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneration/mainwindow.cpp \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QDate \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QFileInfo \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QProcess \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QRegularExpression \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QTimer \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QUrl \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20functional.h \
@@ -5290,6 +5293,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtCore/qoverload.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qpair.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qpoint.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qprocess.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qrect.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qrefcount.h \
@@ -5351,6 +5355,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtGui/QAction \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QCloseEvent \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
+  C:/Qt/6.11.0/mingw_64/include/QtGui/QDesktopServices \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QPalette \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent \
@@ -5360,6 +5365,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/6.11.0/mingw_64/include/QtGui/qbrush.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qcolor.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qcursor.h \
+  C:/Qt/6.11.0/mingw_64/include/QtGui/qdesktopservices.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qfont.h \
@@ -5701,6 +5707,7 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: D:/Qt_Projects/QuoteGeneratio
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
   D:/Qt_Projects/QuoteGeneration/animatedbutton.h \
+  D:/Qt_Projects/QuoteGeneration/appsettings.h \
   D:/Qt_Projects/QuoteGeneration/basissection.h \
   D:/Qt_Projects/QuoteGeneration/clarificationssection.h \
   D:/Qt_Projects/QuoteGeneration/configdialog.h \
@@ -7059,15 +7066,18 @@ CMakeFiles/QuoteGeneration.dir/quotepdfgenerator.cpp.obj: D:/Qt_Projects/QuoteGe
 CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj: D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.cpp \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QDate \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QDir \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QFileInfo \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QList \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QLocale \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QObject \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QProcess \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QRect \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QRegularExpression \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSize \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QSizeF \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QStandardPaths \
   C:/Qt/6.11.0/mingw_64/include/QtCore/QString \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/QUrl \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q17memory.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20bit.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/q20functional.h \
@@ -7159,6 +7169,7 @@ CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj: D:/Qt_Projects/QuoteG
   C:/Qt/6.11.0/mingw_64/include/QtCore/qoverload.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qpair.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qpoint.h \
+  C:/Qt/6.11.0/mingw_64/include/QtCore/qprocess.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qprocessordetection.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qrect.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qrefcount.h \
@@ -7218,6 +7229,7 @@ CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj: D:/Qt_Projects/QuoteG
   C:/Qt/6.11.0/mingw_64/include/QtCore/qxptype_traits.h \
   C:/Qt/6.11.0/mingw_64/include/QtCore/qyieldcpu.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QColor \
+  C:/Qt/6.11.0/mingw_64/include/QtGui/QDesktopServices \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QResizeEvent \
   C:/Qt/6.11.0/mingw_64/include/QtGui/QTransform \
@@ -7226,6 +7238,7 @@ CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj: D:/Qt_Projects/QuoteG
   C:/Qt/6.11.0/mingw_64/include/QtGui/qbrush.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qcolor.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qcursor.h \
+  C:/Qt/6.11.0/mingw_64/include/QtGui/qdesktopservices.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qevent.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qeventpoint.h \
   C:/Qt/6.11.0/mingw_64/include/QtGui/qfont.h \
@@ -7545,6 +7558,7 @@ CMakeFiles/QuoteGeneration.dir/quotepreviewdialog.cpp.obj: D:/Qt_Projects/QuoteG
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wchar.h \
   C:/Qt/Tools/mingw1310_64/x86_64-w64-mingw32/include/wctype.h \
   D:/Qt_Projects/QuoteGeneration/animatedbutton.h \
+  D:/Qt_Projects/QuoteGeneration/appsettings.h \
   D:/Qt_Projects/QuoteGeneration/database.h \
   D:/Qt_Projects/QuoteGeneration/quotepdfgenerator.h \
   D:/Qt_Projects/QuoteGeneration/quotepreviewdialog.h \
@@ -10902,6 +10916,8 @@ C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/ios_
 
 D:/Qt_Projects/QuoteGeneration/titlesection.h:
 
+C:/Qt/6.11.0/mingw_64/include/QtCore/QUrl:
+
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/list.tcc:
 
 C:/Qt/Tools/mingw1310_64/lib/gcc/x86_64-w64-mingw32/13.1.0/include/c++/bits/locale_classes.h:
@@ -11394,9 +11410,19 @@ C:/Qt/6.11.0/mingw_64/include/QtWidgets/QFrame:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/QLoggingCategory:
 
+C:/Qt/6.11.0/mingw_64/include/QtCore/QFileInfo:
+
+C:/Qt/6.11.0/mingw_64/include/QtCore/QProcess:
+
 C:/Qt/6.11.0/mingw_64/include/QtCore/QRegularExpression:
 
+C:/Qt/6.11.0/mingw_64/include/QtCore/qprocess.h:
+
+C:/Qt/6.11.0/mingw_64/include/QtGui/QDesktopServices:
+
 C:/Qt/6.11.0/mingw_64/include/QtGui/QPixmap:
+
+C:/Qt/6.11.0/mingw_64/include/QtGui/qdesktopservices.h:
 
 C:/Qt/6.11.0/mingw_64/include/QtWidgets/QMenuBar:
 
@@ -11431,8 +11457,6 @@ D:/Qt_Projects/QuoteGeneration/quotelistdialog.cpp:
 D:/Qt_Projects/QuoteGeneration/quotepdfgenerator.cpp:
 
 C:/Qt/6.11.0/mingw_64/include/QtCore/QBuffer:
-
-C:/Qt/6.11.0/mingw_64/include/QtCore/QFileInfo:
 
 C:/Qt/6.11.0/mingw_64/include/QtGui/QImage:
 

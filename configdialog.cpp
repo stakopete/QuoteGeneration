@@ -121,6 +121,32 @@ void ConfigDialog::setupUi()
     logoRow->addWidget(m_browseButton);
     form->addRow("Logo File:", logoRow);
 
+    // ── SumatraPDF path ───────────────────────────────────────────────────────
+    QLabel *sumatraLabel = new QLabel("SumatraPDF Path:");
+    m_sumatraPath = new QLineEdit();
+    m_sumatraPath->setPlaceholderText(
+        "Optional — path to SumatraPDF.exe for viewing PDFs"
+        );
+    m_sumatraPath->setText(AppSettings::instance().sumatraPdfPath());
+
+    AnimatedButton *sumatraBtn = new AnimatedButton("Browse");
+    sumatraBtn->setFixedSize(80, 36);
+    connect(sumatraBtn, &AnimatedButton::clicked, this, [this]() {
+        QString path = QFileDialog::getOpenFileName(
+            this,
+            "Locate SumatraPDF",
+            "C:/Program Files",
+            "Executable (*.exe)"
+            );
+        if (!path.isEmpty())
+            m_sumatraPath->setText(path);
+    });
+
+    QHBoxLayout *sumatraRow = new QHBoxLayout();
+    sumatraRow->addWidget(m_sumatraPath, 1);
+    sumatraRow->addWidget(sumatraBtn, 0);
+    form->addRow(sumatraLabel, sumatraRow);
+
     // ── Signature image row ───────────────────────────────────────────────────
     m_signaturePath = new QLineEdit();
     m_signaturePath->setPlaceholderText(
@@ -349,12 +375,8 @@ void ConfigDialog::onSave()
     ini.setTaxLabel(cfg.taxLabel);
     ini.setTaxRate(cfg.taxRate);
     ini.setDarkMode(cfg.darkMode);
+    ini.setSumatraPdfPath(m_sumatraPath->text().trimmed());
     ini.save();
-
-    accept();
-
-
-    // accept() closes the dialog and makes exec() return QDialog::Accepted.
     accept();
 }
 

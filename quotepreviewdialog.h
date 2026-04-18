@@ -38,6 +38,7 @@ protected:
 private:
     void setupUi();
     void buildPreview();
+    void onViewPdf();
 
     // ── Helpers ───────────────────────────────────────────────────────────────
     // Builds an HTML section heading.
@@ -56,12 +57,14 @@ private:
     QLabel         *m_logoBanner;
     AnimatedButton *m_closeButton;
     AnimatedButton *m_printButton;
+    AnimatedButton *m_viewPdfButton;
 
 
     // ── Data ──────────────────────────────────────────────────────────────────
     QuoteData        m_quote;
     QList<PriceRow>  m_priceRows;
     AppConfig        m_config;
+    QString          m_lastPdfPath;
 };
 
 #endif // QUOTEPREVIEWDIALOG_H

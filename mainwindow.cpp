@@ -42,6 +42,11 @@
 #include <QRegularExpression>
 #include <QListWidget>
 #include "quotelistdialog.h"
+#include <QProcess>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QFileInfo>
+#include "appsettings.h"
 
 
 
@@ -1004,6 +1009,42 @@ void MainWindow::checkExpiringQuotes()
 
     if (msgBox.clickedButton() == openBtn)
         onOpenQuote();
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// openPdf()
+//
+// Opens a PDF file for viewing.
+// Uses SumatraPDF if configured in settings, otherwise falls back to the
+// system default PDF viewer via QDesktopServices.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::openPdf(const QString &filePath)
+{
+    // Check the file actually exists before trying to open it.
+    if (!QFileInfo::exists(filePath)) {
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("File Not Found");
+        msgBox.setText("The PDF file could not be found:\n\n" + filePath);
+        msgBox.setIcon(QMessageBox::Warning);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
+        return;
+    }
+
+    QString sumatraPath = AppSettings::instance().sumatraPdfPath();
+
+    if (!sumatraPath.isEmpty() && QFileInfo::exists(sumatraPath)) {
+        // Launch SumatraPDF with the file path as argument.
+        // QProcess::startDetached launches it independently — the app
+        // does not wait for SumatraPDF to close before continuing.
+        QProcess::startDetached(sumatraPath, {filePath});
+    } else {
+        // Fall back to the system default PDF viewer.
+        // QDesktopServices::openUrl handles file:/// URLs on all platforms.
+        QDesktopServices::openUrl(QUrl::fromLocalFile(filePath));
+    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

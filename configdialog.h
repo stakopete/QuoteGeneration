@@ -68,6 +68,7 @@ private:
     QLineEdit      *m_phone;
     QLineEdit      *m_email;
     QLineEdit      *m_logoPath;
+    QLineEdit      *m_sumatraPath;
 
     // QComboBox is a dropdown selector.
     QComboBox      *m_taxType;

@@ -68,6 +68,7 @@ private:
     void applyStyleSheet();
     void resizeEvent(QResizeEvent *event) override;
     void checkExpiringQuotes();
+    void openPdf(const QString &filePath);
 
     QTabWidget               *m_tabs;
     QLabel                   *m_logoBanner;

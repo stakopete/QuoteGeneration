@@ -532,4 +532,11 @@ CMakeFiles/QuoteGeneration.dir/mainwindow.cpp.obj: \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qabstractslider.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qstyle.h \
  C:/Qt/6.11.0/mingw_64/include/QtWidgets/qrubberband.h \
- D:\Qt_Projects\QuoteGeneration\quotelistdialog.h
+ D:\Qt_Projects\QuoteGeneration\quotelistdialog.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QProcess \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/qprocess.h \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/QDesktopServices \
+ C:/Qt/6.11.0/mingw_64/include/QtGui/qdesktopservices.h \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QUrl \
+ C:/Qt/6.11.0/mingw_64/include/QtCore/QFileInfo \
+ D:\Qt_Projects\QuoteGeneration\appsettings.h

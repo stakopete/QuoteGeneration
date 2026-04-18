@@ -32,6 +32,12 @@
 #include <QMessageBox>
 #include <QStandardPaths>
 
+#include <QProcess>
+#include <QDesktopServices>
+#include <QUrl>
+#include <QFileInfo>
+#include "appsettings.h"
+
 // ─────────────────────────────────────────────────────────────────────────────
 // resizeEvent()
 //
@@ -158,6 +164,13 @@ void QuotePreviewDialog::setupUi()
     buttonRow->addWidget(m_printButton);
     buttonRow->addStretch();
     buttonRow->addWidget(m_closeButton);
+
+    m_viewPdfButton = new AnimatedButton("View PDF");
+    m_viewPdfButton->setFixedSize(110, 40);
+    m_viewPdfButton->setEnabled(false);  // Disabled until PDF is generated.
+    connect(m_viewPdfButton, &AnimatedButton::clicked,
+            this, &QuotePreviewDialog::onViewPdf);
+    buttonRow->addWidget(m_viewPdfButton);
 
     mainLayout->addLayout(buttonRow);
 }
@@ -582,5 +595,23 @@ void QuotePreviewDialog::onGeneratePdf()
             QString("The PDF could not be saved to:\n%1\n\n"
                     "Check that the folder exists and you have "
                     "permission to write there.").arg(filePath));
+    }
+    // Store the path and enable the View PDF button.
+    m_lastPdfPath = filePath;
+    m_viewPdfButton->setEnabled(true);
+
+}
+
+void QuotePreviewDialog::onViewPdf()
+{
+    if (m_lastPdfPath.isEmpty())
+        return;
+
+    QString sumatraPath = AppSettings::instance().sumatraPdfPath();
+
+    if (!sumatraPath.isEmpty() && QFileInfo::exists(sumatraPath)) {
+        QProcess::startDetached(sumatraPath, {m_lastPdfPath});
+    } else {
+        QDesktopServices::openUrl(QUrl::fromLocalFile(m_lastPdfPath));
     }
 }
