@@ -30,6 +30,7 @@ public:
 private slots:
     void onClose();
     void onGeneratePdf();  // Saves the current quote to a PDF file
+    void onEmailQuote();
 
 
 protected:
@@ -58,6 +59,7 @@ private:
     AnimatedButton *m_closeButton;
     AnimatedButton *m_printButton;
     AnimatedButton *m_viewPdfButton;
+    AnimatedButton *m_emailButton;
 
 
     // ── Data ──────────────────────────────────────────────────────────────────

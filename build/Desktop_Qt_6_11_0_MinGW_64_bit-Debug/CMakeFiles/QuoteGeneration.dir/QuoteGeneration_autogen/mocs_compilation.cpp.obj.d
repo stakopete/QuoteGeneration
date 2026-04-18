@@ -407,6 +407,8 @@ CMakeFiles/QuoteGeneration.dir/QuoteGeneration_autogen/mocs_compilation.cpp.obj:
  D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_editoptiondialog.cpp \
  D:/Qt_Projects/QuoteGeneration/editoptiondialog.h \
+ D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_emaildialog.cpp \
+ D:/Qt_Projects/QuoteGeneration/emaildialog.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_exclusionssection.cpp \
  D:/Qt_Projects/QuoteGeneration/exclusionssection.h \
  D:\Qt_Projects\QuoteGeneration\build\Desktop_Qt_6_11_0_MinGW_64_bit-Debug\QuoteGeneration_autogen\EWIEGA46WW/moc_generalconditionssection.cpp \

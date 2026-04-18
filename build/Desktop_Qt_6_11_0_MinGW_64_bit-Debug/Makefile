@@ -370,6 +370,30 @@ editoptiondialog.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.s
 .PHONY : editoptiondialog.cpp.s
 
+emaildialog.obj: emaildialog.cpp.obj
+.PHONY : emaildialog.obj
+
+# target to build an object file
+emaildialog.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj
+.PHONY : emaildialog.cpp.obj
+
+emaildialog.i: emaildialog.cpp.i
+.PHONY : emaildialog.i
+
+# target to preprocess a source file
+emaildialog.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.i
+.PHONY : emaildialog.cpp.i
+
+emaildialog.s: emaildialog.cpp.s
+.PHONY : emaildialog.s
+
+# target to generate assembly for a file
+emaildialog.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\QuoteGeneration.dir\build.make CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.s
+.PHONY : emaildialog.cpp.s
+
 exclusionssection.obj: exclusionssection.cpp.obj
 .PHONY : exclusionssection.obj
 
@@ -744,6 +768,9 @@ help:
 	@echo ... editoptiondialog.obj
 	@echo ... editoptiondialog.i
 	@echo ... editoptiondialog.s
+	@echo ... emaildialog.obj
+	@echo ... emaildialog.i
+	@echo ... emaildialog.s
 	@echo ... exclusionssection.obj
 	@echo ... exclusionssection.i
 	@echo ... exclusionssection.s

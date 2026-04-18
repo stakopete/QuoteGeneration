@@ -17,6 +17,7 @@ set(CMAKE_DEPENDS_DEPENDENCY_FILES
   "D:/Qt_Projects/QuoteGeneration/database.cpp" "CMakeFiles/QuoteGeneration.dir/database.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/database.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/dropdownmanagerdialog.cpp" "CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/editoptiondialog.cpp" "CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj.d"
+  "D:/Qt_Projects/QuoteGeneration/emaildialog.cpp" "CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp" "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/generalconditionssection.cpp" "CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj.d"
   "D:/Qt_Projects/QuoteGeneration/main.cpp" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj" "gcc" "CMakeFiles/QuoteGeneration.dir/main.cpp.obj.d"

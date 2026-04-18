@@ -513,6 +513,12 @@
 			null
 		],
 		[
+			"D:/Qt_Projects/QuoteGeneration/emaildialog.h",
+			"MU",
+			"EWIEGA46WW/moc_emaildialog.cpp",
+			null
+		],
+		[
 			"D:/Qt_Projects/QuoteGeneration/exclusionssection.h",
 			"MU",
 			"EWIEGA46WW/moc_exclusionssection.cpp",
@@ -685,6 +691,7 @@
 			null
 		],
 		[ "D:/Qt_Projects/QuoteGeneration/editoptiondialog.cpp", "MU", null ],
+		[ "D:/Qt_Projects/QuoteGeneration/emaildialog.cpp", "MU", null ],
 		[ "D:/Qt_Projects/QuoteGeneration/exclusionssection.cpp", "MU", null ],
 		[
 			"D:/Qt_Projects/QuoteGeneration/generalconditionssection.cpp",

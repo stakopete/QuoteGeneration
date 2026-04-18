@@ -41,7 +41,8 @@ template <> constexpr inline auto QuotePreviewDialog::qt_create_metaobjectdata<q
         "QuotePreviewDialog",
         "onClose",
         "",
-        "onGeneratePdf"
+        "onGeneratePdf",
+        "onEmailQuote"
     };
 
     QtMocHelpers::UintData qt_methods {
@@ -49,6 +50,8 @@ template <> constexpr inline auto QuotePreviewDialog::qt_create_metaobjectdata<q
         QtMocHelpers::SlotData<void()>(1, 2, QMC::AccessPrivate, QMetaType::Void),
         // Slot 'onGeneratePdf'
         QtMocHelpers::SlotData<void()>(3, 2, QMC::AccessPrivate, QMetaType::Void),
+        // Slot 'onEmailQuote'
+        QtMocHelpers::SlotData<void()>(4, 2, QMC::AccessPrivate, QMetaType::Void),
     };
     QtMocHelpers::UintData qt_properties {
     };
@@ -74,6 +77,7 @@ void QuotePreviewDialog::qt_static_metacall(QObject *_o, QMetaObject::Call _c, i
         switch (_id) {
         case 0: _t->onClose(); break;
         case 1: _t->onGeneratePdf(); break;
+        case 2: _t->onEmailQuote(); break;
         default: ;
         }
     }
@@ -99,14 +103,14 @@ int QuotePreviewDialog::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 2)
+        if (_id < 3)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 2;
+        _id -= 3;
     }
     if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 2)
+        if (_id < 3)
             *reinterpret_cast<QMetaType *>(_a[0]) = QMetaType();
-        _id -= 2;
+        _id -= 3;
     }
     return _id;
 }

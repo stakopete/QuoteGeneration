@@ -17,6 +17,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/QuoteGeneration.dir/dropdownmanagerdialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/editoptiondialog.cpp.obj.d"
+  "CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj"
+  "CMakeFiles/QuoteGeneration.dir/emaildialog.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj"
   "CMakeFiles/QuoteGeneration.dir/exclusionssection.cpp.obj.d"
   "CMakeFiles/QuoteGeneration.dir/generalconditionssection.cpp.obj"

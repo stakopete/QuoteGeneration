@@ -72,6 +72,8 @@ set(PROJECT_SOURCES
     ${CMAKE_CURRENT_SOURCE_DIR}/appsettings.cpp
     ${CMAKE_CURRENT_SOURCE_DIR}/quotelistdialog.h
     ${CMAKE_CURRENT_SOURCE_DIR}/quotelistdialog.cpp
+    ${CMAKE_CURRENT_SOURCE_DIR}/emaildialog.h
+    ${CMAKE_CURRENT_SOURCE_DIR}/emaildialog.cpp
 )
 
 # ── Build the executable ──────────────────────────────────────────────────────
@@ -110,6 +112,8 @@ qt_add_executable(QuoteGeneration
        appsettings.cpp
        quotelistdialog.h
        quotelistdialog.cpp
+       emaildialog.h
+       emaildialog.cpp
 
 
 )
@@ -122,6 +126,9 @@ target_link_libraries(QuoteGeneration PRIVATE
     Qt6::Network
     Qt6::Gui
 )
+if(WIN32)
+    target_link_libraries(QuoteGeneration PRIVATE Mapi32)
+endif()
 
 # ── Suppress console window on Windows ───────────────────────────────────────
 if(WIN32)

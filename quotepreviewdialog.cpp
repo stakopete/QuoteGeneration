@@ -31,6 +31,7 @@
 #include <QFileDialog>
 #include <QMessageBox>
 #include <QStandardPaths>
+#include "emaildialog.h"
 
 #include <QProcess>
 #include <QDesktopServices>
@@ -171,6 +172,12 @@ void QuotePreviewDialog::setupUi()
     connect(m_viewPdfButton, &AnimatedButton::clicked,
             this, &QuotePreviewDialog::onViewPdf);
     buttonRow->addWidget(m_viewPdfButton);
+    m_emailButton = new AnimatedButton("Email Quote");
+    m_emailButton->setFixedSize(120, 40);
+    m_emailButton->setEnabled(false);
+    connect(m_emailButton, &AnimatedButton::clicked,
+            this, &QuotePreviewDialog::onEmailQuote);
+    buttonRow->addWidget(m_emailButton);
 
     mainLayout->addLayout(buttonRow);
 }
@@ -596,11 +603,13 @@ void QuotePreviewDialog::onGeneratePdf()
                     "Check that the folder exists and you have "
                     "permission to write there.").arg(filePath));
     }
-    // Store the path and enable the View PDF button.
+    // Store the path and enable the View PDF and Email buttons.
     m_lastPdfPath = filePath;
     m_viewPdfButton->setEnabled(true);
-
+    m_emailButton->setEnabled(true);
 }
+
+
 
 void QuotePreviewDialog::onViewPdf()
 {
@@ -614,4 +623,13 @@ void QuotePreviewDialog::onViewPdf()
     } else {
         QDesktopServices::openUrl(QUrl::fromLocalFile(m_lastPdfPath));
     }
+}
+
+void QuotePreviewDialog::onEmailQuote()
+{
+    if (m_lastPdfPath.isEmpty())
+        return;
+
+    EmailDialog dlg(m_lastPdfPath, m_quote.siteName, this);
+    dlg.exec();
 }
