@@ -124,6 +124,10 @@ MainWindow::MainWindow(QWidget *parent)
     else
         newQuote();
 
+    // Check for expiring quotes after a short delay so the main
+    // window is fully visible before the warning appears.
+    QTimer::singleShot(500, this, &MainWindow::checkExpiringQuotes);
+
 }
 
 MainWindow::~MainWindow()
@@ -783,6 +787,8 @@ void MainWindow::saveCurrentQuote()
 
     // Gather data from all sections.
     m_currentQuote.quoteDate         = m_titleSection->quoteDate();
+    m_currentQuote.expiryDate        = m_titleSection->expiryDate();
+    qDebug() << "Saving expiry date:" << m_currentQuote.expiryDate;
     m_currentQuote.siteName          = m_titleSection->siteName();
     m_currentQuote.titleText         = m_titleSection->quoteTitle();
     m_currentQuote.systemText        = m_systemSection->systemText();
@@ -847,6 +853,7 @@ void MainWindow::loadQuote(int id)
         m_currentQuote.titleText,
         m_currentQuote.siteName
         );
+    m_titleSection->setExpiryDate(m_currentQuote.expiryDate);
     m_systemSection->loadData(m_currentQuote.systemText);
     m_basisSection->loadData(m_currentQuote.basisText);
     m_scopeSection->loadData(m_currentQuote.scopeText);
@@ -876,7 +883,7 @@ void MainWindow::loadQuote(int id)
     m_scopeSection->setQuoteType(m_currentQuote.quoteType);
     m_exclusionsSection->setQuoteType(m_currentQuote.quoteType);
     m_generalSection->setQuoteType(m_currentQuote.quoteType);
-    qDebug() << "Quote loaded. ID:" << m_currentQuote.id;
+
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -899,6 +906,9 @@ void MainWindow::newQuote(const QString &quoteType)
     m_titleSection->loadData(
         QDate::currentDate().toString("dd/MM/yyyy"), "", ""
         );
+    m_titleSection->setExpiryDate(
+        QDate::currentDate().addDays(30).toString("dd/MM/yyyy")
+        );
     m_systemSection->loadData("");
     m_basisSection->loadData("");
     m_scopeSection->loadData("");
@@ -911,6 +921,89 @@ void MainWindow::newQuote(const QString &quoteType)
     setWindowTitle("Quote Generation — " + m_config.companyName +
                    " — New Quote");
     m_statusLabel->setText("  Status: Draft  |  New quote");
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// checkExpiringQuotes()
+//
+// Called on startup. Checks all quotes for expiry and warns the user
+// about any that have expired or are within 7 days of expiring.
+// ─────────────────────────────────────────────────────────────────────────────
+void MainWindow::checkExpiringQuotes()
+{
+    QList<QuoteData> quotes = Database::listQuotes();
+    QDate today = QDate::currentDate();
+
+    QStringList expiredList;
+    QStringList expiringList;
+
+    for (const QuoteData &q : quotes) {
+
+        // Skip quotes with no expiry date set.
+        if (q.expiryDate.isEmpty())
+            continue;
+
+        // Skip quotes that are already resolved.
+        if (q.status == "Accepted" || q.status == "Rejected")
+            continue;
+
+        // Parse the expiry date — skip if the format is unrecognised.
+        QDate expiry = QDate::fromString(q.expiryDate, "dd/MM/yyyy");
+        if (!expiry.isValid())
+            continue;
+
+        // Calculate how many days until expiry.
+        // Negative means already expired.
+        int daysLeft = today.daysTo(expiry);
+
+        if (daysLeft < 0) {
+            expiredList.append(
+                QString("  • %1 (expired %2)")
+                    .arg(q.siteName, q.expiryDate)
+                );
+        } else if (daysLeft <= 7) {
+            expiringList.append(
+                QString("  • %1 (expires %2 — %3 day%4 remaining)")
+                    .arg(q.siteName, q.expiryDate)
+                    .arg(daysLeft)
+                    .arg(daysLeft == 1 ? "" : "s")
+                );
+        }
+    }
+
+    // Nothing to report — return silently.
+    if (expiredList.isEmpty() && expiringList.isEmpty())
+        return;
+
+    QString message;
+    if (!expiredList.isEmpty()) {
+        message += "The following quotes have EXPIRED:\n";
+        message += expiredList.join("\n");
+        message += "\n\n";
+    }
+    if (!expiringList.isEmpty()) {
+        message += "The following quotes are expiring soon:\n";
+        message += expiringList.join("\n");
+        message += "\n\n";
+    }
+    message += "Please open Quote Management to update these quotes.";
+
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("Quote Expiry Warning");
+    msgBox.setText(message);
+    msgBox.setIcon(QMessageBox::Warning);
+
+    AnimatedButton *okBtn   = new AnimatedButton("OK", &msgBox);
+    okBtn->setFixedSize(110, 40);
+    AnimatedButton *openBtn = new AnimatedButton("Open Quote Management", &msgBox);
+    openBtn->setFixedSize(200, 40);
+
+    msgBox.addButton(okBtn,   QMessageBox::AcceptRole);
+    msgBox.addButton(openBtn, QMessageBox::ActionRole);
+    msgBox.exec();
+
+    if (msgBox.clickedButton() == openBtn)
+        onOpenQuote();
 }
 
 // ─────────────────────────────────────────────────────────────────────────────

@@ -17,6 +17,7 @@
 #include <QDate>
 #include <QMessageBox>
 #include <QPushButton>
+#include <QDateEdit>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -59,6 +60,16 @@ void TitleSection::setupUi()
     m_dateEdit->setDate(QDate::currentDate());  // Default to today
     m_dateEdit->setCalendarPopup(true);         // Show calendar on click
     m_dateEdit->setFixedWidth(150);
+
+    // -------------------Expiry date field.
+    m_expiryDate = new QDateEdit();
+    m_expiryDate->setDisplayFormat("dd/MM/yyyy");
+    m_expiryDate->setDate(QDate::currentDate().addDays(30)); // Default 30 days
+    m_expiryDate->setCalendarPopup(true);
+    m_expiryDate->setFixedWidth(150);
+    connect(m_expiryDate, &QDateEdit::dateChanged,
+            this, &TitleSection::dataChanged);
+    form->addRow("Expiry Date:", m_expiryDate);
 
     // When the date changes emit our dataChanged signal.
     connect(m_dateEdit, &QDateEdit::dateChanged,
@@ -300,3 +311,19 @@ void TitleSection::loadData(const QString &date,
 
     m_siteName->setText(site);
 }
+
+QString TitleSection::expiryDate() const
+{
+    return m_expiryDate->date().toString("dd/MM/yyyy");
+}
+
+void TitleSection::setExpiryDate(const QString &date)
+{
+    QDate d = QDate::fromString(date, "dd/MM/yyyy");
+    if (d.isValid())
+        m_expiryDate->setDate(d);
+    else
+        m_expiryDate->setDate(QDate::currentDate().addDays(30));
+}
+
+

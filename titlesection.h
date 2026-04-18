@@ -52,6 +52,9 @@ public:
                   const QString &title,
                   const QString &site);
 
+    QString expiryDate() const;
+    void setExpiryDate(const QString &date);
+
 signals:
     // Emitted whenever any field in this section changes.
     // MainWindow connects to this to trigger auto-save.
@@ -71,6 +74,7 @@ private:
     QLineEdit   *m_customTitle;     // Shown only when user selects "Other"
     QLineEdit   *m_siteName;
     AnimatedButton *m_addTitleButton;
+    QDateEdit   *m_expiryDate;
 
     // Tracks whether the user is typing a custom title.
     bool m_usingCustomTitle = false;

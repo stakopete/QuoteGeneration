@@ -67,6 +67,7 @@ private:
     void setupStatusBar();
     void applyStyleSheet();
     void resizeEvent(QResizeEvent *event) override;
+    void checkExpiringQuotes();
 
     QTabWidget               *m_tabs;
     QLabel                   *m_logoBanner;

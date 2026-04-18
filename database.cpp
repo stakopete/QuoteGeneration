@@ -655,16 +655,20 @@ QList<QuoteData> Database::listQuotes()
     QList<QuoteData> list;
     QSqlDatabase db = QSqlDatabase::database(CONNECTION_NAME);
     QSqlQuery q(db);
-    q.exec("SELECT id, site_name, status, last_saved, quote_date "
+
+    // expiry_date must be included here so the expiry warning check
+    // in MainWindow::checkExpiringQuotes() can read it.
+    q.exec("SELECT id, site_name, status, last_saved, quote_date, expiry_date "
            "FROM Quotes ORDER BY id DESC");
 
     while (q.next()) {
         QuoteData quote;
-        quote.id        = q.value("id").toInt();
-        quote.siteName  = q.value("site_name").toString();
-        quote.status    = q.value("status").toString();
-        quote.lastSaved = q.value("last_saved").toString();
-        quote.quoteDate = q.value("quote_date").toString();
+        quote.id         = q.value("id").toInt();
+        quote.siteName   = q.value("site_name").toString();
+        quote.status     = q.value("status").toString();
+        quote.lastSaved  = q.value("last_saved").toString();
+        quote.quoteDate  = q.value("quote_date").toString();
+        quote.expiryDate = q.value("expiry_date").toString();
         list.append(quote);
     }
     return list;
