@@ -125,23 +125,6 @@ QString QuotePdfGenerator::buildHtml() const
 
     if (!m_quote.basisText.trimmed().isEmpty()) {
         html += buildSectionHtml("Basis of Design", "");
-        html += processTaggedText(m_quote.basisText,
-                                  "Wet Fire Systems",
-                                  "Dry Fire Systems");
-    }
-
-    if (!m_quote.scopeText.trimmed().isEmpty()) {
-        html += buildSectionHtml("Scope of Works", "");
-        html += processTaggedText(m_quote.scopeText,
-                                  "Wet Fire",
-                                  "Dry Fire");
-    }
-
-    html += buildPriceTableHtml();
-
-    if (!m_quote.basisText.trimmed().isEmpty()) {
-        html += buildSectionHtml("Basis of Design", "");
-        // Basis section uses a simple numbered list regardless of quote type.
         QStringList basisLines = m_quote.basisText.split("\n", Qt::SkipEmptyParts);
         html += "<ol>";
         for (const QString &line : basisLines) {
@@ -155,6 +138,16 @@ QString QuotePdfGenerator::buildHtml() const
         }
         html += "</ol>";
     }
+
+    if (!m_quote.scopeText.trimmed().isEmpty()) {
+        html += buildSectionHtml("Scope of Works", "");
+        html += processTaggedText(m_quote.scopeText,
+                                  "Wet Fire",
+                                  "Dry Fire");
+    }
+
+    html += buildPriceTableHtml();
+
 
     if (!m_quote.scopeText.trimmed().isEmpty()) {
         html += buildSectionHtml("Scope of Works", "");

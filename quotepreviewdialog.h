@@ -25,6 +25,7 @@ class QuotePreviewDialog : public QDialog
 public:
     explicit QuotePreviewDialog(const QuoteData &quote,
                                 const QList<PriceRow> &priceRows,
+                                const QString &lastPdfPath,
                                 QWidget *parent = nullptr);
 
 private slots:
@@ -32,6 +33,8 @@ private slots:
     void onGeneratePdf();  // Saves the current quote to a PDF file
     void onEmailQuote();
 
+signals:
+    void pdfGenerated(const QString &path);
 
 protected:
     void resizeEvent(QResizeEvent *event) override;

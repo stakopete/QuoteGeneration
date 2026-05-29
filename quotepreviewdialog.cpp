@@ -38,6 +38,7 @@
 #include <QUrl>
 #include <QFileInfo>
 #include "appsettings.h"
+#include <QFileInfo>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // resizeEvent()
@@ -70,10 +71,12 @@ void QuotePreviewDialog::resizeEvent(QResizeEvent *event)
 // ─────────────────────────────────────────────────────────────────────────────
 QuotePreviewDialog::QuotePreviewDialog(const QuoteData &quote,
                                        const QList<PriceRow> &priceRows,
+                                       const QString &lastPdfPath,
                                        QWidget *parent)
     : QDialog(parent)
     , m_quote(quote)
     , m_priceRows(priceRows)
+    , m_lastPdfPath(lastPdfPath)
 {
     m_config = Database::loadConfig();
     setWindowTitle("Quote Preview — " + quote.siteName);
@@ -180,6 +183,12 @@ void QuotePreviewDialog::setupUi()
     buttonRow->addWidget(m_emailButton);
 
     mainLayout->addLayout(buttonRow);
+
+    // If a PDF was previously generated for this quote enable the buttons.
+    if (!m_lastPdfPath.isEmpty() && QFileInfo::exists(m_lastPdfPath)) {
+        m_viewPdfButton->setEnabled(true);
+        m_emailButton->setEnabled(true);
+    }
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -631,6 +640,7 @@ void QuotePreviewDialog::onGeneratePdf()
     m_lastPdfPath = filePath;
     m_viewPdfButton->setEnabled(true);
     m_emailButton->setEnabled(true);
+     emit pdfGenerated(filePath);
 }
 
 

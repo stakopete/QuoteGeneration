@@ -584,7 +584,11 @@ void MainWindow::onPreviewQuote()
     QList<PriceRow> rows = m_priceSection->priceRows();
 
     // Open the preview dialog.
-    QuotePreviewDialog dlg(m_currentQuote, rows, this);
+    QuotePreviewDialog dlg(m_currentQuote, rows, m_lastPdfPath, this);
+    connect(&dlg, &QuotePreviewDialog::pdfGenerated,
+            this, [this](const QString &path) {
+                m_lastPdfPath = path;
+            });
     dlg.exec();
 }
 

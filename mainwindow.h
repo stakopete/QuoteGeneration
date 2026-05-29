@@ -91,6 +91,7 @@ private:
     ClarificationsSection    *m_clarificationsSection;
     SignatureSection         *m_signatureSection;
     QTimer                   *m_saveDebounceTimer;
+    QString                   m_lastPdfPath;
 
     // ── Quote management ──────────────────────────────────────────────────────
     QuoteData   m_currentQuote;     // The quote currently being edited

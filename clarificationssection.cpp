@@ -13,6 +13,7 @@
 #include <QLineEdit>
 #include <QLabel>
 #include <QMessageBox>
+#include <QRegularExpression>
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -154,13 +155,28 @@ void ClarificationsSection::setupUi()
 // ─────────────────────────────────────────────────────────────────────────────
 void ClarificationsSection::appendToClarifications(const QString &text)
 {
+    // Strip any newlines from the clause text — each clause must be
+    // on a single line so it counts as one item.
+    QString cleanText = text;
+    cleanText.replace("\n", " ").replace("\r", " ");
+    while (cleanText.contains("  "))
+        cleanText.replace("  ", " ");
+    cleanText = cleanText.trimmed();
+
     QString current = m_clarificationsText->toPlainText().trimmed();
 
+    // Count existing clauses by counting lines that start with a number.
+    // This correctly handles multi-word clauses on single lines.
     int itemCount = 0;
-    if (!current.isEmpty())
-        itemCount = current.split("\n").count();
+    if (!current.isEmpty()) {
+        QStringList lines = current.split("\n", Qt::SkipEmptyParts);
+        for (const QString &line : lines) {
+            if (QRegularExpression("^\\d+\\.\\s+").match(line).hasMatch())
+                itemCount++;
+        }
+    }
 
-    QString newItem = QString("%1. %2").arg(itemCount + 1).arg(text);
+    QString newItem = QString("%1. %2").arg(itemCount + 1).arg(cleanText);
 
     if (!current.isEmpty())
         current += "\n";
@@ -200,15 +216,14 @@ void ClarificationsSection::onRemoveLastClause()
     if (current.isEmpty())
         return;
 
-    QStringList lines = current.split("\n");
+    QStringList lines = current.split("\n", Qt::SkipEmptyParts);
     lines.removeLast();
 
+    QRegularExpression numPrefix("^\\d+\\.\\s+");
     QStringList renumbered;
     for (int i = 0; i < lines.count(); ++i) {
-        QString line = lines[i];
-        int dotPos = line.indexOf(". ");
-        if (dotPos > 0)
-            line = line.mid(dotPos + 2);
+        QString line = lines[i].trimmed();
+        line.remove(numPrefix);
         renumbered.append(QString("%1. %2").arg(i + 1).arg(line));
     }
 
