@@ -202,6 +202,28 @@ void MainWindow::setupMenuBar()
     // ── Help menu ─────────────────────────────────────────────────────────────
     QMenu *helpMenu = menuBar()->addMenu("&Help");
 
+    QAction *actUserManual = helpMenu->addAction("&User Manual");
+    connect(actUserManual, &QAction::triggered, this, [this]() {
+        QString manualPath = QCoreApplication::applicationDirPath()
+        + "/resources/Help File/export_2026-05-23_jhwww.pdf";
+        if (!QFileInfo::exists(manualPath)) {
+            QMessageBox msgBox(this);
+            msgBox.setWindowTitle("Manual Not Found");
+            msgBox.setText("The user manual could not be found at:\n\n"
+                           + manualPath
+                           + "\n\nPlease contact PB Software Solutions.");
+            msgBox.setIcon(QMessageBox::Warning);
+            AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+            okBtn->setFixedSize(110, 40);
+            msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+            msgBox.exec();
+            return;
+        }
+        QDesktopServices::openUrl(QUrl::fromLocalFile(manualPath));
+    });
+
+    helpMenu->addSeparator();
+
     m_actAbout = helpMenu->addAction("&About");
     connect(m_actAbout, &QAction::triggered, this, &MainWindow::onAbout);
 }
@@ -703,14 +725,25 @@ void MainWindow::onSettings()
 
 void MainWindow::onAbout()
 {
-    QMessageBox::about(
-        this,
-        "About Quote Generation",
+    QMessageBox msgBox(this);
+    msgBox.setWindowTitle("About Quote Generation");
+    msgBox.setIcon(QMessageBox::Information);
+    msgBox.setText(
         "<h3>Quote Generation v1.0.0</h3>"
-        "<p>Professional quotation generation for small and medium businesses.</p>"
-        "<p>Developed by PB Software Solutions</p>"
-        "<p>Built with Qt " + QString(QT_VERSION_STR) + "</p>"
+        "<p>Professional quotation management for fire protection contractors.</p>"
+        "<p><b>Developed by:</b> PB Software Solutions<br>"
+        "<b>Email:</b> p3tebrown@gmail.com<br>"
+        "<b>Phone:</b> 0432 566 946</p>"
+        "<p><b>Licence Status:</b> " +
+        LicenceManager::instance().trialStatusString() +
+        "</p>"
+        "<p style='color:#888; font-size:10px;'>"
+        "Built with Qt 6.11.0 — &copy; 2026 PB Software Solutions</p>"
         );
+    AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+    okBtn->setFixedSize(110, 40);
+    msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+    msgBox.exec();
 }
 
 void MainWindow::onDropdownManager()

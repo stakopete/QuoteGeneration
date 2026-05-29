@@ -31,7 +31,7 @@ Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{
 [Files]
 ; Main executable
 Source: "D:\Qt_Projects\QuoteGeneration\deploy\QuoteGeneration.exe"; DestDir: "{app}"; Flags: ignoreversion
-
+Source: "D:\Qt_Projects\QuoteGeneration\resources\Help File\export_2026-05-23_jhwww.pdf"; DestDir: "{app}\resources\Help File"; Flags: ignoreversion
 ; Qt core DLLs
 Source: "D:\Qt_Projects\QuoteGeneration\deploy\Qt6Core.dll";         DestDir: "{app}"; Flags: ignoreversion
 Source: "D:\Qt_Projects\QuoteGeneration\deploy\Qt6Gui.dll";          DestDir: "{app}"; Flags: ignoreversion
