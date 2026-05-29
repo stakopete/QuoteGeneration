@@ -54,7 +54,7 @@ private:
     void applyGroupBoxStyle(QGroupBox *group);
     void appendToExclusions(const QString &text,
                             const QString &systemType);
-
+    QString m_exclusionsData;  // Internal store with tags preserved.
     // ── Controls ──────────────────────────────────────────────────────────────
     QListWidget    *m_wetClauseList;
     QListWidget    *m_dryClauseList;

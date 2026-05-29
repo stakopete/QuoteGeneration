@@ -153,7 +153,7 @@ void QuoteTypeDialog::setupUi()
     connect(m_cancelButton, &AnimatedButton::clicked,
             this, &QDialog::reject);
 
-    m_proceedButton = new AnimatedButton("Proceed");
+    m_proceedButton = new AnimatedButton("Create");
     m_proceedButton->setFixedSize(110, 40);
     connect(m_proceedButton, &AnimatedButton::clicked,
             this, &QuoteTypeDialog::onProceed);
@@ -162,6 +162,7 @@ void QuoteTypeDialog::setupUi()
     buttonRow->addWidget(m_cancelButton);
     buttonRow->addSpacing(8);
     buttonRow->addWidget(m_proceedButton);
+    buttonRow->addStretch();
     mainLayout->addLayout(buttonRow);
 }
 

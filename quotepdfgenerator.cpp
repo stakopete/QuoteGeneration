@@ -133,24 +133,34 @@ QString QuotePdfGenerator::buildHtml() const
     if (!m_quote.scopeText.trimmed().isEmpty()) {
         html += buildSectionHtml("Scope of Works", "");
         html += processTaggedText(m_quote.scopeText,
-                                  "Wet Fire Works",
-                                  "Dry Fire Works");
+                                  "Wet Fire",
+                                  "Dry Fire");
     }
 
     html += buildPriceTableHtml();
 
     if (!m_quote.basisText.trimmed().isEmpty()) {
         html += buildSectionHtml("Basis of Design", "");
-        html += processTaggedText(m_quote.basisText,
-                                  "Wet Fire Systems",
-                                  "Dry Fire Systems");
+        // Basis section uses a simple numbered list regardless of quote type.
+        QStringList basisLines = m_quote.basisText.split("\n", Qt::SkipEmptyParts);
+        html += "<ol>";
+        for (const QString &line : basisLines) {
+            QString clean = line.trimmed();
+            QRegularExpression numPrefix("^\\d+\\.\\s+");
+            clean.remove(numPrefix);
+            clean.replace("[WET] ", "").replace("[DRY] ", "").replace("[GEN] ", "");
+            if (!clean.isEmpty())
+                html += "<li style='font-size:9pt; margin:2px 0;'>"
+                        + clean.toHtmlEscaped() + "</li>";
+        }
+        html += "</ol>";
     }
 
     if (!m_quote.scopeText.trimmed().isEmpty()) {
         html += buildSectionHtml("Scope of Works", "");
         html += processTaggedText(m_quote.scopeText,
-                                  "Wet Fire Works",
-                                  "Dry Fire Works");
+                                  "Wet Fire",
+                                  "Dry Fire");
     }
 
     if (!m_quote.clarifications.trimmed().isEmpty())
@@ -503,6 +513,7 @@ QString QuotePdfGenerator::buildSignatureHtml() const
 {
     QString html;
 
+    // Contact statement above the signature block.
     if (!m_quote.contactStatement.trimmed().isEmpty()) {
         html += QString(
                     "<p style='font-size:9pt; font-weight:bold;"
@@ -510,8 +521,9 @@ QString QuotePdfGenerator::buildSignatureHtml() const
                     ).arg(m_quote.contactStatement.toHtmlEscaped());
     }
 
-    html += "<p style='margin-top:20px;'>";
+    html += "<p style='margin-top:8px;'>Yours Sincerely,</p>";
 
+    // Signature image or blank space for manual signature.
     if (!m_config.signaturePath.isEmpty()) {
         QImage sig(m_config.signaturePath);
         if (!sig.isNull()) {
@@ -523,17 +535,29 @@ QString QuotePdfGenerator::buildSignatureHtml() const
             sig.save(&sigBuffer, "PNG");
             QString b64 = QString::fromLatin1(sigData.toBase64());
 
-            html += QString("<img src='data:image/png;base64,%1' width='160'/><br/>")
-                        .arg(b64);
+            html += QString("<p><img src='data:image/png;base64,%1'"
+                            " width='160'/></p>").arg(b64);
+        } else {
+            // Image path set but file could not be loaded — leave blank space.
+            html += "<p style='margin-top:60px;'>&nbsp;</p>";
         }
+    } else {
+        // No signature configured — leave blank space for manual signature.
+        html += "<p style='margin-top:60px;'>&nbsp;</p>";
     }
 
+    // Signatory name, company name, contact name and phone.
     html += QString(
+                "<p style='margin-top:4px;'>"
                 "<span style='font-size:9pt; font-weight:bold;'>%1</span><br/>"
-                "<span style='font-size:9pt; color:#555;'>%2</span>"
+                "<span style='font-size:9pt;'>%2</span><br/>"
+                "<span style='font-size:9pt;'>%3</span><br/>"
+                "<span style='font-size:9pt;'>%4</span>"
+                "</p>"
                 ).arg(m_quote.signatoryName.toHtmlEscaped(),
-                     m_config.companyName.toHtmlEscaped());
+                     m_config.companyName.toHtmlEscaped(),
+                     m_config.contactName.toHtmlEscaped(),
+                     m_config.phone.toHtmlEscaped());
 
-    html += "</p>";
     return html;
 }

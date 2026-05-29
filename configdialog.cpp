@@ -107,18 +107,14 @@ void ConfigDialog::setupUi()
     m_logoPath->setPlaceholderText("Optional — leave blank to use default logo");
     m_logoPath->setReadOnly(true);  // User must use the Browse button
 
-    m_browseButton = new QPushButton("Browse...");
-    m_browseButton->setFixedWidth(80);
-
-    // Connect the Browse button click to our slot.
-    // Qt signals and slots: when the button emits clicked(),
-    // our onBrowseLogo() method is called automatically.
-    connect(m_browseButton, &QPushButton::clicked,
+    m_browseButton = new AnimatedButton("Browse");
+    m_browseButton->setFixedSize(80,26);
+    connect(m_browseButton, &AnimatedButton::clicked,
             this, &ConfigDialog::onBrowseLogo);
 
     QHBoxLayout *logoRow = new QHBoxLayout();
-    logoRow->addWidget(m_logoPath);
-    logoRow->addWidget(m_browseButton);
+    logoRow->addWidget(m_logoPath, 1);
+    logoRow->addWidget(m_browseButton, 0);
     form->addRow("Logo File:", logoRow);
 
     // ── SumatraPDF path ───────────────────────────────────────────────────────
@@ -130,7 +126,7 @@ void ConfigDialog::setupUi()
     m_sumatraPath->setText(AppSettings::instance().sumatraPdfPath());
 
     AnimatedButton *sumatraBtn = new AnimatedButton("Browse");
-    sumatraBtn->setFixedSize(80, 36);
+    sumatraBtn->setFixedSize(80, 26);
     connect(sumatraBtn, &AnimatedButton::clicked, this, [this]() {
         QString path = QFileDialog::getOpenFileName(
             this,
@@ -154,9 +150,8 @@ void ConfigDialog::setupUi()
         );
     m_signaturePath->setReadOnly(true);
 
-    m_browseSignatureButton = new AnimatedButton("Browse...");
-    m_browseSignatureButton->setFixedWidth(90);
-    m_browseSignatureButton->setFixedHeight(32);
+    m_browseSignatureButton = new AnimatedButton("Browse");
+    m_browseSignatureButton->setFixedSize(80, 26);
     connect(m_browseSignatureButton, &AnimatedButton::clicked,
             this, &ConfigDialog::onBrowseSignature);
 
@@ -170,8 +165,9 @@ void ConfigDialog::setupUi()
     m_signaturePreview->setText("No signature selected");
 
     QHBoxLayout *sigRow = new QHBoxLayout();
-    sigRow->addWidget(m_signaturePath);
-    sigRow->addWidget(m_browseSignatureButton);
+    sigRow->addWidget(m_signaturePath, 1);
+    sigRow->addWidget(m_browseSignatureButton, 0);
+
     form->addRow("Signature File:", sigRow);
     form->addRow("Preview:", m_signaturePreview);
 

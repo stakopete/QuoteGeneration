@@ -221,28 +221,31 @@ void GeneralConditionsSection::setupUi()
     mainLayout->addWidget(textGroup);
 }
 
+static QString stripTagsForDisplay(const QString &text)
+{
+    QString result = text;
+    result.replace("[WET] ", "");
+    result.replace("[DRY] ", "");
+    result.replace("[GEN] ", "");
+    return result;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // appendToGeneral()
 // ─────────────────────────────────────────────────────────────────────────────
 void GeneralConditionsSection::appendToGeneral(const QString &text,
                                                const QString &systemType)
 {
-    QString current = m_generalText->toPlainText().trimmed();
+    // Count items from the internal tagged store.
+    int itemCount = m_generalData.split("\n", Qt::SkipEmptyParts).count();
 
-    int itemCount = 0;
-    if (!current.isEmpty())
-        itemCount = current.split("\n", Qt::SkipEmptyParts).count();
-
-    QString tag = "";
-    if (systemType == "wet")      tag = "[WET] ";
+    QString tag;
+    if      (systemType == "wet") tag = "[WET] ";
     else if (systemType == "dry") tag = "[DRY] ";
+    else                          tag = "[GEN] ";
 
-    // Strip any newlines from the clause text — each clause must be
-    // on a single line so the tag parser can identify it correctly.
-    // Long clauses will word-wrap visually in the text box.
     QString cleanText = text;
     cleanText.replace("\n", " ").replace("\r", " ");
-    // Collapse any double spaces created by the replacement.
     while (cleanText.contains("  "))
         cleanText.replace("  ", " ");
     cleanText = cleanText.trimmed();
@@ -252,13 +255,14 @@ void GeneralConditionsSection::appendToGeneral(const QString &text,
                           .arg(tag)
                           .arg(cleanText);
 
-    if (!current.isEmpty())
-        current += "\n";
-    current += newItem;
+    if (!m_generalData.isEmpty())
+        m_generalData += "\n";
+    m_generalData += newItem;
 
-    m_generalText->setPlainText(current);
+    // Display without tags.
+    m_generalText->setPlainText(stripTagsForDisplay(m_generalData));
 
-    // Scroll to bottom so the newly added item is fully visible.
+    // Scroll to bottom.
     m_generalText->verticalScrollBar()->setValue(
         m_generalText->verticalScrollBar()->maximum()
         );
@@ -400,6 +404,7 @@ void GeneralConditionsSection::onClearAll()
     msgBox.exec();
 
     if (msgBox.clickedButton() == yesBtn) {
+        m_generalData.clear();
         m_generalText->clear();
         emit dataChanged();
     }
@@ -432,7 +437,7 @@ void GeneralConditionsSection::onCustomTextChanged(const QString &text)
 // ─────────────────────────────────────────────────────────────────────────────
 QString GeneralConditionsSection::generalText() const
 {
-    return m_generalText->toPlainText().trimmed();
+     return m_generalData.trimmed();
 }
 
 bool GeneralConditionsSection::isComplete() const
@@ -442,7 +447,8 @@ bool GeneralConditionsSection::isComplete() const
 
 void GeneralConditionsSection::loadData(const QString &text)
 {
-    m_generalText->setPlainText(text);
+    m_generalData = text;
+    m_generalText->setPlainText(stripTagsForDisplay(text));
 }
 
 void GeneralConditionsSection::setQuoteType(const QString &type)

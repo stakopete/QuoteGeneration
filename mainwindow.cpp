@@ -649,17 +649,26 @@ void MainWindow::onGeneratePdf()
     bool ok = generator.generate(filePath);
 
     if (ok) {
-        QMessageBox::information(
-            this,
-            "PDF Saved",
-            QString("Quote saved successfully:\n%1").arg(filePath));
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("PDF Saved");
+        msgBox.setText(QString("Quote saved successfully:\n%1").arg(filePath));
+        msgBox.setIcon(QMessageBox::Information);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
     } else {
-        QMessageBox::critical(
-            this,
-            "PDF Error",
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("PDF Error");
+        msgBox.setText(
             QString("The PDF could not be saved to:\n%1\n\n"
                     "Check that the folder exists and you have "
                     "permission to write there.").arg(filePath));
+        msgBox.setIcon(QMessageBox::Critical);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
     }
 }
 

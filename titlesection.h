@@ -67,6 +67,7 @@ private slots:
 private:
     void setupUi();
     void populateTitleDropdown();
+    void onQuoteDateChanged(const QDate &date);
 
     // ── Controls ──────────────────────────────────────────────────────────────
     QDateEdit   *m_dateEdit;

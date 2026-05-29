@@ -55,6 +55,7 @@ private:
     void applyGroupBoxStyle(QGroupBox *group);
     void appendToGeneral(const QString &text, const QString &systemType);
 
+    QString m_generalData;  // Internal store with tags preserved.
     // ── Controls ──────────────────────────────────────────────────────────────
     QListWidget    *m_wetClauseList;
     QListWidget    *m_dryClauseList;

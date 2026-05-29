@@ -83,7 +83,7 @@ private:
     QLabel         *m_signaturePreview;
 
     // Buttons
-    QPushButton    *m_browseButton;
+    AnimatedButton *m_browseButton;
     AnimatedButton *m_saveButton;
     AnimatedButton *m_cancelButton;
 

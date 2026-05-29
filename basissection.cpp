@@ -309,8 +309,7 @@ void BasisSection::onRemoveLastClause()
     m_basisText->setPlainText(lines.join("\n"));
     emit dataChanged();
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
+//────────────────────────────────────────
 // Data access
 // ─────────────────────────────────────────────────────────────────────────────
 QString BasisSection::basisText() const
@@ -323,9 +322,20 @@ bool BasisSection::isComplete() const
     return !m_basisText->toPlainText().trimmed().isEmpty();
 }
 
+// Strips [WET] [DRY] [GEN] tags from text for display purposes.
+// Tags are kept in storage for grouping in combined quotes.
+static QString stripTagsForDisplay(const QString &text)
+{
+    QString result = text;
+    result.replace("[WET] ", "");
+    result.replace("[DRY] ", "");
+    result.replace("[GEN] ", "");
+    return result;
+}
+
 void BasisSection::loadData(const QString &text)
 {
-    m_basisText->setPlainText(text);
+   m_basisText->setPlainText(stripTagsForDisplay(text));
 }
 
 void BasisSection::setQuoteType(const QString &type)

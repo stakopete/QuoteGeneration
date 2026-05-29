@@ -215,27 +215,31 @@ void ExclusionsSection::setupUi()
     mainLayout->addWidget(textGroup);
 }
 
+static QString stripTagsForDisplay(const QString &text)
+{
+    QString result = text;
+    result.replace("[WET] ", "");
+    result.replace("[DRY] ", "");
+    result.replace("[GEN] ", "");
+    return result;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // appendToExclusions()
 // ─────────────────────────────────────────────────────────────────────────────
 void ExclusionsSection::appendToExclusions(const QString &text,
                                            const QString &systemType)
 {
-    QString current = m_exclusionsText->toPlainText().trimmed();
+    // Count items from the internal tagged store.
+    int itemCount = m_exclusionsData.split("\n", Qt::SkipEmptyParts).count();
 
-    int itemCount = 0;
-    itemCount = current.split("\n", Qt::SkipEmptyParts).count();
-
-    QString tag = "";
-    if (systemType == "wet")      tag = "[WET] ";
+    QString tag;
+    if      (systemType == "wet") tag = "[WET] ";
     else if (systemType == "dry") tag = "[DRY] ";
+    else                          tag = "[GEN] ";
 
-    // Strip any newlines from the clause text — each clause must be
-    // on a single line so the tag parser can identify it correctly.
-    // Long clauses will word-wrap visually in the text box.
     QString cleanText = text;
     cleanText.replace("\n", " ").replace("\r", " ");
-    // Collapse any double spaces created by the replacement.
     while (cleanText.contains("  "))
         cleanText.replace("  ", " ");
     cleanText = cleanText.trimmed();
@@ -245,13 +249,14 @@ void ExclusionsSection::appendToExclusions(const QString &text,
                           .arg(tag)
                           .arg(cleanText);
 
-    if (!current.isEmpty())
-        current += "\n";
-    current += newItem;
+    if (!m_exclusionsData.isEmpty())
+        m_exclusionsData += "\n";
+    m_exclusionsData += newItem;
 
-    m_exclusionsText->setPlainText(current);
+    // Display without tags.
+    m_exclusionsText->setPlainText(stripTagsForDisplay(m_exclusionsData));
 
-    // Scroll to bottom so the newly added item is fully visible.
+    // Scroll to bottom.
     m_exclusionsText->verticalScrollBar()->setValue(
         m_exclusionsText->verticalScrollBar()->maximum()
         );
@@ -394,6 +399,7 @@ void ExclusionsSection::onClearAll()
     msgBox.exec();
 
     if (msgBox.clickedButton() == yesBtn) {
+        m_exclusionsData.clear();
         m_exclusionsText->clear();
         emit dataChanged();
     }
@@ -427,7 +433,7 @@ void ExclusionsSection::onCustomTextChanged(const QString &text)
 // ─────────────────────────────────────────────────────────────────────────────
 QString ExclusionsSection::exclusionsText() const
 {
-    return m_exclusionsText->toPlainText().trimmed();
+    return m_exclusionsData.trimmed();
 }
 
 bool ExclusionsSection::isComplete() const
@@ -437,7 +443,8 @@ bool ExclusionsSection::isComplete() const
 
 void ExclusionsSection::loadData(const QString &text)
 {
-    m_exclusionsText->setPlainText(text);
+    m_exclusionsData = text;
+    m_exclusionsText->setPlainText(stripTagsForDisplay(text));
 }
 
 void ExclusionsSection::setQuoteType(const QString &type)

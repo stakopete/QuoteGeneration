@@ -15,7 +15,6 @@ DefaultGroupName=PB Software Solutions\Quote Generation
 AllowNoIcons=yes
 OutputDir=D:\Qt_Projects\QuoteGeneration\installer
 OutputBaseFilename=QuoteGeneration_Setup_v1.0.0
-SetupIconFile=D:\Qt_Projects\QuoteGeneration\resources\logos\DefaultLogo.png
 Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
@@ -67,7 +66,6 @@ Source: "D:\Qt_Projects\QuoteGeneration\deploy\resources\logos\DefaultLogo.png";
 Source: "D:\Qt_Projects\QuoteGeneration\deploy\resources\buttons\bluebutton.png";    DestDir: "{app}\resources\buttons"; Flags: ignoreversion
 
 ; PDF output folder — empty folder created for saving quotes
-Source: "D:\Qt_Projects\QuoteGeneration\deploy\QGenPdfFolder\*"; DestDir: "{app}\QGenPdfFolder"; Flags: ignoreversion recursesubdirs createallsubdirs
 
 [Dirs]
 ; Ensure PDF output folder exists even if empty

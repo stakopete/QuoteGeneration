@@ -1146,6 +1146,7 @@ D:/Qt_Projects/QuoteGeneration/configdialog.h
  mdp:D:/Qt_Projects/QuoteGeneration/build/Desktop_Qt_6_11_0_MinGW_64_bit-Debug/QuoteGeneration_autogen/moc_predefs.h
  mdp:D:/Qt_Projects/QuoteGeneration/configdialog.h
  mdp:D:/Qt_Projects/QuoteGeneration/database.h
+D:/Qt_Projects/QuoteGeneration/signaturesection.cpp
 D:/Qt_Projects/QuoteGeneration/pricesection.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QEvent
@@ -1533,7 +1534,6 @@ D:/Qt_Projects/QuoteGeneration/pricesection.h
  mdp:D:/Qt_Projects/QuoteGeneration/database.h
  mdp:D:/Qt_Projects/QuoteGeneration/pricesection.h
 D:/Qt_Projects/QuoteGeneration/editoptiondialog.cpp
-D:/Qt_Projects/QuoteGeneration/signaturesection.cpp
 D:/Qt_Projects/QuoteGeneration/exclusionssection.h
  mmc:Q_OBJECT
  mdp:C:/Qt/6.11.0/mingw_64/include/QtCore/QList

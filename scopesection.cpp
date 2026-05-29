@@ -205,38 +205,33 @@ void ScopeSection::setupUi()
     mainLayout->addLayout(buttonRow);
 }
 
+static QString stripTagsForDisplay(const QString &text)
+{
+    QString result = text;
+    result.replace("[WET] ", "");
+    result.replace("[DRY] ", "");
+    result.replace("[GEN] ", "");
+    return result;
+}
+
 // ─────────────────────────────────────────────────────────────────────────────
 // appendToScope()
 //
 // Appends a new item to the scope text as a numbered list entry.
 // We number items automatically so the user doesn't have to.
 // ─────────────────────────────────────────────────────────────────────────────
-void ScopeSection::appendToScope(const QString &text,
-                                 const QString &systemType)
+void ScopeSection::appendToScope(const QString &text, const QString &systemType)
 {
-    QString current = m_scopeText->toPlainText().trimmed();
+    // Count items from the internal tagged store.
+    int itemCount = m_scopeData.split("\n", Qt::SkipEmptyParts).count();
 
-    // Count only non-empty lines to avoid blank lines inflating the number.
-    // Qt::SkipEmptyParts ensures trailing newlines don't add phantom items.
+    QString tag;
+    if      (systemType == "wet") tag = "[WET] ";
+    else if (systemType == "dry") tag = "[DRY] ";
+    else                          tag = "[GEN] ";
 
-    int itemCount = 0;
-    if (!current.isEmpty())
-        itemCount = current.split("\n", Qt::SkipEmptyParts).count();
-
-    // Prefix with system type tag so preview/PDF can group them.
-    // [WET] and [DRY] tags are stripped when displaying but used
-    // for grouping. Custom items get [GEN] tag.
-    QString tag = "";
-    if (systemType == "wet")       tag = "[WET] ";
-    else if (systemType == "dry")  tag = "[DRY] ";
-    else                           tag = "[GEN] ";
-
-    // Strip any newlines from the clause text — each clause must be
-    // on a single line so the tag parser can identify it correctly.
-    // Long clauses will word-wrap visually in the text box.
     QString cleanText = text;
     cleanText.replace("\n", " ").replace("\r", " ");
-    // Collapse any double spaces created by the replacement.
     while (cleanText.contains("  "))
         cleanText.replace("  ", " ");
     cleanText = cleanText.trimmed();
@@ -246,14 +241,14 @@ void ScopeSection::appendToScope(const QString &text,
                           .arg(tag)
                           .arg(cleanText);
 
-    if (!current.isEmpty())
-        current += "\n";
-    current += newItem;
+    if (!m_scopeData.isEmpty())
+        m_scopeData += "\n";
+    m_scopeData += newItem;
 
-    m_scopeText->setPlainText(current);
+    // Display without tags.
+    m_scopeText->setPlainText(stripTagsForDisplay(m_scopeData));
 
-    // Scroll to the absolute bottom of the text edit so the full
-    // last added item is visible.
+    // Scroll to bottom.
     m_scopeText->verticalScrollBar()->setValue(
         m_scopeText->verticalScrollBar()->maximum()
         );
@@ -369,27 +364,28 @@ void ScopeSection::onAddCustomClause()
 // ─────────────────────────────────────────────────────────────────────────────
 void ScopeSection::onRemoveLastClause()
 {
-    QString current = m_scopeText->toPlainText().trimmed();
-    if (current.isEmpty())
+    if (m_scopeData.isEmpty())
         return;
 
-    QStringList lines = current.split("\n", Qt::SkipEmptyParts);
+    QStringList lines = m_scopeData.split("\n", Qt::SkipEmptyParts);
     lines.removeLast();
 
-    // Renumber remaining items correctly.
-    // We must preserve the [WET] [DRY] [GEN] tag when renumbering.
-    // The format of each line is: "N. [TAG] text"
-    // We strip only the leading number and dot, keeping everything after.
     QRegularExpression numPrefix("^\\d+\\.\\s+");
     QStringList renumbered;
     for (int i = 0; i < lines.count(); ++i) {
         QString line = lines[i].trimmed();
-        // Remove only the number prefix — leave the tag and text intact.
+        // Extract the tag before removing the number prefix.
+        QString tag;
+        if (line.contains("[WET] ")) tag = "[WET] ";
+        else if (line.contains("[DRY] ")) tag = "[DRY] ";
+        else if (line.contains("[GEN] ")) tag = "[GEN] ";
+
         line.remove(numPrefix);
         renumbered.append(QString("%1. %2").arg(i + 1).arg(line));
     }
 
-    m_scopeText->setPlainText(renumbered.join("\n"));
+    m_scopeData = renumbered.join("\n");
+    m_scopeText->setPlainText(stripTagsForDisplay(m_scopeData));
     emit dataChanged();
 }
 
@@ -414,6 +410,7 @@ void ScopeSection::onClearAll()
     msgBox.exec();
 
     if (msgBox.clickedButton() == yesBtn) {
+        m_scopeData.clear();
         m_scopeText->clear();
         emit dataChanged();
     }
@@ -449,7 +446,7 @@ void ScopeSection::onCustomTextChanged(const QString &text)
 // ─────────────────────────────────────────────────────────────────────────────
 QString ScopeSection::scopeText() const
 {
-    return m_scopeText->toPlainText().trimmed();
+     return m_scopeData.trimmed();
 }
 
 bool ScopeSection::isComplete() const
@@ -457,9 +454,12 @@ bool ScopeSection::isComplete() const
     return !m_scopeText->toPlainText().trimmed().isEmpty();
 }
 
+
+
 void ScopeSection::loadData(const QString &text)
 {
-    m_scopeText->setPlainText(text);
+    m_scopeData = text;
+    m_scopeText->setPlainText(stripTagsForDisplay(text));
 }
 
 void ScopeSection::setQuoteType(const QString &type)

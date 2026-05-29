@@ -284,9 +284,18 @@ void QuotePreviewDialog::buildPreview()
         html += sectionHeading("Basis of Proposal");
         html += "<p style='font-size:9pt;'>This proposal has been prepared "
                 "in accordance with the following: -</p>";
-        html += processTaggedText(m_quote.basisText,
-                                  "Wet Fire Systems",
-                                  "Dry Fire Systems");
+        // Basis section uses a simple numbered list regardless of quote type.
+        QStringList basisLines = m_quote.basisText.split("\n", Qt::SkipEmptyParts);
+        html += "<ol>";
+        for (const QString &line : basisLines) {
+            QString clean = line.trimmed();
+            QRegularExpression numPrefix("^\\d+\\.\\s+");
+            clean.remove(numPrefix);
+            clean.replace("[WET] ", "").replace("[DRY] ", "").replace("[GEN] ", "");
+            if (!clean.isEmpty())
+                html += "<li>" + clean.toHtmlEscaped() + "</li>";
+        }
+        html += "</ol>";
     }
 
     // ── Proposed Price ────────────────────────────────────────────────────────
@@ -299,8 +308,8 @@ void QuotePreviewDialog::buildPreview()
     if (!m_quote.scopeText.isEmpty()) {
         html += sectionHeading("Scope of Works");
         html += processTaggedText(m_quote.scopeText,
-                                  "Wet Fire Works",
-                                  "Dry Fire Works");
+                                  "Wet Fire",
+                                  "Dry Fire");
     }
 
     // ── Exclusions ────────────────────────────────────────────────────────────
@@ -335,42 +344,36 @@ void QuotePreviewDialog::buildPreview()
     }
 
     // ── Signature block ───────────────────────────────────────────────────────
-    // No "Authorisation" heading. Contact statement is 9pt bold.
-    // No "Authorised Signatory" label.
+    // ── Signature block ───────────────────────────────────────────────────────
     html += "<p style='margin-top:16px;'></p>";
-
     if (!m_quote.contactStatement.trimmed().isEmpty()) {
         html += "<p style='font-size:9pt; font-weight:bold;'>"
                 + m_quote.contactStatement.toHtmlEscaped()
                       .replace("\n", "<br>")
                 + "</p>";
     }
-
     html += "<p style='font-size:9pt; margin-top:8px;'>Yours Sincerely,</p>";
-    html += "<p style='margin-top:20px;'></p>";
 
+    // Signature image or blank space for manual signature.
     if (!m_config.signaturePath.isEmpty()) {
-        html += QString("<img src='%1' height='70'><br>")
-        .arg(m_config.signaturePath);
+        html += QString("<p style='margin-top:8px;'>"
+                        "<img src='%1' height='70'></p>")
+                    .arg(m_config.signaturePath);
     } else {
-        html += "<p style='margin:30px 0;'></p>";
+        // No signature — leave enough space for a physical signature.
+        html += "<p style='margin-top:60px;'>&nbsp;</p>";
     }
 
-    html += "<p style='font-size:9pt;'><b>"
-            + m_quote.signatoryName.toHtmlEscaped() + "</b></p>";
-    html += "<p style='font-size:9pt;'>"
-            + m_config.companyName.toHtmlEscaped() + "</p>";
+    // Signatory name, company name, contact name and phone.
+    html += "<p style='font-size:9pt; margin-top:4px;'><b>"
+            + m_quote.signatoryName.toHtmlEscaped() + "</b><br>"
+            + m_config.companyName.toHtmlEscaped() + "<br>"
+            + m_config.contactName.toHtmlEscaped() + "<br>"
+            + m_config.phone.toHtmlEscaped()
+            + "</p>";
 
     m_preview->setHtml(html);
 }
-
-// ─────────────────────────────────────────────────────────────────────────────
-// sectionHeading()
-//
-// Returns a styled section heading as a <p> tag with inline styles.
-// We use <p> rather than <h2> because QTextDocument overrides the font-size
-// on <h2> tags regardless of what you specify — <p> gives exact control.
-// ─────────────────────────────────────────────────────────────────────────────
 QString QuotePreviewDialog::sectionHeading(const QString &title) const
 {
     return QString(
@@ -415,30 +418,51 @@ QString QuotePreviewDialog::processTaggedText(const QString &text,
             genItems.append(trimmed);
     }
 
+    // For combined quotes show wet and dry subheadings.
+    // For single discipline quotes just show a numbered list.
+    bool isCombined = (m_quote.quoteType == "Combined");
+
     QString html;
 
-    if (!wetItems.isEmpty()) {
-        html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
-                " color:#2c3e50; margin:6px 0 2px 0;'>"
-                + wetHeading + "</p><ol>";
-        for (const QString &item : wetItems)
-            html += "<li>" + item.toHtmlEscaped() + "</li>";
-        html += "</ol>";
+    if (isCombined) {
+        // Wet Fire subheading and items.
+        if (!wetItems.isEmpty()) {
+            html += "<p style='font-size:10pt; font-weight:bold;"
+                    " font-style:italic; color:#2c3e50;"
+                    " margin:6px 0 2px 0;'>" + wetHeading + "</p>";
+            html += "<ol>";
+            for (const QString &item : wetItems)
+                html += "<li>" + item.toHtmlEscaped() + "</li>";
+            html += "</ol>";
+        }
+
+        // Dry Fire subheading and items.
+        if (!dryItems.isEmpty()) {
+            html += "<p style='font-size:10pt; font-weight:bold;"
+                    " font-style:italic; color:#2c3e50;"
+                    " margin:6px 0 2px 0;'>" + dryHeading + "</p>";
+            html += "<ol>";
+            for (const QString &item : dryItems)
+                html += "<li>" + item.toHtmlEscaped() + "</li>";
+            html += "</ol>";
+        }
+    } else {
+        // Single discipline or general — no subheadings, just a numbered list.
+        QStringList allItems;
+        allItems << wetItems << dryItems << genItems;
+        if (!allItems.isEmpty()) {
+            html += "<ol>";
+            for (const QString &item : allItems)
+                html += "<li>" + item.toHtmlEscaped() + "</li>";
+            html += "</ol>";
+        }
     }
 
-    if (!dryItems.isEmpty()) {
-        html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
-                " color:#2c3e50; margin:6px 0 2px 0;'>"
-                + dryHeading + "</p><ol>";
-        for (const QString &item : dryItems)
-            html += "<li>" + item.toHtmlEscaped() + "</li>";
-        html += "</ol>";
-    }
-
-    if (!genItems.isEmpty()) {
-        if (!wetItems.isEmpty() || !dryItems.isEmpty())
-            html += "<p style='font-size:9pt; font-weight:bold; font-style:italic;"
-                    " color:#2c3e50; margin:6px 0 2px 0;'>General</p>";
+    // General items for combined quotes.
+    if (isCombined && !genItems.isEmpty()) {
+        html += "<p style='font-size:10pt; font-weight:bold;"
+                " font-style:italic; color:#2c3e50;"
+                " margin:6px 0 2px 0;'>General</p>";
         html += "<ol>";
         for (const QString &item : genItems)
             html += "<li>" + item.toHtmlEscaped() + "</li>";

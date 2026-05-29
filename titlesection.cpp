@@ -18,6 +18,7 @@
 #include <QMessageBox>
 #include <QPushButton>
 #include <QDateEdit>
+#include "animatedbutton.h"
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Constructor
@@ -74,6 +75,8 @@ void TitleSection::setupUi()
     // When the date changes emit our dataChanged signal.
     connect(m_dateEdit, &QDateEdit::dateChanged,
             this, &TitleSection::dataChanged);
+    connect(m_dateEdit, &QDateEdit::dateChanged,
+            this, &TitleSection::onQuoteDateChanged);
 
     form->addRow("Quote Date:", m_dateEdit);
 
@@ -141,7 +144,8 @@ void TitleSection::setupUi()
             this, &TitleSection::dataChanged);
 
     // ── Add custom title button ───────────────────────────────────────────────
-    m_addTitleButton = new AnimatedButton("Save to List");
+    m_addTitleButton = new AnimatedButton("Save");
+    m_addTitleButton->setFixedSize(80, 40);
     m_addTitleButton->setFixedWidth(100);
     m_addTitleButton->setVisible(false);
     m_addTitleButton->setToolTip(
@@ -149,9 +153,6 @@ void TitleSection::setupUi()
         );
 
 
-
-    connect(m_addTitleButton, &QPushButton::clicked,
-            this, &TitleSection::onAddCustomTitle);
 
     connect(m_addTitleButton, &QPushButton::clicked,
             this, &TitleSection::onAddCustomTitle);
@@ -239,8 +240,14 @@ void TitleSection::onAddCustomTitle()
     QString text = m_customTitle->text().trimmed();
 
     if (text.isEmpty()) {
-        QMessageBox::warning(this, "Empty Title",
-                             "Please type a title before saving it to the list.");
+        QMessageBox msgBox(this);
+        msgBox.setWindowTitle("Empty Title");
+        msgBox.setText("Please type a title before saving it to the list.");
+        msgBox.setIcon(QMessageBox::Warning);
+        AnimatedButton *okBtn = new AnimatedButton("OK", &msgBox);
+        okBtn->setFixedSize(110, 40);
+        msgBox.addButton(okBtn, QMessageBox::AcceptRole);
+        msgBox.exec();
         return;
     }
 
@@ -324,6 +331,13 @@ void TitleSection::setExpiryDate(const QString &date)
         m_expiryDate->setDate(d);
     else
         m_expiryDate->setDate(QDate::currentDate().addDays(30));
+}
+
+void TitleSection::onQuoteDateChanged(const QDate &date)
+{
+    // When the quote date changes update the expiry date to
+    // maintain the 30 day offset from the new quote date.
+    m_expiryDate->setDate(date.addDays(30));
 }
 
 

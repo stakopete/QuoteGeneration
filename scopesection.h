@@ -56,6 +56,7 @@ private:
     //void addClauseFromList(QListWidget *list);
     void appendToScope(const QString &text, const QString &systemType = "");
 
+    QString m_scopeData;  // Internal store with tags preserved.
     // ── Controls ──────────────────────────────────────────────────────────────
     QListWidget    *m_wetClauseList;
     QListWidget    *m_dryClauseList;
